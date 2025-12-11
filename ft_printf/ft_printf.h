@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:13:47 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/11 09:17:07 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:29:56 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_print_hex_low(int n);
 int	ft_print_dec_int(int n);
 int	ft_print_uint(unsigned int n);
 int	ft_print_str(char *str);
+int	ft_print_ptr( void *ptr);
 
 
 #endif

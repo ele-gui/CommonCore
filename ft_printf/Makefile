@@ -6,7 +6,7 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/04 15:30:15 by elguiduc          #+#    #+#              #
-#    Updated: 2025/12/09 14:03:31 by elguiduc         ###   ########.fr        #
+#    Updated: 2025/12/10 19:57:44 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,11 @@ RM = rm -f
 LIBFT_DIR = libft
 LIBFT = libft/libft.a
 
-SRCS = ft_print_char.c ft_print_str.c ft_print_int.c ft_len_int.c ft_putnbr_uint_fd.c \
-	ft_print_hex.c ft_putnbr_base.c
+SRCS = ft_len_nbr.c \
+	ft_print_char.c \
+	ft_print_hex.c \
+	ft_print_nbr.c \
+	ft_print_str.c 
 
 OBJS = $(SRCS:.c=.o)
 

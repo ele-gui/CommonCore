@@ -6,16 +6,13 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 10:56:44 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/08 20:37:46 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:41:58 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
-# include <stdio.h>
-# include <ctype.h>
 # include <stdlib.h>
 # include <unistd.h>
 

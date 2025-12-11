@@ -106,11 +106,7 @@ objects), libft.a will include both mandatory and bonus functions.
 
 ## How AI was used
 
-AI was used only for drafting documentation and suggesting Makefile
-techniques (e.g., the `.bonus` marker approach).\
-**No implementation of any required libft function was generated or
-copied from AI.**\
-All `ft_` functions were written and tested manually.
+AI was used only to generate tests for the functions and to write this README
 
 ## Resources
 
@@ -118,22 +114,5 @@ All `ft_` functions were written and tested manually.
 -   The 42 subject PDF for Libft.
 -   `nm`, `readelf`, `ar` man pages for static library inspection.
 
-## Tests (optional)
-
-Every function has a main so that you can test its behaviour.
-
-Example:
-
-``` c
-// test_strlen.c
-#include "libft.h"
-#include <stdio.h>
-
-int main(void)
-{
-    printf("%zu\n", ft_strlen("hello"));
-    return 0;
-}
-```
 
 Compile linking to libft.a to verify behavior.

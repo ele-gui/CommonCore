@@ -1,50 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_len_int.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 10:51:56 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/09 11:02:10 by elguiduc         ###   ########.fr       */
+/*   Created: 2025/12/10 14:47:36 by elguiduc          #+#    #+#             */
+/*   Updated: 2025/12/10 19:25:29 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static long	ft_abs_val(long n)
+int ft_printf(const char *str, ...)
 {
-	if (n < 0)
-		n *= -1;
-	return (n);
-}
+	va_list args;
+	size_t	count;
 
-long	ft_len_int(long n)
-{
-	long	i;
-
-	i = 0;
-	if (n <= 0)
-		i = 1;
-	n = ft_abs_val(n);
-	while (n > 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
-unsigned long	ft_len_uint(unsigned long n)
-{
-	unsigned long	i;
-
-	i = 0;
-	while (n > 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+	
 }

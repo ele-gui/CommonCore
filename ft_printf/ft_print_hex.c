@@ -6,14 +6,14 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:53:45 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/10 19:43:05 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/15 10:21:15 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static int	ft_putnbr_n(unsigned long long nb, char *base)
+int	ft_putnbr_n(unsigned long nb, char *base)
 {
 	int	count;
 
@@ -33,72 +33,94 @@ static int	ft_putnbr_n(unsigned long long nb, char *base)
 
 int	ft_print_hex_up(int n)
 {
-	unsigned int	u_nb;
+	unsigned long nb;
 	
-	u_nb = (unsigned int)n;
-	return (ft_putnbr_n(u_nb, "0123456789ABCDEF"));
+	nb = (unsigned int)n;
+	if (nb == 0)
+        return write(1, "0", 1);
+	return (ft_putnbr_n(nb, "0123456789ABCDEF"));
 }
 
 int	ft_print_hex_low(int n)
 {
-	unsigned int	u_nb;
+	unsigned long nb;
 	
-	u_nb = (unsigned int)n;
-	return (ft_putnbr_n(u_nb, "0123456789abcdef"));
+	nb = (unsigned int)n;
+	if (nb== 0)
+        return write(1, "0", 1);
+	return (ft_putnbr_n(nb, "0123456789abcdef"));
 }
 
-// int main(void)
+
+// void	test_hex(unsigned long long n)
 // {
-//     int tests[] = {
-//         0, 1, 10, 15, 16, 255, 256,
-//         1024, 4095, 65535,
-//         -1, -42,
-//         INT_MAX, INT_MIN,
-//         123456, 0xABCDEF, 0x123456
-//     };
-//     const int n_tests = sizeof(tests) / sizeof(tests[0]);
+// 	int	ret_ft;
+// 	int	ret_printf;
 
-//     printf("===== TEST ft_print_hex_up / ft_print_hex_low =====\n\n");
+// 	printf("\n==============================\n");
+// 	printf("VALORE DECIMALE: %llu\n", n);
 
-//     for (int i = 0; i < n_tests; ++i)
-//     {
-//         int n = tests[i];
-//         char expect_up[64];
-//         char expect_low[64];
-//         int exp_len_up;
-//         int exp_len_low;
-//         int ret_up;
-//         int ret_low;
+// 	/* ----- HEX UPPERCASE ----- */
+// 	printf("\n[ HEX UPPERCASE ]\n");
 
-//         /* Calcola le stringhe e le lunghezze attese usando snprintf.
-//            snprintf restituisce il numero di caratteri (senza '\0'). */
-//         exp_len_up  = snprintf(expect_up, sizeof(expect_up), "%X", (unsigned int)n);
-//         exp_len_low = snprintf(expect_low, sizeof(expect_low), "%x", (unsigned int)n);
+// 	printf("ft_print_hex_up  : ");
+// 	ret_ft = ft_print_hex_up(n);
+// 	printf(" | return = %d\n", ret_ft);
 
-//         printf("---- Test %2d: n = %d (0x%X unsigned view) ----\n", i + 1, n, (unsigned int)n);
+// 	printf("printf(\"%%X\")     : ");
+// 	ret_printf = printf("%X", (unsigned int)n);
+// 	printf(" | return = %d\n", ret_printf);
 
-//         /* stampa la stringa attesa (comportamento printf "vero") */
-//         printf("expected (printf %%X): %s\n", expect_up);
+// 	/* ----- HEX LOWERCASE ----- */
+// 	printf("\n[ HEX LOWERCASE ]\n");
 
-//         /* stampa con la funzione da testare */
-//         printf("ft_print_hex_up output: ");
-//         ret_up = ft_print_hex_up(n);
-//         printf("\n"); /* la funzione ft_print_hex_up non stampa newline */
+// 	printf("ft_print_hex_low : ");
+// 	ret_ft = ft_print_hex_low(n);
+// 	printf(" | return = %d\n", ret_ft);
 
-//         /* mostra i risultati del confronto lunghezze */
-//         printf(" expected_len: %d, ft_return: %d -> %s\n",
-//             	exp_len_up, ret_up, (exp_len_up == ret_up) ? "OK" : "KO");
+// 	printf("printf(\"%%x\")     : ");
+// 	ret_printf = printf("%x", (unsigned int)n);
+// 	printf(" | return = %d\n", ret_printf);
 
-//         /* stessa cosa per lowercase */
-//         printf("expected (printf %%x): %s\n", expect_low);
-//         printf("ft_print_hex_low output: ");
-//         ret_low = ft_print_hex_low(n);
-//         printf("\n");
-//         printf(" expected_len: %d, ft_return: %d -> %s\n\n",
-//                exp_len_low, ret_low, (exp_len_low == ret_low) ? "OK" : "KO");
-//     }
-
-//     printf("===== TEST COMPLETATI =====\n");
-//     return 0;
+// 	printf("\n");
 // }
 
+// /* ===== MAIN ===== */
+
+// int	main(void)
+// {
+// 	printf("===== CONFRONTO ft_print_hex VS printf =====\n");
+
+// 	/* Casi base */
+// 	test_hex(0);
+// 	test_hex(1);
+// 	test_hex(2);
+// 	test_hex(9);
+// 	test_hex(10);
+// 	test_hex(15);
+
+// 	/* Cambio cifra */
+// 	test_hex(16);
+// 	test_hex(17);
+// 	test_hex(31);
+// 	test_hex(32);
+
+// 	/* Valori comuni */
+// 	test_hex(42);
+// 	test_hex(100);
+// 	test_hex(255);
+// 	test_hex(256);
+// 	test_hex(4096);
+// 	test_hex(48879);
+
+// 	/* Limiti unsigned int */
+// 	test_hex(UINT_MAX);
+// 	test_hex(UINT_MAX - 1);
+
+// 	/* Valori grandi (cast a unsigned int per printf) */
+// 	test_hex(4294967295ULL);
+// 	test_hex(4294967294ULL);
+
+// 	printf("\n===== FINE TEST =====\n");
+// 	return (0);
+// }

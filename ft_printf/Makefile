@@ -6,7 +6,7 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/04 15:30:15 by elguiduc          #+#    #+#              #
-#    Updated: 2025/12/11 14:30:12 by elguiduc         ###   ########.fr        #
+#    Updated: 2025/12/11 20:51:24 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS = ft_len_nbr.c \
 	ft_print_hex.c \
 	ft_print_nbr.c \
 	ft_print_str.c \
-	ft_print_ptr.c
+	ft_print_ptr.c \
+	ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 

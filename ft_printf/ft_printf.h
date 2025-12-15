@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:13:47 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/11 14:29:56 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/15 10:21:27 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "libft/libft.h"
 # include <limits.h>
 # include <stdio.h>
+#include <stdint.h>
 
 long	ft_len_int(long n);
 unsigned long	ft_len_uint(unsigned long n);
@@ -30,7 +31,11 @@ int	ft_print_hex_low(int n);
 int	ft_print_dec_int(int n);
 int	ft_print_uint(unsigned int n);
 int	ft_print_str(char *str);
-int	ft_print_ptr( void *ptr);
-
+int	ft_print_ptr(unsigned long n);
+int ft_print_percent();
+int	ft_print_call(va_list args, const char format);
+int ft_printf(const char *str, ...);
+int	ft_putnbr_n(unsigned long nb, char *base)
+;
 
 #endif

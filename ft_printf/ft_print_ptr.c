@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:21:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/15 10:21:53 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/16 09:57:03 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_print_ptr(unsigned long n)
 {
 	int	len;
-	
+
 	len = 0;
 	if (!n)
 	{

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:56:21 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/11 20:46:37 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/16 09:56:38 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_print_str(char *str)
 	int	len;
 
 	len = 0;
-	if(!str)
+	if (!str)
 		str = "(null)";
 	while (*str)
 	{

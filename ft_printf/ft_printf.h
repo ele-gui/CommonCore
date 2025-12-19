@@ -6,22 +6,16 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:13:47 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/16 09:53:18 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/19 13:20:23 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <strings.h>
-# include <stdlib.h>
-# include <stddef.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include "libft/libft.h"
-# include <limits.h>
-# include <stdio.h>
-# include <stdint.h>
 
 long			ft_len_int(long n);
 unsigned long	ft_len_uint(unsigned long n);

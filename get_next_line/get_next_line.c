@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:38:25 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/19 14:38:28 by elguiduc         ###   ########.fr       */
+/*   Updated: 2025/12/22 19:00:43 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,26 @@
 char	*get_next_line(int fd)
 {
 	size_t	count;
-	void *buf;
+	char buf[1024];
 	ssize_t	len;
+	static char *boh;
+	int	i;
+
+	i = 0;
+	//legge fino a \n, read return 0 con EOF
+	while (count = read(fd, &buf[i], 1) > 0 && i <= BUFFER_SIZE)
+	{
+		if (buf[i] == '\n' || i == BUFFER_SIZE)
+		{
+			buf[i] = '\0';
+			break;
+		}
+		i++;
+	}
 	
-	
-	len = read(fd, buf, len);
-	if (len > BUFFER_SIZE)
-		len = BUFFER_SIZE;
-	buf = ft_calloc(len + 1, sizeof(char *));
-	ft_memcpy(buf, BOHHHHH, len);
-	if (!buf )
+	boh = ft_calloc(count + 1, sizeof(char *));
+	ft_memcpy(boh, buf, len);
+	if (!boh )
 		return (NULL);
 	return (buf);
 }

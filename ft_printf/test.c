@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 # include <stdio.h>
-
+//TEST GENERALE
 int main(void)
 {
 	int res_mio, res_vero;
@@ -65,3 +65,67 @@ int main(void)
 
     return (0);
 }
+
+
+// TEST PER POINTER
+// /* ===== FUNZIONE DI TEST ===== */
+// void	test_ptr(char *desc, void *ptr)
+// {
+// 	int	ret_ft;
+// 	int	ret_printf;
+
+// 	printf("\n==============================\n");
+// 	printf("TEST: %s\n", desc);
+
+// 	printf("\nft_print_ptr : ");
+// 	fflush(stdout);
+// 	ret_ft = ft_print_ptr((unsigned long)ptr);
+// 	printf("\n| return = %d\n", ret_ft);
+
+// 	printf("printf(\"%%p\")  : ");
+// 	fflush(stdout);
+// 	ret_printf = printf("%p", ptr);
+// 	printf("\n| return = %d\n", ret_printf);
+// }
+
+// /* ===== MAIN ===== */
+
+// int	main(void)
+// {
+// 	int		a = 42;
+// 	char	c = 'x';
+// 	char	str[] = "hello";
+// 	int		*heap_int;
+// 	void	*null_ptr = NULL;
+
+// 	heap_int = malloc(sizeof(int));
+// 	*heap_int = 99;
+
+// 	printf("===== CONFRONTO ft_print_ptr VS printf =====\n");
+
+// 	/* NULL */
+// 	test_ptr("NULL pointer", null_ptr);
+
+// 	/* Stack */
+// 	test_ptr("address of int (stack)", &a);
+// 	test_ptr("address of char (stack)", &c);
+// 	test_ptr("address of string (stack)", str);
+
+// 	/* Heap */
+// 	test_ptr("address of malloc int", heap_int);
+
+// 	/* Cast espliciti */
+// 	test_ptr("cast (void *)0", (void *)0);
+// 	test_ptr("cast (void *)1", (void *)1);
+// 	test_ptr("cast (void *)-1", (void *)-1);
+
+// 	/* Funzioni */
+// 	test_ptr("address of main", &main);
+// 	test_ptr("address of test_ptr", &test_ptr);
+
+// 	free(heap_int);
+// 	heap_int = NULL; /* buona pratica */
+
+// 	printf("\n===== FINE TEST =====\n");
+// 	return (0);
+// }

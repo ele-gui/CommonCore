@@ -1,10 +1,11 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 # include <stdio.h>
-//TEST GENERALE
+
 int main(void)
 {
-	int res_mio, res_vero;
+	int	res_mio;
+	int	res_vero;
 
 	printf("=====Test c=====\n");
 	res_mio = ft_printf("Test c: %c\n", 'A');
@@ -66,9 +67,8 @@ int main(void)
     return (0);
 }
 
+/* ===== FUNZIONE DI TEST PTR ===== */
 
-// TEST PER POINTER
-// /* ===== FUNZIONE DI TEST ===== */
 // void	test_ptr(char *desc, void *ptr)
 // {
 // 	int	ret_ft;
@@ -79,7 +79,7 @@ int main(void)
 
 // 	printf("\nft_print_ptr : ");
 // 	fflush(stdout);
-// 	ret_ft = ft_print_ptr((unsigned long)ptr);
+// 	ret_ft = ft_print_ptr(ptr);
 // 	printf("\n| return = %d\n", ret_ft);
 
 // 	printf("printf(\"%%p\")  : ");
@@ -88,7 +88,7 @@ int main(void)
 // 	printf("\n| return = %d\n", ret_printf);
 // }
 
-// /* ===== MAIN ===== */
+/* ===== MAIN ===== */
 
 // int	main(void)
 // {

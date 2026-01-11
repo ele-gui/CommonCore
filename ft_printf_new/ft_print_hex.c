@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eleonora <eleonora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:53:45 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/16 10:01:40 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/11 12:49:09 by eleonora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,20 @@ int	ft_print_hex_low(int n)
 	if (nb == 0)
 		return (write(1, "0", 1));
 	return (ft_putnbr_n(nb, "0123456789abcdef"));
+}
+
+// print pointer
+int	ft_print_ptr(unsigned long n)
+{
+	int	len;
+
+	len = 0;
+	if (!n)
+	{
+		write (1, "(nil)", 5);
+		return (5);
+	}
+	len += ft_print_str("0x");
+	len += ft_putnbr_n(n, "0123456789abcdef");
+	return (len);
 }

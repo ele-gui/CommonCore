@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eleonora <eleonora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:38:25 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/30 19:09:44 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:31:00 by eleonora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ char	*extract_line(char *string)
 	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
-	ft_memcpy(str, string, len);
+	//ft_memcpy(str, string, len);
+	ft_memmove(str, string, len);
 	str[len] = '\0';
 	return (str);
 }

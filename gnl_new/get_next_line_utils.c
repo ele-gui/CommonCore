@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eleonora <eleonora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:38:30 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/30 19:14:54 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:29:21 by eleonora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,24 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+// void	*ft_memcpy(void *dest, const void *src, size_t n)
+// {
+// 	size_t				i;
+// 	unsigned char		*d;
+// 	const unsigned char	*s;
 
-	if (!dest && !src)
-		return (NULL);
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
-}
+// 	if (!dest && !src)
+// 		return (NULL);
+// 	d = (unsigned char *)dest;
+// 	s = (const unsigned char *)src;
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		d[i] = s[i];
+// 		i++;
+// 	}
+// 	return (dest);
+// }
 
 char	*ft_strchr(const char *s, int c)
 {

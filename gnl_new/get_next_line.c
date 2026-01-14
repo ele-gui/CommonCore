@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleonora <eleonora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:38:25 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/01/12 15:31:00 by eleonora         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:54:20 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 //legge la riga
-char	*read_to_string(int fd, char *string)
+static char	*read_to_string(int fd, char *string)
 {
 	char	*buffer;
 	char	*temp;
@@ -41,7 +41,7 @@ char	*read_to_string(int fd, char *string)
 }
 
 //copia la riga fino a \n dentro str
-char	*extract_line(char *string)
+static char	*extract_line(char *string)
 {
 	char	*str;
 	char	*ptr;
@@ -64,7 +64,7 @@ char	*extract_line(char *string)
 }
 
 //pulisce lo string rimuovendo la riga appena letta
-char	*clean_string(char *string)
+static char	*clean_string(char *string)
 {
 	char	*string_new;
 	char	*ptr;
@@ -89,17 +89,16 @@ char	*clean_string(char *string)
 
 char	*get_next_line(int fd)
 {
-	static char	*string;
+	static char	*string; //per bonus *string[4096] numero grande
 	char		*extracted;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!string)
 	{
-		string = malloc(1);
+		string = ft_strdup("");
 		if (!string)
 			return (NULL);
-		string[0] = '\0';
 	}
 	string = read_to_string(fd, string);
 	if (!string)

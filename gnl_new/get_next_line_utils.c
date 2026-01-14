@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleonora <eleonora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:38:30 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/01/12 15:29:21 by eleonora         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:56:22 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-// void	*ft_memcpy(void *dest, const void *src, size_t n)
-// {
-// 	size_t				i;
-// 	unsigned char		*d;
-// 	const unsigned char	*s;
-
-// 	if (!dest && !src)
-// 		return (NULL);
-// 	d = (unsigned char *)dest;
-// 	s = (const unsigned char *)src;
-// 	i = 0;
-// 	while (i < n)
-// 	{
-// 		d[i] = s[i];
-// 		i++;
-// 	}
-// 	return (dest);
-// }
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -108,4 +89,26 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		new_str[i++] = s2[j++];
 	new_str[i] = '\0';
 	return (new_str);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*ptr;
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(s);
+	if (!s || len + 1 == 0)
+		return (NULL);
+	ptr = (char *)malloc(len + 1);
+	if (!ptr)
+		return (NULL);
+	while (i < len)
+	{
+		ptr[i] = s[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

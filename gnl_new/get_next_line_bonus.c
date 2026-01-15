@@ -89,22 +89,22 @@ static char	*clean_string(char *string)
 
 char	*get_next_line(int fd)
 {
-	static char	*string[4096]; //per bonus *string[4096] numero grande
+	static char	*string[1024];
 	char		*extracted;
 	
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!string[1])
+	if (!string[fd])
 	{
-		string[1] = ft_strdup("");
-		if (!string[1])
+		string[fd] = ft_strdup("");
+		if (!string[fd])
 			return (NULL);
 	}
-	string[1] = read_to_string(fd, string[1]);
-	if (!string[1])
+	string[fd] = read_to_string(fd, string[fd]);
+	if (!string[fd])
 		return (NULL);
-	extracted = extract_line(string[1]);
-	string[1] = clean_string(string[1]);
+	extracted = extract_line(string[fd]);
+	string[fd] = clean_string(string[fd]);
 	return (extracted);
 }

@@ -6,11 +6,9 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 09:46:59 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/01/14 12:14:38 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:25:34 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "get_next_line_bonus.h"
 

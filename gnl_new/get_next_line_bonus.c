@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 09:47:06 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/01/14 12:18:27 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:19:39 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static char	*read_to_string(int fd, char *string)
 	char	*temp;
 	ssize_t	bytes_read;
 
+	if (!string)
+		return (NULL);
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
@@ -57,13 +59,12 @@ static char	*extract_line(char *string)
 	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
-	//ft_memcpy(str, string, len);
 	ft_memmove(str, string, len);
 	str[len] = '\0';
 	return (str);
 }
 
-//pulisce lo string rimuovendo la riga appena letta
+//pulisce string rimuovendo la riga appena letta
 static char	*clean_string(char *string)
 {
 	char	*string_new;
@@ -91,7 +92,6 @@ char	*get_next_line(int fd)
 {
 	static char	*string[1024];
 	char		*extracted;
-	
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:38:25 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/01/14 11:54:20 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:25:12 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,12 @@ static char	*extract_line(char *string)
 	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
-	//ft_memcpy(str, string, len);
 	ft_memmove(str, string, len);
 	str[len] = '\0';
 	return (str);
 }
 
-//pulisce lo string rimuovendo la riga appena letta
+//pulisce string rimuovendo la riga appena letta
 static char	*clean_string(char *string)
 {
 	char	*string_new;
@@ -89,7 +88,7 @@ static char	*clean_string(char *string)
 
 char	*get_next_line(int fd)
 {
-	static char	*string; //per bonus *string[4096] numero grande
+	static char	*string;
 	char		*extracted;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)

@@ -1,0 +1,117 @@
+# configuration for your sudo group, dentro /etc/sudoers.d/sudo_config
+
+Defaults passwd_tries=3
+Defaults badpass_message="Bad Password"
+Defaults logfile="/var/log/sudo/sudo_gonfig"
+Defaults log_input, log_output
+Defaults iolog_dir="/var/log/sudo"
+Defaults requiretty
+Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+
+# dentro /etc/login.defs
+
+PASS_MAX_DAYS   30	(This parameter sets the expiration time for passwords, with the number 
+representing the duration in days.)
+
+PASS_MIN_DAYS   2	(Here, you define the minimum number of days a password must be used before 
+it can be changed.)
+
+PASS_WARN_AGE   7	(This setting triggers a warning message to users, notifying them of the 
+impending expiration of their password within the specified number of days.)
+
+
+# dentro nano /etc/pam. d/common-password
+ After retry=3 we must add the following commands:
+ 
+	minlen=10: Sets the minimum number of characters required for a password.
+
+	ucredit=-1: Specifies that the password must include at least one uppercase letter.
+
+	dcredit=-1: Requires the presence of at least one digit in the password.
+
+	lcredit=-1: Ensures the password contains at least one lowercase letter.
+
+	maxrepeat=3: Limits the repetition of the same character to a maximum of 3 times consecutively.
+
+	reject_username: Prohibits the password from containing the username.
+
+	difok=7: Specifies that at least 7 characters in the new password must differ from the old password.
+
+	enforce_for_root: Enforces these password policies for the root user, enhancing security even for privileged accounts.
+
+
+
+# script
+
+1) Display the sistem architecture: 
+	uname -a
+
+2) Physical cores: to determine the number of physical cores, access the file /proc/cpuinfo, which provides CPU infprmations
+   such as type, brand, model, and performance. 
+	grep "physical id" /proc/cpuinfo | wc -l 
+
+3) Virtual Cores: access the file /proc/cpuinfo. 
+	grep processor /proc/cpuinfo |wc -l
+
+4) RAM: free --mega | awk '$1 == "Mem:" {print $3}' prints the used memory. (prints the third word of each line)
+	free --mega | awk '$1 == "Mem:" {print $2}' prints the total memory. (prints the second word of each line)
+	free --mega | awk '$1 == "Mem:" {printf("(%.2f%%)\n", $3/$2*100)}'. (calculate the percentage of used memory)
+
+5) Disk Memory: df = summary of disk space usage
+		-m flag = display memory metrics in MB
+df -m | grep "/dev/" | grep -v "/boot" | awk '{memory_use += $3} END {print memory_use}'. (sums up the memory usage)
+df -m | grep "/dev/" | grep -v "/boot" | awk '{total_size += $2} END {print total_size/1024}'. (total disk space)
+df -m | grep "/dev/" | grep -v "/boot" | awk '{use += $3} {total += $2} END {printf("(%.2f%%)\n", use/total*100)}'. 
+	(display the percentage of used memory)
+
+6) CPU Usage Percentage
+	vmstat 1 4 | tail -1 | awk '{print $15}'. (utilize the vmstat command to obtain system statistics. Specify an interval
+						   and use tail to select the last line of output. Then, use awk to print the
+						   desired column)
+	(Subtract the value obtained from 100 to determine the CPU usage percentage. Print the result with one decimal place
+	 and a "%" symbol. This operation completes the script.) COMANDO: expr 100 - $cpu_op (<-- = comando sopra)
+
+7) Last Reboot
+	who -b | awk '$1 == "system" {print $3 " " $4}'. (prints the last reboot date and time)
+	
+8) LVM Active
+	if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then echo yes; else echo no; fi. 
+	(lsblk shows the block device information. filter the output to find LVM using grep. based on the result, yes or no)
+
+9) TCP Connections:	ss = determine the number of established TCP connections
+			-ta flag = display only TCP connections
+			grep = toidentify established connections
+			wc -l = count the number of lines
+	ss -ta | grep ESTAB | wc -l
+
+10) Number of Users:	users = displays the names of active users
+			wc -w = count the number of words in the command output
+	users | wc -w
+	
+11) IP Address & MAC:	hostname -l = obtain the host's IP address
+			ip link = shows or modifies network interfaces
+			grep... = display only the MAC address
+	hostname -l
+	ip link | grep "link/ether" | awk '{print $2}' to display only the MAC address
+	
+12) Number of commands executed with sudo:	jounalctl = collects and manages system logs
+						_COMM=sudo = filter entries by the specified path
+						grep.. = display only command lines
+						wc -l to count lines
+	journalctl _COMM=sudo | grep COMMAND | wc -l
+	(To verify its correctness, execute the command in the terminal, run a sudo command, and then rerun the command to
+	 confirm that the count increases.)
+
+
+
+
+
+
+
+
+
+
+
+
+

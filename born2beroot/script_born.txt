@@ -186,3 +186,61 @@ wall "  Architecture: $arch
         Network: IP $ip ($mac)
         Sudo: $cmnd cmd"
 
+
+
+
+===== WORDPRESS =====
+
+$ sudo apt install lighttpd
+$ sudo ufw allow 80
+$ sudo apt install wget zip
+$ cd /var/www/
+$ sudo wget https://wordpress.org/latest.zip
+$ sudo unzip latest.zip
+$ sudo mv html/ html_old/
+$ sudo mv wordpress/ html
+$ sudo chmod -R 755 html
+
+MARIADB
+$ sudo apt install mariadb-server
+$ sudo mysql_secure_installation
+$ mariadb
+	CREATE DATABASE wp_database;
+	CREATE USER 'elguiduc'@'localhost' IDENTIFIED BY '12345';
+	GRANT ALL PRIVILEGES ON wp_database.* TO 'elguiduc'@'localhost';
+	FLUSH PRIVILEGES;
+	exit
+
+PHP
+$ sudo apt install php-cgi php-mysql (scarico pacchetti)
+$ cd /var/www/html
+$ cp wp-config-sample.php wp-config.php
+$ nano wp-config.php
+	cambiare da "database_name_here" "username_here" "password_here"
+	a "wp_database" "elguiduc" "12345"
+$ sudo lighty-enable-mod fastcgi
+$ sudo lighty-enable-mod fastcgi-php
+$ sudo service lighttpd force-reload
+	(Activate the fastcgi-php module in Lighttpd to enhance the performance and speed of web
+	 applications on the server, and update it in the end)
+
+Go to your browser and type localhost
+Fill on the fields and press on Install WordPress
+If we access our localhost again from the browser, we can observe our functional page.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

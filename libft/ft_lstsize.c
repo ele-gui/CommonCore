@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:43:32 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/08 16:23:30 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:27:30 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //Counts the number of nodes in the list.
+
 int	ft_lstsize(t_list *lst)
 {
-	int		len;
-	t_list	*node;
+	int	len;
 
 	len = 0;
-	if (!lst)
-		return (0);
-	node = lst;
-	while (node != NULL)
+	while (lst)
 	{
 		len++;
-		node = node->next;
+		lst = lst->next;
 	}
 	return (len);
 }
-
 // int main(void)
 // {
 //     t_list *head = NULL;

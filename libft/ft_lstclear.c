@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 15:27:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/08 16:23:08 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:21:26 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 /*Deletes and frees the given node and all its
 successors, using the function ’del’ and free(3).
 Finally, set the pointer to the list to NULL.*/
+
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*node;
@@ -27,8 +28,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		free(*lst);
 		*lst = node;
 	}
-	lst = NULL;
+	*lst = NULL;
 }
+
 
 // void	del(void	*content)
 // {

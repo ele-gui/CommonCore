@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:22:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/08 16:23:20 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:23:40 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //Returns the last node of the list.
+
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*node;
-
 	if (!lst)
 		return (NULL);
-	node = lst;
-	while (node->next != NULL)
-		node = node->next;
-	return (node);
+	while (lst->next != NULL && lst != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
 // int main(void)

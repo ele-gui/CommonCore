@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 10:43:23 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/09 10:15:44 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:20:01 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 /*Adds the node ’new’ at the beginning of the list*/
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!lst || !new)
+	if (!new)
 		return ;
+	if (!lst)
+	{
+		*lst = new;
+		return ;
+	}
 	new->next = *lst;
 	*lst = new;
 }

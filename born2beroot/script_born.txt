@@ -1,12 +1,27 @@
-# configuration for your sudo group, dentro /etc/sudoers.d/sudo_config
+==== configuration for your sudo group, dentro /etc/sudoers.d/sudo_config ====
 
+# Total tries for entering the sudo password.
 Defaults passwd_tries=3
+
+# The message that will show when the password failed.
 Defaults badpass_message="Bad Password"
+
+# Path where will the sudo logs will be stored.
 Defaults logfile="/var/log/sudo/sudo_gonfig"
+
+# What will be logged.
 Defaults log_input, log_output
+
+# What will be logged.
 Defaults iolog_dir="/var/log/sudo"
+
+# TTY become required
 Defaults requiretty
+
+# Folders that will be excluded of sudo
 Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+
 
 
 # dentro /etc/login.defs
@@ -145,9 +160,9 @@ ram_use=$(free --mega | awk '$1 == "Mem:" {print $3}')
 ram_percent=$(free --mega | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
 
 # DISK MEMORY
-disk_total=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{total += $2} END {printf ("%.1fGb\n"), tota>
-disk_use=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{use += $3} END {print use}')
-disk_percent=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{use += $3} {total += $2} END {printf("%d">
+disk_total=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_t += $2} END {printf ("%.1fGb\n"), disk_t/1024}')
+disk_use=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} END {print disk_u}')
+disk_percent=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} {disk_t+= $2} END {printf("%d"), disk_u/disk_t*100}')
 
 # CPU Usage Percentage
 cpul=$(vmstat 1 2 | tail -1 | awk '{print $15}')
@@ -224,16 +239,30 @@ $ sudo service lighttpd force-reload
 	(Activate the fastcgi-php module in Lighttpd to enhance the performance and speed of web
 	 applications on the server, and update it in the end)
 
-Go to your browser and type localhost
+Go to your browser and type localhost:8080
 Fill on the fields and press on Install WordPress
 If we access our localhost again from the browser, we can observe our functional page.
 
 
 
+===== SFTP (Secure File Transfer Protocol) =====
 
+provides a secure way to transfer files securely over a network.
 
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+	se questa riga non c'e' va aggiunta e poi sudo service sshd restart
+	
+sudo adduser sftp_user (Nuovouser1)
+	non e' consigliato usare il proprio user perche' ha accesso alla she;;, puo' navigare tutto il 
+	filesystem, puo' eseguire comandi, se e' compromesso puo' compromettere tutto il server
+		=> molto insicuro
+	creo un nuovo user che ha accesso limitato solo ai file, nessuna shell, directory isolata (chroot)
+	
+sudo chown root:root /home/sftp_user
+	You can restrict SFTP users to a specific chroot directory for enhanced security.
 
-
+sudo systemctl restart ssh
+sudo systemctl status ssh
 
 
 

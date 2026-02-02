@@ -179,7 +179,7 @@ lvmu=$(if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then echo yes; else echo no; 
 tcpc=$(ss -ta | grep ESTAB | wc -l)
 
 # Number of Users
-ulog=$(users | wc -w)
+ulog=$(users | tr ' ' '\n' | sort -u | wc -l)
 
 # IP Address & MAC
 ip=$(hostname -I)

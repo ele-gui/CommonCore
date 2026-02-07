@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:42:02 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/07 17:33:53 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/07 17:57:53 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ra(t_push_swap *ps)
 
 	if (ps->size_a == 1)
 		return ;
-	//lavoro sugli indici
 	i = 0;
 	temp = ps->stack_a[0];
 	while (i < ps->size_a - 1)
@@ -40,7 +39,6 @@ void	rb(t_push_swap *ps)
 
 	if (ps->size_b == 1)
 		return ;
-	//lavoro sugli indici
 	i = 0;
 	temp = ps->stack_b[0];
 	while (i < ps->size_b - 1)

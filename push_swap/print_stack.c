@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 14:57:13 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/07 16:41:12 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/07 17:59:56 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@
 // 	ft_printf("\n\n");
 // }
 
-
-int	max(int a, int b)
+static int	max(int a, int b)
 {
 	int	max;
 
@@ -45,10 +44,9 @@ int	max(int a, int b)
 	return (max);
 }
 
-
 void	print_stack(t_push_swap *ps)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < max(ps->size_a, ps->size_b))

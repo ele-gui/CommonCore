@@ -6,21 +6,21 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/09 11:30:36 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/09 13:28:20 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//alloco la memoria per stack_a
-int	memory_alloc(int argc, t_push_swap *ps)
-{
-	ps->size_a = argc - 1;
-	ps->stack_a = malloc(sizeof(int) * ps->size_a);
-	if (!ps->stack_a)
-		return (1);
-	return (0);
-}
+//alloco la memoria per stack_a NON FUNZIONA
+// int	memory_alloc(int argc, t_push_swap *ps)
+// {
+// 	ps->size_a = argc - 1;
+// 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
+// 	if (!ps->stack_a)
+// 		return (1);
+// 	return (0);
+// }
 
 //colego ps->stack_a a argv
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
@@ -44,28 +44,20 @@ int	main(int argc, char **argv)
 	ps.size_a = 0;
 	ps.size_b = 0;
 	
-
+	//alloco memoria
 	ps.size_a = argc - 1;
 	ps.stack_a = malloc(sizeof(int) * ps.size_a);
 	if (!ps.stack_a)
 	{
-		ft_printf("ERRORE MALLOC\n");
+		ft_printf("---ERRORE MALLOC---\n");
 		return (1);
 	}
-		
-	// if (!memory_alloc(argc, &ps))
-	// {
-	// 	ft_printf("ERRORE MALLOC\n");
-	// 	return (1);
-	// }
-	ft_printf("PRIMA DI ARGV_TO_STACK\n");
+	ft_printf("no malloc error\n");
 	argv_to_stack(argc, argv, &ps);
-	ft_printf("DOPO DI ARGV_TO_STACK\n");
-
-	
+	ft_printf("no conversion error\n");	
 	if (!parse_input(argc, argv))
 	{
-		ft_printf("ERRORE NEL PARSING\n");
+		ft_printf("---ERRORE NEL PARSING---\n");
 		return (0);
 	}
 

@@ -6,33 +6,11 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 14:57:13 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/09 09:28:37 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 10:48:19 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	print_stack(t_push_swap *ps)
-// {
-// 	int i;
-
-// 	ft_printf("Stack A: ");
-// 	i = 0;
-// 	while (i < ps->size_a)
-// 	{
-// 		ft_printf("%d ", ps->stack_a[i]);
-// 		i++;
-// 	}
-// 	ft_printf("\n");
-// 	ft_printf("Stack b: ");
-// 	i = 0;
-// 	while (i < ps->size_b)
-// 	{
-// 		ft_printf("%d ", ps->stack_b[i]);
-// 		i++;
-// 	}
-// 	ft_printf("\n\n");
-// }
 
 static int	max(int a, int b)
 {

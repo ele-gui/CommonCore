@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_input.c                                      :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/09 13:52:31 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 10:57:01 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,79 +16,113 @@
 #include "push_swap.h"
 
 //controllo se tutti gli argomenti sono numeri
-// int	num_control(char **argv)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 1;
-// 	while (argv[i])
-// 	{
-// 		j = 0;
-// 		while (argv[i][j])
-// 		{
-// 			ft_printf("%d\n", argv[i][j]); // non funziona 1 = 49. devo usare split?
-// 			if (argv[i][j] == '-' || argv[i][j] == '+' || argv[i][j] == ' ')
-// 				j++;
-// 			ft_printf("%d\n", argv[i][j]);
-			
-// 			if (!ft_isdigit(argv[i][j]))
-// 				return (1);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-int	num_control(char **argv)
-{
-	char	**split;
-
-	split = ft_split(argv[1], ' ');
-	if (!split)
-		return (1);
-	
-}
-
-
-
-int	doppioni(char **argv)
+static int	num_control(char **argv)
 {
 	int	i;
+	int	j;
+	int	sign_count;
 
 	i = 1;
 	while (argv[i])
 	{
-		if (argv[i] != argv[i + 1])
-			i++;
-		else
+		j = 0;
+		sign_count = 0;
+		if (argv[i][0] == '-' || argv[i][0] == '+')
+		{
+			sign_count++;
+			j = 1;
+		}
+		if (argv[i][j] == '\0') //se c'e' solo un segno, non e' un numero valido
+		{
+			ft_printf("---ERRORE: solo il segno---\n");
 			return (1);
+		}
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j]))
+			{
+				ft_printf("---ERRORE: carattere non numerico---\n");
+				return (1);
+			}
+			j++;
+		}
+		if (sign_count > 1)
+		{
+			ft_printf("---ERRORE: piu' di un segno---\n");
+			return (1);
+		}
+		i++;
+	}
+	ft_printf("NUM CONTROL PASSED\n");
+	return (0);
+}
+
+//controllo se c'e' overflow/underflow
+static int check_limits(char **argv)
+{
+	int i;
+	long num;
+
+	i = 1;
+	while (argv[i])
+	{
+		num = ft_atol(argv[i]);
+		if (num > INT_MAX || num < INT_MIN)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+//controllo se ci sono duplicati
+static int	doppioni(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = i + 1;
+		while (argv[j])
+		{
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+				return (1);
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
 
 int	parse_input(int argc, char **argv)
 {
-
-	//controllo se ci sono abbastanza argomenti
 	if (argc < 2)
 	{
 		ft_printf("---ERRORE: MENO DI 2 ELEMENTI---\n");
 		return (1);
 	}
-	if (!num_control(argv))
+	ft_printf("ARGUMENT COUNT CONTROL PASSED\n");
+	if (num_control(argv))
 	{
 		ft_printf("---ERRORE: NON TUTTI INT---\n");
 		return (1);
 	}
+	ft_printf("NUM CONTROL PASSED\n");
 
-	if (!doppioni(argv))
+	if (check_limits(argv))
+	{
+		ft_printf("---ERRORE: OVERFLOW/UNDERFLOW---\n");
+		return (1);
+	}
+	ft_printf("LIMITS CONTROL PASSED\n");
+	
+	if (doppioni(argv))
 	{
 		ft_printf("---ERRORE: DOPPIONI---\n");
 		return (1);
 	}
-	
+	ft_printf("DUPLICATE CONTROL PASSED\n");
 	ft_printf("INPUT PARSED\n");
 	return (0);
 }

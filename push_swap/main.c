@@ -6,34 +6,15 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/09 13:28:20 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 10:58:55 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//alloco la memoria per stack_a NON FUNZIONA
-// int	memory_alloc(int argc, t_push_swap *ps)
-// {
-// 	ps->size_a = argc - 1;
-// 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
-// 	if (!ps->stack_a)
-// 		return (1);
-// 	return (0);
-// }
 
-//colego ps->stack_a a argv
-void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
-{
-	int	i;
 
-	i = 1;
-	while (i < argc)
-	{
-		ps->stack_a[i - 1] = ft_atoi(argv[i]);
-		i++;
-	}
-}
+
 
 int	main(int argc, char **argv)
 {
@@ -46,6 +27,11 @@ int	main(int argc, char **argv)
 	
 	//alloco memoria
 	ps.size_a = argc - 1;
+	if (ps.size_a <= 0)
+	{
+		ft_printf("---ERRORE: no arguments---\n");
+		return (1);
+	}
 	ps.stack_a = malloc(sizeof(int) * ps.size_a);
 	if (!ps.stack_a)
 	{
@@ -55,12 +41,15 @@ int	main(int argc, char **argv)
 	ft_printf("no malloc error\n");
 	argv_to_stack(argc, argv, &ps);
 	ft_printf("no conversion error\n");	
-	if (!parse_input(argc, argv))
+
+	ft_printf("inizio parsing\n");
+	if (parse_input(argc, argv))
 	{
 		ft_printf("---ERRORE NEL PARSING---\n");
-		return (0);
+		free(ps.stack_a);
+		return (1);
 	}
-
+	ft_printf("no parsing error\n");
 		
 	print_stack(&ps);
 	// if (is_sorted(&ps))

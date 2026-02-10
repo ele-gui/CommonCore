@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/09 11:20:15 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 10:50:16 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf/ft_printf.h"
+#include <limits.h>
 
 typedef struct s_push_swap
 {
@@ -36,5 +37,13 @@ void	rra(t_push_swap *ps);
 void	rrb(t_push_swap *ps);
 void	rrr(t_push_swap *ps);
 int		parse_input(int argc, char **argv);
+
+
+/* FUNCTIONS */
+void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
+;
+long	ft_atol(const char *nptr);
+int	main(int argc, char **argv);
+void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 11:47:20 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:43:17 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,3 +71,5 @@ int	memory_alloc(int argc, t_push_swap *ps)
 	}
 	return (0);
 }
+
+//da togliere

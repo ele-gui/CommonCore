@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 14:57:13 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 10:48:19 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:09:48 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	max(int a, int b)
 void	print_stack(t_push_swap *ps)
 {
 	int	i;
-	
+
 	if (!ps)
 		return ;
 	i = 0;

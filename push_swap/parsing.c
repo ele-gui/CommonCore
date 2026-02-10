@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 10:57:01 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:12:42 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	num_control(char **argv)
 			sign_count++;
 			j = 1;
 		}
-		if (argv[i][j] == '\0') //se c'e' solo un segno, non e' un numero valido
+		if (argv[i][j] == '\0')
 		{
 			ft_printf("---ERRORE: solo il segno---\n");
 			return (1);
@@ -58,10 +58,10 @@ static int	num_control(char **argv)
 }
 
 //controllo se c'e' overflow/underflow
-static int check_limits(char **argv)
+static int	check_limits(char **argv)
 {
-	int i;
-	long num;
+	int		i;
+	long	num;
 
 	i = 1;
 	while (argv[i])
@@ -109,14 +109,12 @@ int	parse_input(int argc, char **argv)
 		return (1);
 	}
 	ft_printf("NUM CONTROL PASSED\n");
-
 	if (check_limits(argv))
 	{
 		ft_printf("---ERRORE: OVERFLOW/UNDERFLOW---\n");
 		return (1);
 	}
 	ft_printf("LIMITS CONTROL PASSED\n");
-	
 	if (doppioni(argv))
 	{
 		ft_printf("---ERRORE: DOPPIONI---\n");
@@ -126,5 +124,3 @@ int	parse_input(int argc, char **argv)
 	ft_printf("INPUT PARSED\n");
 	return (0);
 }
-
-

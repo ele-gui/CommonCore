@@ -6,15 +6,11 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 10:58:55 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:17:40 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-
-
 
 int	main(int argc, char **argv)
 {

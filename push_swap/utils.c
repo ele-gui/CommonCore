@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 10:59:01 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:16:54 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,10 @@ void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
 	i = 1;
 	while (i < argc)
 	{
-		
-		ps->stack_a[i - 1] = ft_atol(argv[i]); //atoi>-atol
+		ps->stack_a[i - 1] = ft_atol(argv[i]);
 		i++;
 	}
 }
-
 
 //alloco la memoria per stack_a NON FUNZIONA
 // int	memory_alloc(int argc, t_push_swap *ps)

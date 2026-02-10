@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 10:50:16 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:14:36 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf/ft_printf.h"
-#include <limits.h>
+# include <limits.h>
 
 typedef struct s_push_swap
 {
@@ -24,7 +24,14 @@ typedef struct s_push_swap
 	int		size_b;
 }	t_push_swap;
 
+/* FUNCTIONS */
+long	ft_atol(const char *nptr);
+void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
+int		parse_input(int argc, char **argv);
 void	print_stack(t_push_swap *ps);
+
+int		main(int argc, char **argv);
+
 void	sa(t_push_swap *ps);
 void	sb(t_push_swap *ps);
 void	ss(t_push_swap *ps);
@@ -36,14 +43,5 @@ void	rr(t_push_swap *ps);
 void	rra(t_push_swap *ps);
 void	rrb(t_push_swap *ps);
 void	rrr(t_push_swap *ps);
-int		parse_input(int argc, char **argv);
-
-
-/* FUNCTIONS */
-void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
-;
-long	ft_atol(const char *nptr);
-int	main(int argc, char **argv);
-void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/08 17:48:02 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:14:03 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,3 @@
 // sort(t_push_swap *ps)
 
 #include "push_swap.h"
-

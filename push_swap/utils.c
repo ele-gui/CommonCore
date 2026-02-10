@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 11:16:54 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/10 11:47:20 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,23 @@ void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
 	}
 }
 
-//alloco la memoria per stack_a NON FUNZIONA
-// int	memory_alloc(int argc, t_push_swap *ps)
-// {
-// 	ps->size_a = argc - 1;
-// 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
-// 	if (!ps->stack_a)
-// 		return (1);
-// 	return (0);
-// }
+// alloco la memoria per stack_a NON FUNZIONA
+int	memory_alloc(int argc, t_push_swap *ps)
+{
+	ps->stack_a = NULL;
+	ps->stack_b = NULL;
+	ps->size_b = 0;
+	ps->size_a = argc - 1;
+	if (ps->size_a <= 0)
+	{
+		ft_printf("---ERRORE: no arguments---\n");
+		return (1);
+	}
+	ps->stack_a = malloc(sizeof(int) * ps->size_a);
+	if (!ps->stack_a)
+	{
+		ft_printf("---ERRORE MALLOC---\n");
+		return (1);
+	}
+	return (0);
+}

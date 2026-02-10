@@ -25,6 +25,8 @@ typedef struct s_push_swap
 }	t_push_swap;
 
 /* FUNCTIONS */
+int	memory_alloc(int argc, t_push_swap *ps)
+;
 long	ft_atol(const char *nptr);
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 int		parse_input(int argc, char **argv);

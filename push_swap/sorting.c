@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/11 11:44:51 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:33:07 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,34 @@ int	is_sorted(t_push_swap *ps)
 	return (1);
 }
 
+//divisione in chunk
+void	chunk_division(t_push_swap *ps)
+{
+	int	chunk_count;
+	int	chunk_size;
+	int	top;
+	int	start;
+	int	end;
+	
+	if (ps->size_a <= 100)
+		chunk_count = 5;
+	else
+		chunk_count = 11;
+	chunk_size = ps->size_a / chunk_count;
+	start = 0;
+	end = chunk_size - 1;
+	while (ps->size_a > 0)
+	{
+		top = ps->stack_a[0];
+		if (top >= start && top <= end)
+		{
+			pb(ps);
+			if (top < start + chunk_size / 2)
+				rb(ps);
+			start++;
+			end++;
+		}
+		else	
+			ra(ps);
+	}
+}

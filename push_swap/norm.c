@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 11:44:37 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/11 12:22:10 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:05:27 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	find_index(int *sorted, int size, int value)
 	return (-1);
 }
 
+//crea una mappa con gli indici
 void	normalize_stack(t_push_swap *ps)
 {
 	int	*sorted;

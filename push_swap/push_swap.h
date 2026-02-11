@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 11:14:36 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/11 12:24:31 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ typedef struct s_push_swap
 }	t_push_swap;
 
 /* FUNCTIONS */
-int	memory_alloc(int argc, t_push_swap *ps)
-;
+void	normalize_stack(t_push_swap *ps);
+int	is_sorted(t_push_swap *ps);
+int	memory_alloc(int argc, t_push_swap *ps);
 long	ft_atol(const char *nptr);
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 int		parse_input(int argc, char **argv);

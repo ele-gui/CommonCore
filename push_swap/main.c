@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 11:47:40 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/11 12:25:11 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,60 +34,28 @@ int	main(int argc, char **argv)
 	}
 	ft_printf("no parsing error\n");
 		
+	// DEBUG
+	ft_printf("prima della normalizzazione:\n");
 	print_stack(&ps);
-	// if (is_sorted(&ps))
-	// 	return (0);
+
+	normalize_stack(&ps);
+
+	ft_printf("dopo la normalizzazione:\n");
+	print_stack(&ps);
+
 	// sort(&ps);
+
+	// sort(&ps);
+	// if (is_sorted(&ps))
+	// {
+	// 	ft_printf("stack gia' ordinato\n");
+	// 	free(ps.stack_a);
+	// 	return (0);
+	// }
+	// else
+	// 	ft_printf("stack non ordinato\n");
 	free(ps.stack_a);
 	free(ps.stack_b);
 	return (0);
 }
 
-
-// int	main(void)
-// {
-// 	int stack_a[10] = {2, 1, 3, 6, 5, 8};
-// 	int stack_b[10] = {};
-// 	t_push_swap ps;
-
-// 	ps.stack_a = stack_a;
-// 	ps.stack_b = stack_b;
-// 	ps.size_a = 6;
-// 	ps.size_b = 0;
-// 	ft_printf("INIZIO:\n");
-// 	print_stack(&ps);
-	
-// 	sa(&ps);
-// 	ft_printf("----------------\nExec sa:\n");
-// 	print_stack(&ps);
-	
-// 	pb(&ps);
-// 	pb(&ps);
-// 	pb(&ps);
-// 	ft_printf("----------------\nExec pb pb pb:\n");
-// 	print_stack(&ps);
-	
-// 	// ra(&ps);
-// 	// rb(&ps);
-// 	rr(&ps);
-// 	ft_printf("----------------\nExec ra rb = rr:\n");
-// 	print_stack(&ps);
-
-// 	rra(&ps);
-// 	rrb(&ps);
-// 	rrr(&ps);
-// 	ft_printf("----------------\nExec rra rrb = rrr:\n");
-// 	print_stack(&ps);
-
-// 	sa(&ps);
-// 	ft_printf("----------------\nExec sa:\n");
-// 	print_stack(&ps);
-	
-// 	pa(&ps);
-// 	pa(&ps);
-// 	pa(&ps);
-// 	ft_printf("----------------\nExec pa pa pa:\n");
-// 	print_stack(&ps);
-
-// 	return (0);
-// }

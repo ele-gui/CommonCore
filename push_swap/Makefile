@@ -6,7 +6,7 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/10 10:47:01 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/11 12:16:20 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RM = rm -f
 PRINTF_DIR = ft_printf
 FT_PRINTF = ft_printf/libftprintf.a
 
-SRCS = main.c utils.c push_op.c print_stack.c swap_op.c rotate_op.c reverse_op.c parsing.c
+SRCS = main.c utils.c push_op.c print_stack.c swap_op.c rotate_op.c reverse_op.c parsing.c sorting.c norm.c
 
 OBJS = $(SRCS:.c=.o)
 

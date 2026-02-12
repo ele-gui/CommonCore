@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 11:12:42 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 09:54:47 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	doppioni(char **argv)
 		j = i + 1;
 		while (argv[j])
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (ft_atol(argv[i]) == ft_atol(argv[j])) //atoi->atol
 				return (1);
 			j++;
 		}

@@ -6,19 +6,17 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/12 11:18:36 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/12 22:16:26 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
-NAME =	push_swap.a
+NAME =	push_swap
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-AR = ar rcs
+#AR = ar rcs
 
 RM = rm -f
 
@@ -35,7 +33,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	make -C  $(PRINTF_DIR)
 	cp $(FT_PRINTF) $(NAME)
-	$(AR) $(NAME) $(OBJS)
+	$(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

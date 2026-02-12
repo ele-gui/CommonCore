@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/11 12:24:31 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 12:44:54 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ long	ft_atol(const char *nptr);
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 int		parse_input(int argc, char **argv);
 void	print_stack(t_push_swap *ps);
-
+int	max(int a, int b);
+int	min(t_push_swap *ps);
 int		main(int argc, char **argv);
 
+void	sort_3(t_push_swap *ps);
+void	sort_5(t_push_swap *ps);
 void	sa(t_push_swap *ps);
 void	sb(t_push_swap *ps);
 void	ss(t_push_swap *ps);

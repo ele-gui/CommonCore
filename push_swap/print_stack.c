@@ -6,21 +6,11 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 14:57:13 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 11:09:48 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 12:04:28 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	max(int a, int b)
-{
-	int	max;
-
-	max = a;
-	if (b > a)
-		max = b;
-	return (max);
-}
 
 void	print_stack(t_push_swap *ps)
 {

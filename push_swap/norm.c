@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 11:44:37 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/11 15:05:27 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 10:41:36 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	*copy_array(int *arr, int size)
 	return (copy);
 }
 
+//sort array di indici
 void	sort_array(int *arr, int size)
 {
 	int	i;

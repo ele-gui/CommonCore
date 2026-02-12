@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/11 15:33:07 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 11:02:56 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	chunk_division(t_push_swap *ps)
 	int	start;
 	int	end;
 	
-	if (ps->size_a <= 100)
+	if (ps->size_a <= 100 && ps->size_a >= 20)
 		chunk_count = 5;
 	else
 		chunk_count = 11;

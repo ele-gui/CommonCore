@@ -6,11 +6,39 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/10 15:53:10 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:36:05 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	max(int a, int b)
+{
+	int	max;
+
+	max = a;
+	if (b > a)
+		max = b;
+	return (max);
+}
+int	min(t_push_swap *ps)
+{
+	int minimo;
+	int	i;
+
+	i = 0;
+	minimo = ps->stack_a[0];
+	while (i < ps->size_a)
+	{
+		if (ps->stack_a[i] < minimo)
+		{
+			minimo = ps->stack_a[i];
+			// ra(ps);
+		}
+		i++;
+	}
+	return (minimo);
+}
 
 // asci to int. serve in argv_to_stack e check_limits
 long	ft_atol(const char *nptr)
@@ -64,6 +92,8 @@ int	memory_alloc(int argc, t_push_swap *ps)
 		return (1);
 	}
 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
+	ps->stack_b = malloc(sizeof(int) * ps->size_a);
+
 	if (!ps->stack_a)
 	{
 		ft_printf("---ERRORE MALLOC---\n");

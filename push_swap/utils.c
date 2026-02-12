@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 14:36:05 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:19:36 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int	min(t_push_swap *ps)
 	while (i < ps->size_a)
 	{
 		if (ps->stack_a[i] < minimo)
-		{
 			minimo = ps->stack_a[i];
-			// ra(ps);
-		}
 		i++;
 	}
 	return (minimo);

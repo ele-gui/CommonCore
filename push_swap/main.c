@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 14:45:31 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 17:16:33 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	main(int argc, char **argv)
 {
 	t_push_swap ps;
+	int	mosse; 
 
+	
 	if (memory_alloc(argc, &ps))
 	{
 		ft_printf("ERRORE MALLOC\n");
@@ -42,10 +44,10 @@ int	main(int argc, char **argv)
 	normalize_stack(&ps);
 	print_stack(&ps);
 	
-	ft_printf("sort 5:\n");
-	sort_5(&ps);
+	ft_printf("mini sort:\n");
+	mosse = mini_sort(&ps);
 	print_stack(&ps);
-	
+	ft_printf("mosse: %d\n", mosse);
 
 	// sort(&ps);
 

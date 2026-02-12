@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:40:16 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/07 17:57:39 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:59:47 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,36 @@
 
 //swappa i primi 2 el in cima ad A
 //se c'e' solo un el non fa nulla
-void	sa(t_push_swap *ps)
+int	sa(t_push_swap *ps)
 {
 	int	temp;
+	int	mosse;
 
+	mosse = 1;
 	if (ps->size_a == 1)
-		return ;
+		return (0);
 	temp = ps->stack_a[0];
 	ps->stack_a[0] = ps->stack_a[1];
 	ps->stack_a[1] = temp;
+	return (mosse);
 }
 
-void	sb(t_push_swap *ps)
+int	sb(t_push_swap *ps)
 {
 	int	temp;
+	int	mosse;
 
+	mosse = 1;
 	if (ps->size_b == 1)
-		return ;
+		return (0);
 	temp = ps->stack_b[0];
 	ps->stack_b[0] = ps->stack_b[1];
 	ps->stack_b[1] = temp;
+	return (mosse);
 }
 
-void	ss(t_push_swap *ps)
+int	ss(t_push_swap *ps)
 {
-	sa(ps);
-	sb(ps);
+	return (sa(ps) + sb(ps));
 }
+

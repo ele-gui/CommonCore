@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:42:02 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 14:03:12 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 16:00:20 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "push_swap.h"
 //Shift up all elements of stack a by 1.
 //The first element becomes the last one.
-void	ra(t_push_swap *ps)
+int	ra(t_push_swap *ps)
 {
 	int	i;
 	int	temp;
 
 	if (ps->size_a == 1)
-		return ;
+		return (0);
 	i = 0;
 	temp = ps->stack_a[0];
 	while (i < ps->size_a - 1)
@@ -30,15 +30,16 @@ void	ra(t_push_swap *ps)
 		i++;
 	}
 	ps->stack_a[ps->size_a - 1] = temp;
+	return (1);
 }
 
-void	rb(t_push_swap *ps)
+int	rb(t_push_swap *ps)
 {
 	int	i;
 	int	temp;
 
 	if (ps->size_b == 1)
-		return ;
+		return (0);
 	i = 0;
 	temp = ps->stack_b[0];
 	while (i < ps->size_b - 1)
@@ -47,10 +48,10 @@ void	rb(t_push_swap *ps)
 		i++;
 	}
 	ps->stack_b[ps->size_b - 1] = temp;
+	return (1);
 }
 
-void	rr(t_push_swap *ps)
+int	rr(t_push_swap *ps)
 {
-	ra(ps);
-	rb(ps);
+	return (ra(ps) + rb(ps));
 }

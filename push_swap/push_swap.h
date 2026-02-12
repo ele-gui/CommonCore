@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 12:44:54 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:47:35 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,19 @@ int	max(int a, int b);
 int	min(t_push_swap *ps);
 int		main(int argc, char **argv);
 
-void	sort_3(t_push_swap *ps);
-void	sort_5(t_push_swap *ps);
-void	sa(t_push_swap *ps);
-void	sb(t_push_swap *ps);
-void	ss(t_push_swap *ps);
-void	pa(t_push_swap *ps);
-void	pb(t_push_swap *ps);
-void	ra(t_push_swap *ps);
-void	rb(t_push_swap *ps);
-void	rr(t_push_swap *ps);
-void	rra(t_push_swap *ps);
-void	rrb(t_push_swap *ps);
-void	rrr(t_push_swap *ps);
+int	sort_3(t_push_swap *ps);
+int	sort_5(t_push_swap *ps);
+int	mini_sort(t_push_swap *ps);
+int	sa(t_push_swap *ps);
+int	sb(t_push_swap *ps);
+int	ss(t_push_swap *ps);
+int	pa(t_push_swap *ps);
+int	pb(t_push_swap *ps);
+int	ra(t_push_swap *ps);
+int	rb(t_push_swap *ps);
+int	rr(t_push_swap *ps);
+int	rra(t_push_swap *ps);
+int	rrb(t_push_swap *ps);
+int	rrr(t_push_swap *ps);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 15:34:10 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 19:32:23 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int	doppioni(char **argv)
 int	parse_input(int argc, char **argv)
 {
 	if (argc < 2)
-		return (1);
+		return (0);
 	if (num_control(argv))
 		return (1);
 	if (check_limits(argv))
@@ -96,4 +96,11 @@ int	parse_input(int argc, char **argv)
 	if (doppioni(argv))
 		return (1);
 	return (0);
+}
+
+char	**handle_split(int argc, char **argv)
+{
+	if (argc == 2)
+		return (ft_split(argv[1], ' '));
+	return (argv);
 }

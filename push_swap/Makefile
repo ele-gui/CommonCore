@@ -6,44 +6,40 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/13 15:57:33 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/13 19:12:53 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	push_swap.a
+NAME = push_swap
 
 CC = cc
-
 CFLAGS = -Wall -Wextra -Werror
-
-AR = ar rcs
 
 RM = rm -f
 
-PRINTF_DIR = ft_printf
-FT_PRINTF = ft_printf/libftprintf.a
-
-SRCS = main.c utils.c push_op.c print_stack.c swap_op.c rotate_op.c reverse_op.c parsing.c sorting.c norm.c \
-sort_small.c cost_chunk.c
+SRCS = main.c utils.c push_op.c print_stack.c swap_op.c rotate_op.c \
+reverse_op.c parsing.c sorting.c norm.c sort_small.c cost_chunk.c
 
 OBJS = $(SRCS:.c=.o)
 
+LIBFTPRINTF = ft_printf/libftprintf.a
+
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I $(PRINTF_DIR) -c $< -o $@
-
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-	$(CC) $(CFLAGS) main.c push_swap.a -o push_swap
+	make -C ft_printf
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTPRINTF) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) push_swap
-	make -C $(PRINTF_DIR) clean
+	$(RM) $(OBJS)
+	make clean -C ft_printf
 
 fclean: clean
 	$(RM) $(NAME)
-	make -C $(PRINTF_DIR) fclean
+	make fclean -C ft_printf
 
 re: fclean all
 

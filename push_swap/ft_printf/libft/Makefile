@@ -25,7 +25,7 @@ RM = rm -f
 SRCS = ft_isdigit.c \
 	ft_strlen.c \
 	ft_putchar_fd.c \
-	ft_putstr_fd.c ft_putnbr_fd.c 
+	ft_putstr_fd.c ft_putnbr_fd.c ft_split.c ft_calloc.c ft_bzero.c ft_memset.c
 
 OBJS = $(SRCS:.c=.o)
 

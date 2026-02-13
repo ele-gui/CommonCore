@@ -31,6 +31,10 @@ typedef struct s_chunk
 }	t_chunk;
 
 /* FUNCTIONS */
+int find_index_in_range(int *stack, int size, int start, int end)
+;
+char	**handle_split(int argc, char **argv)
+;
 int	mini_sort(t_push_swap *ps)
 ;
 int	sort_20(t_push_swap *ps)

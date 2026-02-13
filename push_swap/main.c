@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 21:09:32 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 14:33:26 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	main(int argc, char **argv)
 	print_stack(&ps);
 	
 	ft_printf("mini sort:\n");
-	mosse = mini_sort(&ps);
-	print_stack(&ps);
+	mosse = sort(&ps);
+	// print_stack(&ps);
 	ft_printf("mosse: %d\n", mosse);
 
 	// sort(&ps);

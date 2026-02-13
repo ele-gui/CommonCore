@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 10:44:26 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 22:30:33 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 10:38:37 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,34 +53,6 @@ int	sort_3(t_push_swap *ps)
 		mosse += rra(ps);
 	return (mosse);
 }
-
-// int	sort_3(t_push_swap *ps)
-// {
-// 	int	mosse;
-
-// 	mosse = 0;
-// 	if (ps->stack_a[0] > ps->stack_a[1] && ps->stack_a[1] < ps->stack_a[2] && \
-// 		ps->stack_a[0] < ps->stack_a[2])
-// 		mosse += sa(ps);
-// 	else if (ps->stack_a[0] > ps->stack_a[1] && ps->stack_a[1] > ps->stack_a[2])
-// 	{
-// 		mosse += sa(ps);
-// 		mosse += rra(ps);
-// 	}
-// 	else if (ps->stack_a[0] > ps->stack_a[1] && ps->stack_a[1] < ps->stack_a[2] \
-// 		&& ps->stack_a[0] > ps->stack_a[2])
-// 		mosse += ra(ps);
-// 	else if (ps->stack_a[0] < ps->stack_a[1] && ps->stack_a[1] > ps->stack_a[2] \
-// 		&& ps->stack_a[0] < ps->stack_a[2])
-// 	{
-// 		mosse += sa(ps);
-// 		mosse += ra(ps);
-// 	}
-// 	else if (ps->stack_a[0] < ps->stack_a[1] && ps->stack_a[1] > ps->stack_a[2] \
-// 		&& ps->stack_a[0] > ps->stack_a[2])
-// 		mosse += rra(ps);
-// 	return (mosse);
-// }
 
 int	sort_5(t_push_swap *ps)
 {

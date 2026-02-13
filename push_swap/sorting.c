@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 11:02:56 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 14:34:33 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,33 @@ int	is_sorted(t_push_swap *ps)
 	return (1);
 }
 
-//divisione in chunk
-void	chunk_division(t_push_swap *ps)
+int sort_general(t_push_swap *ps)
 {
-	int	chunk_count;
-	int	chunk_size;
-	int	top;
-	int	start;
-	int	end;
-	
-	if (ps->size_a <= 100 && ps->size_a >= 20)
-		chunk_count = 5;
-	else
-		chunk_count = 11;
-	chunk_size = ps->size_a / chunk_count;
-	start = 0;
-	end = chunk_size - 1;
+	t_chunk chunk;
+	int mosse;
+	int index;
+
+	mosse = 0;
+	chunk = chunk_division(ps);
 	while (ps->size_a > 0)
+		mosse +=push_chunk_to_b(ps, chunk);
+	while (ps->size_b > 0)
 	{
-		top = ps->stack_a[0];
-		if (top >= start && top <= end)
-		{
-			pb(ps);
-			if (top < start + chunk_size / 2)
-				rb(ps);
-			start++;
-			end++;
-		}
-		else	
-			ra(ps);
+		index = find_index(ps->stack_a, ps->size_a, ps->stack_b[0]);
+		mosse +=move_cheapest(ps, index);
+		mosse += pa(ps);
 	}
+	return (mosse);
+}
+
+int sort(t_push_swap *ps)
+{
+	if (is_sorted(ps))
+		return (0);
+	if (ps->size_a == 2)
+		return (sa(ps));
+	else if (ps->size_a <= 20)
+		return (sort_20(ps));
+	else
+		return (sort_general(ps));
 }

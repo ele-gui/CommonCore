@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 15:47:35 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 14:10:44 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,34 @@ typedef struct s_push_swap
 	int		size_b;
 }	t_push_swap;
 
+typedef struct s_chunk
+{
+	int	count;
+	int	size;
+}	t_chunk;
+
 /* FUNCTIONS */
+int	mini_sort(t_push_swap *ps)
+;
+int	sort_20(t_push_swap *ps)
+;
+int	is_sorted(t_push_swap *ps)
+;
+int sort_general(t_push_swap *ps)
+;
+int sort(t_push_swap *ps)
+;
+int push_chunk_to_b(t_push_swap *ps, t_chunk chunk) 
+;
+int	move_cheapest(t_push_swap *ps, int index)
+;
+int	calculate_cost_min(t_push_swap *ps, int index)
+;
+t_chunk	chunk_division(t_push_swap *ps)
+;
+int	*copy_array(int *arr, int size);
+void	sort_array(int *arr, int size);
+int	find_index(int *sorted, int size, int value);
 void	normalize_stack(t_push_swap *ps);
 int	is_sorted(t_push_swap *ps);
 int	memory_alloc(int argc, t_push_swap *ps);

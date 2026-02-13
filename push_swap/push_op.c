@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:41:28 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 15:59:29 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 09:13:35 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	pa(t_push_swap *ps)
 	}
 	ps->size_a++;
 	ps->size_b--;
+	ft_printf("pa\n");
 	return (1);
 }
 
@@ -60,5 +61,6 @@ int	pb(t_push_swap *ps)
 	}
 	ps->size_a--;
 	ps->size_b++;
+	ft_printf("pb\n");
 	return (1);
 }

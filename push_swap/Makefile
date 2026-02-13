@@ -6,17 +6,17 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/12 22:16:26 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/13 09:57:56 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	push_swap
+NAME =	push_swap.a
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-#AR = ar rcs
+AR = ar rcs
 
 RM = rm -f
 
@@ -28,18 +28,20 @@ sort_small.c
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
-
-$(NAME): $(OBJS)
-	make -C  $(PRINTF_DIR)
-	cp $(FT_PRINTF) $(NAME)
-	$(NAME) $(OBJS)
+all: push_swap
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(NAME): $(OBJS)
+	make -C $(PRINTF_DIR) all
+	$(AR) $(NAME) $(OBJS)
+
+push_swap: $(OBJS) $(NAME) $(FT_PRINTF)
+	$(CC) $(CFLAGS) -o push_swap $(OBJS) $(FT_PRINTF)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) push_swap
 	make -C $(PRINTF_DIR) clean
 
 fclean: clean

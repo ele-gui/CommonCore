@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 14:33:26 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:38:45 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,30 @@ int	main(int argc, char **argv)
 	
 	if (memory_alloc(argc, &ps))
 	{
-		ft_printf("ERRORE MALLOC\n");
+		ft_printf("Error\n");
 		return (1);
 	}
-	ft_printf("no malloc error\n");
 	argv_to_stack(argc, argv, &ps);
-	ft_printf("no conversion error\n");	
 
-	ft_printf("inizio parsing\n");
 	if (parse_input(argc, argv))
 	{
-		ft_printf("---ERRORE NEL PARSING---\n");
+		ft_printf("Error\n");
 		free(ps.stack_a);
 		return (1);
 	}
-	ft_printf("no parsing error\n");
 		
 	// DEBUG
-	ft_printf("originale:\n");
-	print_stack(&ps);
+	// ft_printf("originale:\n");
+	// print_stack(&ps);
 	
-	ft_printf("normalizzo:\n");
+	// ft_printf("normalizzo:\n");
 	normalize_stack(&ps);
-	print_stack(&ps);
+	// print_stack(&ps);
 	
-	ft_printf("mini sort:\n");
+	// ft_printf("sort:\n");
 	mosse = sort(&ps);
 	// print_stack(&ps);
-	ft_printf("mosse: %d\n", mosse);
+	// ft_printf("mosse: %d\n", mosse);
 
 	// sort(&ps);
 

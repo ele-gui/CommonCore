@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 21:38:57 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:35:12 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,12 @@ int	memory_alloc(int argc, t_push_swap *ps)
 	ps->size_b = 0;
 	ps->size_a = argc - 1;
 	if (ps->size_a <= 0)
-	{
-		ft_printf("---ERRORE: no arguments---\n");
 		return (1);
-	}
 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
 	ps->stack_b = malloc(sizeof(int) * ps->size_a);
 
 	if (!ps->stack_a)
-	{
-		ft_printf("---ERRORE MALLOC---\n");
 		return (1);
-	}
 	return (0);
 }
 

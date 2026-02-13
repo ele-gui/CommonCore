@@ -6,7 +6,7 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/13 14:25:19 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/13 15:57:33 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,17 +28,14 @@ sort_small.c cost_chunk.c
 
 OBJS = $(SRCS:.c=.o)
 
-all: push_swap
+all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(PRINTF_DIR) -c $< -o $@
 
 $(NAME): $(OBJS)
-	make -C $(PRINTF_DIR) all
 	$(AR) $(NAME) $(OBJS)
-
-push_swap: $(OBJS) $(NAME) $(FT_PRINTF)
-	$(CC) $(CFLAGS) -o push_swap $(OBJS) $(FT_PRINTF)
+	$(CC) $(CFLAGS) main.c push_swap.a -o push_swap
 
 clean:
 	$(RM) $(OBJS) push_swap

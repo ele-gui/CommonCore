@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 14:14:41 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 21:52:56 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/14 11:18:46 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	calculate_cost_min(t_push_swap *ps, int index)
 	return (cost);
 }
 
+//scelgo tra ra e rra poi pb
 int	move_cheapest(t_push_swap *ps, int index)
 {
 	int cost;
@@ -63,8 +64,10 @@ int	move_cheapest(t_push_swap *ps, int index)
 			cost--;
 		}
 	}
+	mosse += pb(ps);
 	return (mosse);
 }
+
 
 int find_index_in_range(int *stack, int size, int start, int end)
 {
@@ -76,91 +79,34 @@ int find_index_in_range(int *stack, int size, int start, int end)
             return i; // primo elemento trovato
         i++;
     }
-    return -1; // nessun elemento nel chunk
+    return (-1); // nessun elemento nel chunk
 }
+
 
 int push_chunk_to_b(t_push_swap *ps, t_chunk chunk)
 {
-    int mosse = 0;
-    int start = 0;
-    int end = chunk.size;
-    int i, index;
+	int mosse;
+    int start;
+    int end;
+    int i;
 
-    // finché ci sono elementi in stack A
-    while (ps->size_a > 0)
-    {
-        // trova il primo elemento che rientra nel chunk
-        index = -1;
-        for (i = 0; i < ps->size_a; i++)
-        {
-            if (ps->stack_a[i] >= start && ps->stack_a[i] < end)
+	mosse = 0;
+	start = 0;
+	end = chunk.size;
+	while (ps->size_a > 0)
+	{
+		i = -1;
+		while (ps->stack_a[i++] >= start && ps->stack_a[i++] < end)
+			mosse += move_cheapest(ps, i);
+		start = end;
+        end += chunk.size;
+		if (start >= ps->size_a)
             {
-                index = i;
-                break;
-            }
-        }
-
-        if (index != -1)
-        {
-            mosse += move_cheapest(ps, index);
-            mosse += pb(ps);
-        }
-        else
-        {
-            // nessun elemento in questo chunk, passa al prossimo
-            start = end;
-            end += chunk.size;
-
-            if (start >= ps->size_a) // tutti i chunk completati
-            {
-                // prendi gli eventuali restanti elementi e spingili
                 while (ps->size_a > 0)
-                {
                     mosse += move_cheapest(ps, 0);
-                    mosse += pb(ps);
-                }
                 break;
             }
-        }
-    }
-    return mosse;
+	}
+    return (mosse);
 }
-
-
-// int push_chunk_to_b(t_push_swap *ps, t_chunk chunk) 
-// {
-// 	int	mosse;
-// 	int	start;
-// 	int	end;
-// 	int	index;
-
-// 	mosse = 0;
-// 	start = 0;
-// 	end = chunk.size;
-// 	while (ps->size_a > 0)
-//     {
-//         // Assicurati che end non superi il massimo valore normalizzato
-//         if (end > ps->size_a)
-//             end = ps->size_a;
-
-//         index = find_index_in_range(ps->stack_a, ps->size_a, start, end);
-
-//         if (index != -1)
-//         {
-//             mosse += move_cheapest(ps, index);
-//             mosse += pb(ps);
-//         }
-//         else
-//         {
-//             // nessun elemento nel chunk, passa al prossimo
-//             start = end;
-//             end = start + chunk.size;
-
-//             // se start ha superato il massimo valore normalizzato, esci
-//             if (start >= ps->size_a)
-//                 break;
-//         }
-//     }
-// 	return (mosse);
-// }
 

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/14 11:18:51 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:54:57 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,60 +33,67 @@ int	is_sorted(t_push_swap *ps)
 
 int find_max_index(int *stack, int size)
 {
-    int i = 0;
-    int max = stack[0];
-    int index = 0;
+	int i = 0;
+	int max = stack[0];
+	int index = 0;
 
-    for (i = 1; i < size; i++)
-    {
-        if (stack[i] > max)
-        {
-            max = stack[i];
-            index = i;
-        }
-    }
-    return index;
+	for (i = 1; i < size; i++)
+	{
+		if (stack[i] > max)
+		{
+			max = stack[i];
+			index = i;
+		}
+	}
+	return index;
 }
 
-int move_to_top_b(t_push_swap *ps, int index)
+int move_to_top_b_and_push_a(t_push_swap *ps)
 {
-    int mosse = 0;
+	int mosse;
+	int	rotations;
+	int	index;
 
-    if (index < 0 || index >= ps->size_b)
-        return 0;
-
-    // Se l'elemento è nella metà superiore, ruota verso l'alto
-    if (index <= ps->size_b / 2)
-    {
-        while (index-- > 0)
-            mosse += rb(ps); // ruota B verso l'alto
-    }
-    // Altrimenti ruota verso il basso
-    else
-    {
-        int rotations = ps->size_b - index;
-        while (rotations-- > 0)
-            mosse += rrb(ps); // ruota B verso il basso
-    }
-    return mosse;
+	mosse = 0;
+	// if (index < 0 || index >= ps->size_b)
+	// 	return (0);
+	while (ps->size_b > 0)
+	{
+		index = find_max_index(ps->stack_b, ps->size_b);
+		if (index <= ps->size_b / 2)
+		{
+			while (index-- > 0)
+				mosse += rb(ps);
+		}
+		else
+		{
+			rotations = ps->size_b - index;
+			while (rotations-- > 0)
+				mosse += rrb(ps);
+		}
+		mosse += pa(ps);
+	}
+	return (mosse);
 }
 
 int sort_general(t_push_swap *ps)
 {
 	t_chunk chunk;
 	int mosse;
-	int index;
+	// int index;
 
 	mosse = 0;
 	chunk = chunk_division(ps);
-	while (ps->size_a > 0)
-		mosse +=push_chunk_to_b(ps, chunk);
-	while (ps->size_b > 0)
-	{
-		index = find_max_index(ps->stack_b, ps->size_b);
-		mosse += move_to_top_b(ps, index);
-		mosse += pa(ps);
-	}
+	// while (ps->size_a > 0)
+	mosse += push_chunk_to_b(ps, chunk);
+	// while (ps->size_b > 0)
+	// {
+	// 	index = find_max_index(ps->stack_b, ps->size_b);
+	// 	mosse += move_to_top_b_and_push_a(ps, index);
+	// 	// mosse += pa(ps);
+	// }
+	// while (ps->size_b > 0)
+	mosse += move_to_top_b_and_push_a(ps);
 	return (mosse);
 }
 

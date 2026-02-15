@@ -32,6 +32,8 @@ typedef struct s_chunk
 }	t_chunk;
 
 /* FUNCTIONS */
+void	normalize_stack(t_push_swap *ps)
+;
 
 //mini sort < 20
 int		mini_sort(t_push_swap *ps);

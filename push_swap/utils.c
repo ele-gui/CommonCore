@@ -6,12 +6,13 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 15:35:12 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/15 16:20:15 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//usato in print_stack e in vecchio
 int	max(int a, int b)
 {
 	int	max;
@@ -21,6 +22,7 @@ int	max(int a, int b)
 		max = b;
 	return (max);
 }
+//usato in sort_small
 int	min(t_push_swap *ps)
 {
 	int minimo;

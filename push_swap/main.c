@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 21:00:26 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/15 10:19:39 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	}
 	
 	argv_to_stack(argc, new_argv, &ps);
-	
+	ps.original_size = ps.size_a;
 	normalize_stack(&ps);
 	mosse = sort(&ps);
 	// (void)mosse;

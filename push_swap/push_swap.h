@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/14 14:51:20 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/15 10:10:59 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_push_swap
 	int		*stack_b;
 	int		size_a;
 	int		size_b;
+	int		original_size;
 }	t_push_swap;
 
 typedef struct s_chunk
@@ -33,13 +34,7 @@ typedef struct s_chunk
 /* FUNCTIONS */
 int move_to_top_b_and_push_a(t_push_swap *ps)
 ;
-int	calculate_cost_and_move(t_push_swap *ps, int index)
-;
 int push_chunk_to_b(t_push_swap *ps, t_chunk chunk)
-;
-int push_chunk_to_b_new(t_push_swap *ps, t_chunk chunk)
-;
-int find_index_in_range(int *stack, int size, int start, int end)
 ;
 char	**handle_split(int argc, char **argv)
 ;

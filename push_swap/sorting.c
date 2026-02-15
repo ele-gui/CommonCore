@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/14 14:54:57 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/15 10:38:08 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int move_to_top_b_and_push_a(t_push_swap *ps)
 	while (ps->size_b > 0)
 	{
 		index = find_max_index(ps->stack_b, ps->size_b);
-		if (index <= ps->size_b / 2)
+		if (index < ps->size_b / 2)
 		{
 			while (index-- > 0)
 				mosse += rb(ps);
@@ -72,6 +72,8 @@ int move_to_top_b_and_push_a(t_push_swap *ps)
 				mosse += rrb(ps);
 		}
 		mosse += pa(ps);
+		if (ps->size_a > 1 && ps->stack_a[0] > ps->stack_a[1])
+			mosse += sa(ps);
 	}
 	return (mosse);
 }

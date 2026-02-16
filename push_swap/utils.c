@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 10:20:54 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 10:44:31 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,6 @@ long	ft_atol(const char *nptr)
 }
 
 //colego ps->stack_a a argv
-// void	argv_to_stack(int size, char **argv, t_push_swap *ps)
-// {
-// 	int	i;
-
-// 	i = 1;
-// 	while (i < size)
-// 	{
-// 		ps->stack_a[i - 1] = ft_atol(argv[i]);
-// 		i++;
-// 	}
-// }
-
 void	argv_to_stack(int size, char **argv, t_push_swap *ps)
 {
 	int	i;

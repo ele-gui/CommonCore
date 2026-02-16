@@ -6,7 +6,7 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/16 09:50:05 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/13 19:12:53 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS = main.c utils.c push_op.c print_stack.c swap_op.c rotate_op.c \
-reverse_op.c parsing.c sorting.c norm.c sort_small.c cost_chunk.c \
-sort_big.c
+reverse_op.c parsing.c sorting.c norm.c sort_small.c cost_chunk.c
 
 OBJS = $(SRCS:.c=.o)
 

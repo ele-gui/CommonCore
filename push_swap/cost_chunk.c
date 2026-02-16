@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 14:14:41 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 16:11:17 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 22:07:52 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,59 +18,114 @@ t_chunk	chunk_division(t_push_swap *ps)
 	t_chunk	chunk;
 	
 	if (ps->size_a <= 20)
-		chunk.count = 1;
+	chunk.count = 1;
 	else if (ps->size_a <= 100)
-		chunk.count = 5;
+	chunk.count = 5;
 	else if (ps->size_a <= 500)
-		chunk.count = 11;
+	chunk.count = 9;
 	chunk.size = ps->original_size / chunk.count;
 	return (chunk);
 }
 
+//sposto gli elementi in b
+
+
+// NUOVA FUNZIONE da aggiungere
+// static int find_closest_in_chunk(t_push_swap *ps, int limit)
+// {
+//     int i;
+//     int closest_pos;
+    
+//     i = 0;
+//     closest_pos = 0;
+    
+//     // Trova il primo elemento < limit
+//     while (i < ps->size_a)
+//     {
+//         if (ps->stack_a[i] < limit)
+//         {
+//             closest_pos = i;
+//             break;
+//         }
+//         i++;
+//     }
+    
+//     return (closest_pos);
+// }
+
+//sposto gli elementi in b - VERSIONE OTTIMIZZATA
+int push_to_b(t_push_swap *ps, t_chunk chunk)
+{
+    int mosse;
+    int pushed;
+    int current_limit;
+    
+    mosse = 0;
+    pushed = 0;
+    current_limit = chunk.size;
+    
+    while (pushed < ps->original_size)
+    {
+        if (ps->stack_a[0] < current_limit)
+        {
+            mosse += pb(ps);
+            if (ps->size_b > 1 && ps->stack_b[0] < current_limit - (chunk.size * 2 / 3))
+                mosse += rb(ps);
+            pushed++;
+        }
+        else
+            mosse += ra(ps);  // <-- SEMPRE ra, mai rra
+            
+        if (pushed == current_limit)
+            current_limit += chunk.size;
+    }
+    return (mosse);
+}
+
+
+
+
+// int	push_to_b(t_push_swap *ps, t_chunk chunk)
+// {
+// 	int	mosse;
+// 	int	pushed;
+// 	int	current_limit;
+
+// 	mosse = 0;
+// 	pushed = 0;
+// 	current_limit = chunk.size;
+
+// 	while (pushed < ps->original_size)
+// 	{
+// 		if (ps->stack_a[0] < current_limit)
+// 		{
+// 			mosse += pb(ps);
+// 			if (ps->stack_b[0] < current_limit - (chunk.size / 2))
+// 				mosse += rb(ps);
+// 			pushed++;
+// 		}
+// 		else
+// 			mosse += ra(ps);
+
+// 		if (pushed == current_limit)
+// 			current_limit += chunk.size;
+// 	}
+// 	return (mosse);
+// }
+
+
 
 //calcolo il costo minore facendo ra/rra
-static int	min_cost(t_push_swap *ps, int index)
-{
-	int	cost;
+// static int	min_cost(t_push_swap *ps, int index)
+// {
+// 	int	cost;
 	
-	if (index < ps->size_a / 2)
-		cost = index;
-	else
-		cost = ps->size_a - index;	
-	return (cost);
-}
-
-int	push_to_b(t_push_swap *ps, t_chunk chunk)
-{
-	int	mosse;
-	int	start;
-	int	end;
-
-	mosse = 0;
-	start = 0;
-	end = chunk.size;
-	while (start < ps->original_size)
-	{
-		int i = 0;
-		while (i < ps->size_a)
-		{
-			if (ps->stack_a[i] >= start && ps->stack_a[i] < end)
-			{
-				mosse += min_cost(ps, i);
-				mosse += pb(ps);
-				if (ps->size_b > 0 && ps->stack_b[0] < start + (chunk.size / 2))
-					mosse += rb(ps);
-				i = -1; // resetto l'indice dopo ogni push
-			}
-			i++;
-		}
-		start = end;
-		end += chunk.size;
-		if (end > ps->original_size)
-			end = ps->original_size;
-	}
-	return (mosse);
-}
+// 	if (index < ps->size_a / 2)
+// 		cost = index;
+// 	else
+// 		cost = ps->size_a - index;	
+// 	return (cost);
+// }
 
 //cerco l'indice migliore da spostare, ovvero quello che impiega meno mosse per 
 //essere in cima.
@@ -102,7 +157,7 @@ int	push_to_b(t_push_swap *ps, t_chunk chunk)
 // 	return (best_index);
 // }
 
-// //a seconda dell'indice scelgo se fare ra/rra e porto l'elemento in cima
+//a seconda dell'indice scelgo se fare ra/rra e porto l'elemento in cima
 // static int	cheapest_move(t_push_swap *ps, int index)
 // {
 // 	int	cost;
@@ -128,6 +183,9 @@ int	push_to_b(t_push_swap *ps, t_chunk chunk)
 // 	}
 // 	return (mosse);
 // }
+
+
+
 
 
 

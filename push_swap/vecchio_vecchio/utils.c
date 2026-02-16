@@ -6,13 +6,12 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 10:44:31 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:35:12 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//usato in print_stack e in vecchio
 int	max(int a, int b)
 {
 	int	max;
@@ -22,7 +21,6 @@ int	max(int a, int b)
 		max = b;
 	return (max);
 }
-//usato in sort_small
 int	min(t_push_swap *ps)
 {
 	int minimo;
@@ -66,31 +64,31 @@ long	ft_atol(const char *nptr)
 }
 
 //colego ps->stack_a a argv
-void	argv_to_stack(int size, char **argv, t_push_swap *ps)
+void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
 {
 	int	i;
 
-	i = 0;
-	while (i < size)
+	i = 1;
+	while (i < argc)
 	{
-		ps->stack_a[i] = ft_atol(argv[i]);
+		ps->stack_a[i - 1] = ft_atol(argv[i]);
 		i++;
 	}
 }
 
 // alloco la memoria per stack_a NON FUNZIONA
-int	memory_alloc(int size, t_push_swap *ps)
+int	memory_alloc(int argc, t_push_swap *ps)
 {
 	ps->stack_a = NULL;
 	ps->stack_b = NULL;
 	ps->size_b = 0;
-	ps->size_a = size;
+	ps->size_a = argc - 1;
 	if (ps->size_a <= 0)
 		return (1);
 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
 	ps->stack_b = malloc(sizeof(int) * ps->size_a);
 
-	if (!ps->stack_a || !ps->stack_b)
+	if (!ps->stack_a)
 		return (1);
 	return (0);
 }

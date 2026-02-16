@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 19:32:23 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 10:36:05 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ char	**handle_split(int argc, char **argv)
 {
 	if (argc == 2)
 		return (ft_split(argv[1], ' '));
-	return (argv);
+	return (&argv[1]);
 }

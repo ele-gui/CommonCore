@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/15 16:20:15 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 10:20:54 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,31 +66,43 @@ long	ft_atol(const char *nptr)
 }
 
 //colego ps->stack_a a argv
-void	argv_to_stack(int argc, char **argv, t_push_swap *ps)
+// void	argv_to_stack(int size, char **argv, t_push_swap *ps)
+// {
+// 	int	i;
+
+// 	i = 1;
+// 	while (i < size)
+// 	{
+// 		ps->stack_a[i - 1] = ft_atol(argv[i]);
+// 		i++;
+// 	}
+// }
+
+void	argv_to_stack(int size, char **argv, t_push_swap *ps)
 {
 	int	i;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i < size)
 	{
-		ps->stack_a[i - 1] = ft_atol(argv[i]);
+		ps->stack_a[i] = ft_atol(argv[i]);
 		i++;
 	}
 }
 
 // alloco la memoria per stack_a NON FUNZIONA
-int	memory_alloc(int argc, t_push_swap *ps)
+int	memory_alloc(int size, t_push_swap *ps)
 {
 	ps->stack_a = NULL;
 	ps->stack_b = NULL;
 	ps->size_b = 0;
-	ps->size_a = argc - 1;
+	ps->size_a = size;
 	if (ps->size_a <= 0)
 		return (1);
 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
 	ps->stack_b = malloc(sizeof(int) * ps->size_a);
 
-	if (!ps->stack_a)
+	if (!ps->stack_a || !ps->stack_b)
 		return (1);
 	return (0);
 }

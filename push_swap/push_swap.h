@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/15 15:52:01 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 09:14:33 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,19 @@ typedef struct s_chunk
 }	t_chunk;
 
 /* FUNCTIONS */
-void	normalize_stack(t_push_swap *ps)
+int	sort(t_push_swap *ps)
 ;
+int	is_sorted(t_push_swap *ps)
+;
+t_chunk	chunk_division(t_push_swap *ps)
+;
+int	push_to_a(t_push_swap *ps)
+;
+//push chunk to b
+int	push_to_b(t_push_swap *ps, t_chunk chunk);
+
+//normalize stack
+void	normalize_stack(t_push_swap *ps);
 
 //mini sort < 20
 int		mini_sort(t_push_swap *ps);

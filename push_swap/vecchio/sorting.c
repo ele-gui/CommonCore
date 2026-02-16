@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/15 10:38:08 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 09:29:28 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	is_sorted(t_push_swap *ps)
 	return (1);
 }
 
+//va rifatta
 int find_max_index(int *stack, int size)
 {
 	int i = 0;

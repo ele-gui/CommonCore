@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 12:06:55 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:50:41 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 // sort(t_push_swap *ps)
 
 #include "push_swap.h"
-
-//controllo se lo stack e' ordinato
-int	is_sorted(t_push_swap *ps)
-{
-	int i;
-	
-	if (ps->size_a <= 1)
-		return (1);
-	i = 0;
-	while (i < ps->size_a - 1)
-	{
-		if (ps->stack_a[i] > ps->stack_a[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 //cerco index massimo
 static int	find_max_index(t_push_swap *ps)
@@ -54,8 +37,8 @@ static int	find_max_index(t_push_swap *ps)
 	return (max_index);
 }
 
-//calcolo costo minore facendo rb/rrb
-static int	min_cost_b(t_push_swap *ps, int index)
+// calcolo costo minore facendo rb/rrb
+int	min_cost_b(t_push_swap *ps, int index)
 {
 	int	cost;
 

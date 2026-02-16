@@ -6,11 +6,28 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:50:24 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 09:59:54 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:25:20 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//controllo se lo stack e' ordinato
+int	is_sorted(t_push_swap *ps)
+{
+	int i;
+	
+	if (ps->size_a <= 1)
+		return (1);
+	i = 0;
+	while (i < ps->size_a - 1)
+	{
+		if (ps->stack_a[i] > ps->stack_a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 //metodo per > 20 numeri
 static int	sort_general(t_push_swap *ps)

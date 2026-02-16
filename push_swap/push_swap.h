@@ -32,6 +32,8 @@ typedef struct s_chunk
 }	t_chunk;
 
 /* FUNCTIONS */
+int	min_cost_b(t_push_swap *ps, int index)
+;
 int	sort(t_push_swap *ps)
 ;
 int	is_sorted(t_push_swap *ps)

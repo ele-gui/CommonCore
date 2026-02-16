@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 14:14:41 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 09:27:49 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 12:06:37 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,3 +127,52 @@ int	push_to_b(t_push_swap *ps, t_chunk chunk)
 	}
 	return (mosse);
 }
+
+// int	push_to_b(t_push_swap *ps, t_chunk chunk)
+// {
+// 	int	mosse;
+// 	int	start;
+// 	int	end;
+// 	int	index;
+// 	int	cost_a;
+// 	int	cost_b;
+
+// 	mosse = 0;
+// 	start = 0;
+// 	end = chunk.size;
+// 	while (start < ps->original_size)
+// 	{
+// 		index = find_best_index(ps, start, end);
+// 		while (index != -1)
+// 		{
+// 			cost_a = min_cost(ps, index);
+// 			cost_b = 0;
+// 			if (ps->size_b > 0 && ps->stack_b[0] < start + (chunk.size / 2))
+// 				cost_b = 1; // vogliamo fare rb dopo il push
+
+// 			// ruotiamo simultaneamente se possibile
+// 			while (cost_a > 0 && cost_b > 0 && index < ps->size_a / 2)
+// 			{
+// 				mosse += rr(ps);
+// 				cost_a--;
+// 				cost_b--;
+// 			}
+// 			while (cost_a > 0)
+// 			{
+// 				mosse += ra(ps);
+// 				cost_a--;
+// 			}
+// 			mosse += pb(ps);
+// 			if (cost_b > 0)
+// 				mosse += rb(ps);
+
+// 			index = find_best_index(ps, start, end);
+// 		}
+// 		start = end;
+// 		end += chunk.size;
+// 		if (end > ps->original_size)
+// 			end = ps->original_size;
+// 	}
+// 	return (mosse);
+// }
+

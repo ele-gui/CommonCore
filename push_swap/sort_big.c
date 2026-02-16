@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 09:48:04 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 12:06:55 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,3 +109,59 @@ int	push_to_a(t_push_swap *ps)
 	}
 	return (mosse);
 }
+
+
+// int	push_to_a(t_push_swap *ps)
+// {
+// 	int	mosse;
+// 	int	index_b;
+// 	int	cost_a, cost_b;
+
+// 	mosse = 0;
+
+// 	while (ps->size_b > 0)
+// 	{
+// 		index_b = find_max_index(ps);
+// 		cost_b = min_cost_b(ps, index_b);
+// 		cost_a = 0; // opzionale: puoi ruotare anche a se vuoi anticipare la posizione
+
+// 		// se vuoi ottimizzare con a: usa cost_a come min_cost(ps, pos_in_a)
+// 		// esempio: portare a[0] già pronto, cost_a = 0
+
+// 		// usa rrr se b nella metà inferiore
+// 		while (cost_a > 0 && cost_b > 0 && index_b >= ps->size_b / 2)
+// 		{
+// 			mosse += rrr(ps);
+// 			cost_a--;
+// 			cost_b--;
+// 		}
+
+// 		// usa rr se b nella metà superiore
+// 		while (cost_a > 0 && cost_b > 0 && index_b < ps->size_b / 2)
+// 		{
+// 			mosse += rr(ps);
+// 			cost_a--;
+// 			cost_b--;
+// 		}
+
+// 		while (cost_a > 0)
+// 		{
+// 			mosse += ra(ps);
+// 			cost_a--;
+// 		}
+
+// 		while (cost_b > 0)
+// 		{
+// 			if (index_b < ps->size_b / 2)
+// 				mosse += rb(ps);
+// 			else
+// 				mosse += rrb(ps);
+// 			cost_b--;
+// 		}
+
+// 		mosse += pa(ps);
+// 	}
+
+// 	return (mosse);
+// }
+

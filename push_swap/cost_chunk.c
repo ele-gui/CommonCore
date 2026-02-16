@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 14:14:41 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 15:16:04 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 16:11:17 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,38 @@ static int	min_cost(t_push_swap *ps, int index)
 	else
 		cost = ps->size_a - index;	
 	return (cost);
+}
+
+int	push_to_b(t_push_swap *ps, t_chunk chunk)
+{
+	int	mosse;
+	int	start;
+	int	end;
+
+	mosse = 0;
+	start = 0;
+	end = chunk.size;
+	while (start < ps->original_size)
+	{
+		int i = 0;
+		while (i < ps->size_a)
+		{
+			if (ps->stack_a[i] >= start && ps->stack_a[i] < end)
+			{
+				mosse += min_cost(ps, i);
+				mosse += pb(ps);
+				if (ps->size_b > 0 && ps->stack_b[0] < start + (chunk.size / 2))
+					mosse += rb(ps);
+				i = -1; // resetto l'indice dopo ogni push
+			}
+			i++;
+		}
+		start = end;
+		end += chunk.size;
+		if (end > ps->original_size)
+			end = ps->original_size;
+	}
+	return (mosse);
 }
 
 //cerco l'indice migliore da spostare, ovvero quello che impiega meno mosse per 

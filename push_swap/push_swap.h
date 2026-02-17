@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/17 09:50:33 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/16 09:14:33 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,46 +25,41 @@ typedef struct s_push_swap
 	int		original_size;
 }	t_push_swap;
 
-// typedef struct s_chunk
-// {
-// 	int	count;
-// 	int	size;
-// }	t_chunk;
+typedef struct s_chunk
+{
+	int	count;
+	int	size;
+}	t_chunk;
 
 /* FUNCTIONS */
-int find_insert_pos_a(t_push_swap *ps, int value)
-;
-int push_all_to_b(t_push_swap *ps)
+int final_rotation(t_push_swap *ps)
 ;
 int	sort(t_push_swap *ps)
 ;
-int	push_all_but_3(t_push_swap *ps)
+int	is_sorted(t_push_swap *ps)
 ;
-int	sort_3(t_push_swap *ps)
+t_chunk	chunk_division(t_push_swap *ps)
 ;
 int	push_to_a(t_push_swap *ps)
 ;
-int	is_sorted(t_push_swap *ps)
-;
-int	find_max_index(t_push_swap *ps)
-;
-int final_rotation(t_push_swap *ps)
-;
-int	find_min_position_a(t_push_swap *ps)
-;
-int	find_max_position_a(t_push_swap *ps)
-;
+//push chunk to b
+int	push_to_b(t_push_swap *ps, t_chunk chunk);
 
 //normalize stack
 void	normalize_stack(t_push_swap *ps);
+
+//mini sort < 20
+int		mini_sort(t_push_swap *ps);
 
 //utils
 int		memory_alloc(int argc, t_push_swap *ps);
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 long	ft_atol(const char *nptr);
-// int		min(t_push_swap *ps);
-// int		max(int a, int b);
+int		min(t_push_swap *ps);
+int		max(int a, int b);
 
+//print stack DA TOGLIERE
+void	print_stack(t_push_swap *ps);
 
 //parsing
 int		parse_input(int argc, char **argv);

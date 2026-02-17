@@ -6,38 +6,11 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 10:44:31 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/17 09:55:01 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//usato in print_stack e in vecchio
-int	max(int a, int b)
-{
-	int	max;
-
-	max = a;
-	if (b > a)
-		max = b;
-	return (max);
-}
-//usato in sort_small
-int	min(t_push_swap *ps)
-{
-	int minimo;
-	int	i;
-
-	i = 0;
-	minimo = ps->stack_a[0];
-	while (i < ps->size_a)
-	{
-		if (ps->stack_a[i] < minimo)
-			minimo = ps->stack_a[i];
-		i++;
-	}
-	return (minimo);
-}
 
 // asci to int. serve in argv_to_stack e check_limits
 long	ft_atol(const char *nptr)

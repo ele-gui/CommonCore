@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:40:16 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 09:12:29 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:50:54 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ int	ss(t_push_swap *ps)
 	ft_printf("ss\n");
 	return (sa(ps) + sb(ps));
 }
-

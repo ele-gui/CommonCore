@@ -6,14 +6,14 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 11:44:37 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/15 16:16:11 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:55:59 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //copio array
- static int	*copy_array(int *arr, int size)
+static int	*copy_array(int *arr, int size)
 {
 	int	*copy;
 	int	i;

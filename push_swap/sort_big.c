@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/18 16:46:29 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:51:45 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	find_max_index(t_push_swap *ps)
 		}
 		i++;
 	}
-	return (max_index); //max_index -> max
+	return (max_index);
 }
 
 // calcolo costo minore facendo rb/rrb
@@ -44,7 +44,7 @@ int	min_cost_b(t_push_swap *ps, int index)
 
 	if (index < ps->size_b / 2)
 		cost = index;
-	else	
+	else
 		cost = ps->size_b - index;
 	return (cost);
 }

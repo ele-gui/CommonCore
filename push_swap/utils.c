@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 10:44:31 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:50:31 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ int	max(int a, int b)
 		max = b;
 	return (max);
 }
+
 //usato in sort_small
 int	min(t_push_swap *ps)
 {
-	int minimo;
+	int	minimo;
 	int	i;
 
 	i = 0;
@@ -89,9 +90,7 @@ int	memory_alloc(int size, t_push_swap *ps)
 		return (1);
 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
 	ps->stack_b = malloc(sizeof(int) * ps->size_a);
-
 	if (!ps->stack_a || !ps->stack_b)
 		return (1);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:50:24 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 16:12:01 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:51:19 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 //controllo se lo stack e' ordinato
 int	is_sorted(t_push_swap *ps)
 {
-	int i;
-	
+	int	i;
+
 	if (ps->size_a <= 1)
 		return (1);
 	i = 0;
@@ -32,7 +32,7 @@ int	is_sorted(t_push_swap *ps)
 //metodo per > 20 numeri
 static int	sort_general(t_push_swap *ps)
 {
-	t_chunk chunk;
+	t_chunk	chunk;
 	int		mosse;
 
 	mosse = 0;

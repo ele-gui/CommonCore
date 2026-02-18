@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/16 21:54:44 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:46:29 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 // sort(t_push_swap *ps)
 
 #include "push_swap.h"
-
-//controllo se lo stack e' ordinato
-int	is_sorted(t_push_swap *ps)
-{
-	int i;
-	
-	if (ps->size_a <= 1)
-		return (1);
-	i = 0;
-	while (i < ps->size_a - 1)
-	{
-		if (ps->stack_a[i] > ps->stack_a[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 //cerco index massimo
 static int	find_max_index(t_push_swap *ps)
@@ -51,11 +34,11 @@ static int	find_max_index(t_push_swap *ps)
 		}
 		i++;
 	}
-	return (max_index);
+	return (max_index); //max_index -> max
 }
 
-//calcolo costo minore facendo rb/rrb
-static int	min_cost_b(t_push_swap *ps, int index)
+// calcolo costo minore facendo rb/rrb
+int	min_cost_b(t_push_swap *ps, int index)
 {
 	int	cost;
 
@@ -93,167 +76,19 @@ static int	cheapest_move_b(t_push_swap *ps, int index)
 	return (mosse);
 }
 
-
-//sposto gli elementi in a
-
-int push_to_a(t_push_swap *ps)
+int	push_to_a(t_push_swap *ps)
 {
-    int mosse;
-    int index;
-    
-    mosse = 0;
-    while (ps->size_b > 0)
-    {
-        index = find_max_index(ps);
-        mosse += cheapest_move_b(ps, index);
-        mosse += pa(ps);
-        // RIMOSSO lo swap - non serve qui
-    }
-    return (mosse);
+	int	mosse;
+	int	index;
+
+	mosse = 0;
+	while (ps->size_b > 0)
+	{
+		index = find_max_index(ps);
+		if (index == 0)
+			mosse += pa(ps);
+		else
+			mosse += cheapest_move_b(ps, index);
+	}
+	return (mosse);
 }
-
-int final_rotation(t_push_swap *ps)
-{
-    int mosse;
-    int min_pos;
-    int i;
-    
-    mosse = 0;
-    min_pos = 0;
-    i = 0;
-    
-    // Trova la posizione del minimo
-    while (i < ps->size_a)
-    {
-        if (ps->stack_a[i] < ps->stack_a[min_pos])
-            min_pos = i;
-        i++;
-    }
-    
-    // Porta il minimo in cima con la rotazione più breve
-    if (min_pos <= ps->size_a / 2)
-    {
-        while (min_pos > 0)
-        {
-            mosse += ra(ps);
-            min_pos--;
-        }
-    }
-    else
-    {
-        while (min_pos < ps->size_a)
-        {
-            mosse += rra(ps);
-            min_pos++;
-        }
-    }
-    
-    return (mosse);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// int	push_to_a(t_push_swap *ps)
-// {
-// 	int	mosse;
-// 	int	index;
-
-// 	mosse = 0;
-// 	while (ps->size_b > 0)
-// 	{
-// 		index = find_max_index(ps);
-// 		mosse += cheapest_move_b(ps, index);
-// 		mosse += pa(ps);
-// 	}
-// 	return (mosse);
-// }
-
-
-
-// int	push_to_a(t_push_swap *ps)
-// {
-// 	int	mosse;
-// 	int	index;
-	
-// 	mosse = 0;
-// 	while (ps->size_b > 0)
-// 	{
-// 		index = find_max_index(ps);
-// 		mosse += cheapest_move_b(ps, index);
-// 		mosse += pa(ps);
-// 	}
-// 	return (mosse);
-// }
-
-
-// int	push_to_a(t_push_swap *ps)
-// {
-// 	int	mosse;
-// 	int	index_b;
-// 	int	cost_a, cost_b;
-
-// 	mosse = 0;
-
-// 	while (ps->size_b > 0)
-// 	{
-// 		index_b = find_max_index(ps);
-// 		cost_b = min_cost_b(ps, index_b);
-// 		cost_a = 0; // opzionale: puoi ruotare anche a se vuoi anticipare la posizione
-
-// 		// se vuoi ottimizzare con a: usa cost_a come min_cost(ps, pos_in_a)
-// 		// esempio: portare a[0] già pronto, cost_a = 0
-
-// 		// usa rrr se b nella metà inferiore
-// 		while (cost_a > 0 && cost_b > 0 && index_b >= ps->size_b / 2)
-// 		{
-// 			mosse += rrr(ps);
-// 			cost_a--;
-// 			cost_b--;
-// 		}
-
-// 		// usa rr se b nella metà superiore
-// 		while (cost_a > 0 && cost_b > 0 && index_b < ps->size_b / 2)
-// 		{
-// 			mosse += rr(ps);
-// 			cost_a--;
-// 			cost_b--;
-// 		}
-
-// 		while (cost_a > 0)
-// 		{
-// 			mosse += ra(ps);
-// 			cost_a--;
-// 		}
-
-// 		while (cost_b > 0)
-// 		{
-// 			if (index_b < ps->size_b / 2)
-// 				mosse += rb(ps);
-// 			else
-// 				mosse += rrb(ps);
-// 			cost_b--;
-// 		}
-
-// 		mosse += pa(ps);
-// 	}
-
-// 	return (mosse);
-// }
-

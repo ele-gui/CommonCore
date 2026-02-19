@@ -4,4 +4,5 @@ def ft_plot_area():
     area = int(length * width)
     print("Plot area: ", area)
 
+
 ft_plot_area()

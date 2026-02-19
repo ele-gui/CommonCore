@@ -5,4 +5,5 @@ def ft_harvest_total():
     sum = d1 + d2 + d3
     print("Total harvest:", sum)
 
+
 ft_harvest_total()

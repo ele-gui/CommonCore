@@ -6,14 +6,14 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 09:56:33 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 18:46:45 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:56:19 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
 //devo togliere le mosse e le operazioni non devono stampare
-int	compare_amd_move(t_push_swap *ps, char *op)
+static int	compare_amd_move(t_push_swap *ps, char *op)
 {
 	if (ft_strncmp("sa", op, 2) == 0 && ft_strlen(op) == 2)
 		sa(ps);
@@ -40,8 +40,7 @@ int	compare_amd_move(t_push_swap *ps, char *op)
 	return (0);
 }
 
-
-int	read_move(t_push_swap *ps)
+static int	read_move(t_push_swap *ps)
 {
 	char	*line;
 	size_t	len;
@@ -52,14 +51,14 @@ int	read_move(t_push_swap *ps)
 		len = ft_strlen(line);
 		if (line[len - 1] == '\n' && len > 0)
 			line[len - 1] = '\0';
-		if (ft_strlen(line) > 0) 
-        {
-            if (compare_amd_move(ps, line))
-            {
-                free(line);
-                return (1);
-            }
-        }
+		if (ft_strlen(line) > 0)
+		{
+			if (compare_amd_move(ps, line))
+			{
+				free(line);
+				return (1);
+			}
+		}
 		free(line);
 		line = get_next_line(0);
 	}
@@ -76,24 +75,35 @@ static void	check_result(t_push_swap *ps)
 	free(ps->stack_b);
 }
 
+static int	init_stacks(t_push_swap *ps, char **new_argv)
+{
+	int	size;
+
+	size = 0;
+	while (new_argv[size])
+		size++;
+	if (memory_alloc(size, ps))
+		return (1);
+	argv_to_stack(size, new_argv, ps);
+	ps->original_size = ps->size_a;
+	normalize_stack(ps);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_push_swap	ps;
 	char		**new_argv;
-	int			size;
 
-	if (argc < 2 || !(new_argv = handle_split(argc, argv)) || !new_argv[0])
+	if (argc < 2)
+		return (0);
+	new_argv = handle_split(argc, argv);
+	if (!new_argv || !new_argv[0])
 		return (0);
 	if (parse_input(argc, new_argv))
 		return (write(2, "Error\n", 6), 1);
-	size = 0;
-	while (new_argv[size])
-		size++;
-	if (memory_alloc(size, &ps))
+	if (init_stacks(&ps, new_argv))
 		return (write(2, "Error\n", 6), 1);
-	argv_to_stack(size, new_argv, &ps);
-	ps.original_size = ps.size_a;
-	normalize_stack(&ps);
 	if (read_move(&ps))
 	{
 		write(2, "Error\n", 6);
@@ -102,33 +112,3 @@ int	main(int argc, char **argv)
 	check_result(&ps);
 	return (0);
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	t_push_swap	ps;
-// 	char		**new_argv;
-// 	int			size;
-
-// 	new_argv = handle_split(argc, argv);
-// 	if (argc < 2 || !new_argv[0])
-// 		return (0);
-// 	if (parse_input(argc, new_argv))
-// 		return (write(2, "Error\n", 6), 1);
-// 	size = 0;
-// 	while (new_argv[size])
-// 		size++;
-// 	if (memory_alloc(size, &ps))
-// 		return (write(2, "Error\n", 6), 1);
-// 	argv_to_stack(size, new_argv, &ps);
-// 	ps.original_size = ps.size_a;
-// 	normalize_stack(&ps);
-// 	if (read_move(&ps))
-// 		return (write(2, "Error\n", 6), free(ps.stack_a), free(ps.stack_b), 1);
-// 	if (is_sorted(&ps) && ps.size_b == 0)
-// 		write(1, "OK\n", 3);
-// 	else
-// 		write(1, "KO\n", 3);
-// 	free(ps.stack_a);
-// 	free(ps.stack_b);
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:13:47 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 10:38:59 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:57:03 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int				ft_print_percent(void);
 int				ft_print_call(va_list args, const char format);
 int				ft_printf(const char *str, ...);
 int				ft_putnbr_n(unsigned long nb, char *base);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cost_chunk.c                                       :+:      :+:    :+:   */
+/*   push_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 14:14:41 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/18 16:46:14 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:57:55 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	push_to_b(t_push_swap *ps, t_chunk chunk)
 {
 	int	mosse;
 	int	start;
-	
+
 	mosse = 0;
 	start = 0;
 	while (ps->size_a > 0)
@@ -51,6 +51,5 @@ int	push_to_b(t_push_swap *ps, t_chunk chunk)
 		else
 			mosse += ra(ps);
 	}
-	
 	return (mosse);
 }

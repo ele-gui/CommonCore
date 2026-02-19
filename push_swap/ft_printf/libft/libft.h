@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 10:56:44 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/12 10:14:51 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:58:23 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
 
 int		ft_isdigit(int c);
 void	ft_putchar_fd(char c, int fd);

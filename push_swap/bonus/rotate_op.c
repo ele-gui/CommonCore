@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:42:02 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 14:00:21 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:25:57 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "checker.h"
 //Shift up all elements of stack a by 1.
 //The first element becomes the last one.
-int	ra(t_push_swap *ps)
+void	ra(t_push_swap *ps)
 {
 	int	i;
 	int	temp;
 
 	if (ps->size_a == 1)
-		return (0);
+		return ;
 	i = 0;
 	temp = ps->stack_a[0];
 	while (i < ps->size_a - 1)
@@ -30,16 +30,15 @@ int	ra(t_push_swap *ps)
 		i++;
 	}
 	ps->stack_a[ps->size_a - 1] = temp;
-	return (1);
 }
 
-int	rb(t_push_swap *ps)
+void	rb(t_push_swap *ps)
 {
 	int	i;
 	int	temp;
 
 	if (ps->size_b == 1)
-		return (0);
+		return ;
 	i = 0;
 	temp = ps->stack_b[0];
 	while (i < ps->size_b - 1)
@@ -48,10 +47,10 @@ int	rb(t_push_swap *ps)
 		i++;
 	}
 	ps->stack_b[ps->size_b - 1] = temp;
-	return (1);
 }
 
-int	rr(t_push_swap *ps)
+void	rr(t_push_swap *ps)
 {
-	return (ra(ps) + rb(ps));
+	ra(ps);
+	rb(ps);
 }

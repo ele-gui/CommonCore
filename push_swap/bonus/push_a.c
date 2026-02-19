@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_big.c                                         :+:      :+:    :+:   */
+/*   push_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 14:00:15 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:54:55 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,16 @@ int	min_cost_b(t_push_swap *ps, int index)
 }
 
 // a seconda dell'indice decido de fare rb/rrb
-static int	cheapest_move_b(t_push_swap *ps, int index)
+static void	cheapest_move_b(t_push_swap *ps, int index)
 {
 	int	cost;
-	int	mosse;
 
-	mosse = 0;
 	cost = min_cost_b(ps, index);
 	if (index < ps->size_b / 2)
 	{
 		while (cost > 0)
 		{
-			mosse += rb(ps);
+			rb(ps);
 			cost--;
 		}
 	}
@@ -69,26 +67,20 @@ static int	cheapest_move_b(t_push_swap *ps, int index)
 	{
 		while (cost > 0)
 		{
-			mosse += rrb(ps);
+			rrb(ps);
 			cost--;
 		}
 	}
-	return (mosse);
 }
 
-int	push_to_a(t_push_swap *ps)
+void	push_to_a(t_push_swap *ps)
 {
-	int	mosse;
 	int	index;
 
-	mosse = 0;
 	while (ps->size_b > 0)
 	{
 		index = find_max_index(ps);
-		if (index == 0)
-			mosse += pa(ps);
-		else
-			mosse += cheapest_move_b(ps, index);
+		cheapest_move_b(ps, index);
+		pa(ps);
 	}
-	return (mosse);
 }

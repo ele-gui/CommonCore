@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:50:24 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 14:00:08 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:01:36 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,24 @@ int	is_sorted(t_push_swap *ps)
 }
 
 //metodo per > 20 numeri
-static int	sort_general(t_push_swap *ps)
+static void	sort_general(t_push_swap *ps)
 {
 	t_chunk	chunk;
-	int		mosse;
 
-	mosse = 0;
 	chunk = chunk_division(ps);
-	mosse += push_to_b(ps, chunk);
-	mosse += push_to_a(ps);
-	return (mosse);
+	push_to_b(ps, chunk);
+	push_to_a(ps);
 }
 
 //unisco tutti i metodi
-int	sort(t_push_swap *ps)
+void	sort(t_push_swap *ps)
 {
 	if (is_sorted(ps))
-		return (0);
+		return ;
 	if (ps->size_a == 2)
-		return (sa(ps));
+		sa(ps);
 	else if (ps->size_a <= 20)
-		return (mini_sort(ps));
+		mini_sort(ps);
 	else
-		return (sort_general(ps));
+		sort_general(ps);
 }

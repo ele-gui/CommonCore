@@ -6,7 +6,7 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/19 14:38:53 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/19 17:49:32 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,13 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCS = main.c utils.c push_op.c swap_op.c rotate_op.c \
-reverse_op.c parsing.c sorting.c norm.c sort_small.c cost_chunk.c \
-sort_big.c
+reverse_op.c parsing.c sorting.c norm.c sort_small.c push_b.c \
+push_a.c
 
-SRCS_BONUS = bonus/checker.c bonus/utils.c bonus/push_op.c bonus/swap_op.c bonus/rotate_op.c \
-bonus/reverse_op.c bonus/parsing.c bonus/sorting.c bonus/norm.c bonus/sort_small.c bonus/cost_chunk.c \
-bonus/sort_big.c bonus/get_next_line.c bonus/get_next_line_utils.c
+SRCS_BONUS = bonus/checker.c bonus/utils.c bonus/push_op.c bonus/swap_op.c \
+bonus/rotate_op.c bonus/reverse_op.c bonus/parsing.c bonus/sorting.c \
+bonus/norm.c bonus/sort_small.c bonus/push_b.c \
+bonus/push_a.c bonus/get_next_line.c bonus/get_next_line_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

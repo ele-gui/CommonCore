@@ -8,3 +8,5 @@ def ft_count_harvest_recursive():
 
     d_harvest = int(input("Days until harvest: "))
     countdown(1, d_harvest)
+
+ft_count_harvest_recursive()

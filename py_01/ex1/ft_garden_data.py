@@ -7,8 +7,7 @@ class Plant:
     def get_info(self):
         return (f"{self.name}: {self.height}cm, {self.age} days old")
 
-
-if __name__ == "__main__":
+def ft_garden_data():
     print("=== Garden Plant Registry ===")
     p1 = Plant("Rose", 25, 30)
     p2 = Plant("Sunflower", 80, 45)
@@ -17,4 +16,6 @@ if __name__ == "__main__":
     plants = [p1, p2, p3]
     for i in range(0, 3):
         print(plants[i].get_info())
-    print("=== End of Registry ===")
+
+if __name__ == "__main__":
+    ft_garden_data()

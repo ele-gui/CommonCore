@@ -6,22 +6,11 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 13:59:59 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/20 11:04:20 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-//usato in print_stack e in vecchio
-int	max(int a, int b)
-{
-	int	max;
-
-	max = a;
-	if (b > a)
-		max = b;
-	return (max);
-}
 
 //usato in sort_small
 int	min(t_push_swap *ps)

@@ -6,12 +6,9 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 17:45:54 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 17:54:55 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/20 11:05:07 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// is_sorted(t_push_swap *ps)
-// sort(t_push_swap *ps)
 
 #include "checker.h"
 

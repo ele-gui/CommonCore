@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/18 16:53:15 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/20 11:02:01 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		memory_alloc(int argc, t_push_swap *ps);
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 long	ft_atol(const char *nptr);
 int		min(t_push_swap *ps);
-int		max(int a, int b);
 int		parse_input(int argc, char **argv);
 char	**handle_split(int argc, char **argv);
 int		sa(t_push_swap *ps);

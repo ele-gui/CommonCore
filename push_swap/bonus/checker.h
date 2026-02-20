@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 11:48:19 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 18:52:14 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/20 11:02:07 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int		memory_alloc(int argc, t_push_swap *ps);
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 long	ft_atol(const char *nptr);
 int		min(t_push_swap *ps);
-int		max(int a, int b);
 void	mini_sort(t_push_swap *ps);
 int		min_cost_b(t_push_swap *ps, int index);
 void	push_to_a(t_push_swap *ps);

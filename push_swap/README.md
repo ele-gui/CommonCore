@@ -33,14 +33,14 @@ make bonus
 
 ### Execution
 ```bash
-./push_swap 3 1 4 1 5 9 2 6
+./push_swap 3 1 4 11 5 9 2 6
 ```
 
 The program outputs the list of operations to stdout, one per line.
 
 To verify correctness with the checker:
 ```bash
-./push_swap 3 1 4 1 5 9 2 6 | ./checker 3 1 4 1 5 9 2 6
+./push_swap 3 1 4 11 5 9 2 6 | ./checker 3 1 4 11 5 9 2 6
 ```
 
 The checker will print `OK` if the sequence correctly sorts the stack, or `KO` otherwise.
@@ -168,19 +168,11 @@ Typical usage:
 
 ### Documentation & References
 
-- [42 push_swap subject (common)](https://cdn.intra.42.fr/pdf/pdf/96189/en.subject.pdf) — official project specification
+- push_swap 42 subject 
 - [Visualizer for push_swap](https://github.com/o-reo/push_swap_visualizer) — useful to visually debug your move sequence
-- [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) — complexity reference
 - [Wikipedia — Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm) — general background
-- [Medium — push_swap: a comprehensive guide](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) — popular community walkthrough
 
 ### AI Usage
 
-AI (Claude by Anthropic) was used during this project for the following tasks:
-
 - **Algorithm design discussion**: exploring trade-offs between different sorting strategies (radix sort, chunk sort, greedy insertion) and understanding their complexity in terms of number of moves.
-- **Debugging logic**: verifying edge cases in `sort_3`, `sort_5`, and the chunk-based approach, particularly the boundary conditions in `push_to_b`.
-- **Code review**: checking for off-by-one errors in rotation cost calculations (`min_cost_b`) and in the `find_max_index` traversal.
-- **README writing**: structuring and writing this documentation.
-
-AI was **not** used to directly write the production code submitted for evaluation.
+- **README writing**: polishing this documentation.

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:43:52 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 16:42:03 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:14:25 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,52 +67,50 @@ void free_split(char **split)
 // 	return (0);
 // }
 
-
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_push_swap	ps;
-	char		**new_argv;
-	int			size;
-	int			mosse;
+    t_push_swap ps;
+    char **new_argv;
+    int size;
 
-	mosse = 0;
+    new_argv = handle_split(argc, argv);
+    if (!new_argv)
+        return 1;
 
-	new_argv = handle_split(argc, argv);
-	if (!new_argv)
-		return (1);
+    // conta numero di elementi
+    size = 0;
+    while (new_argv[size])
+        size++;
 
-	size = 0;
-	while (new_argv[size])
-		size++;
-		
-	if (size == 0)
-	{
-		free_split(new_argv);
-		return (0);
-	}
-	
-			
-	if (parse_input(size, new_argv))
-	{
-		free_split(new_argv);
-		return (write(2, "Error\n", 6), 1);
-	}
+    // se c'è 0 o 1 numero, non facciamo nulla
+    if (size < 2)
+    {
+        free_split(new_argv);
+        return 0;
+    }
 
-	
+    // parse_input ora viene chiamato solo se size >= 2
+    if (parse_input(size, new_argv))
+    {
+        free_split(new_argv);
+        return write(2, "Error\n", 6), 1;
+    }
 
-	if (memory_alloc(size, &ps))
-	{
-		free_split(new_argv);
-		return (write(2, "Error\n", 6), 1);
-	}
+    if (memory_alloc(size, &ps))
+    {
+        free_split(new_argv);
+        return write(2, "Error\n", 6), 1;
+    }
 
-	argv_to_stack(size, new_argv, &ps);
-	ps.original_size = ps.size_a;
-	normalize_stack(&ps);
-	mosse = sort(&ps);
+    argv_to_stack(size, new_argv, &ps);
+    ps.original_size = ps.size_a;
 
-	free(ps.stack_a);
-	free(ps.stack_b);
-	free_split(new_argv);
-	return (0);
+    normalize_stack(&ps);
+    sort(&ps);
+
+    free(ps.stack_a);
+    free(ps.stack_b);
+    free_split(new_argv);
+
+    return 0;
 }

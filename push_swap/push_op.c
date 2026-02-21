@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:41:28 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 16:58:23 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:09:21 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	pa(t_push_swap *ps)
 	}
 	ps->size_a++;
 	ps->size_b--;
+	write(1, "pa\n", 3);
 }
 
 //prende il primo el di A e lo mette in cima a B
@@ -59,4 +60,5 @@ void	pb(t_push_swap *ps)
 	}
 	ps->size_a--;
 	ps->size_b++;
+	write(1, "pb\n", 3);
 }

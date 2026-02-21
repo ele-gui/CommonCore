@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:40:16 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 16:57:03 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:08:00 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	sa(t_push_swap *ps)
 	temp = ps->stack_a[0];
 	ps->stack_a[0] = ps->stack_a[1];
 	ps->stack_a[1] = temp;
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_push_swap *ps)
@@ -34,6 +35,7 @@ void	sb(t_push_swap *ps)
 	temp = ps->stack_b[0];
 	ps->stack_b[0] = ps->stack_b[1];
 	ps->stack_b[1] = temp;
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_push_swap *ps)

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 16:41:23 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:20:26 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,44 +61,48 @@ int	parse_input(int argc, char **argv)
 }
 
 
-
 char **handle_split(int argc, char **argv)
 {
     char **split;
-    int i;
-	int	j;
+    int i, j;
 
-    // Caso "uno stringa da splittare"
     if (argc == 2)
     {
         split = ft_split(argv[1], ' ');
-        return (split);
+        if (!split)
+            return NULL;
+        return split;
     }
 
-    // Caso più argomenti separati
-    split = malloc(sizeof(char *) * argc); // argc - 1 + 1 per NULL
+    // argc > 2: verifico che nessun argomento contenga spazi
+    for (i = 1; i < argc; i++)
+    {
+        if (strchr(argv[i], ' '))
+            return NULL; // input invalido
+    }
+
+    // alloco array di puntatori
+    split = malloc(sizeof(char *) * argc);
     if (!split)
-        return (NULL);
+        return NULL;
 
     i = 1;
     while (i < argc)
     {
-        split[i - 1] = ft_strdup(argv[i]); // copia dinamica
+        split[i - 1] = ft_strdup(argv[i]);
         if (!split[i - 1])
         {
-            // se malloc fallisce, liberiamo tutto quello che abbiamo già allocato
             j = 0;
-			while (j < i - 1)
-			{
-				free(split[j]);
-				j++;
-			}
+            while (j < i - 1)
+            {
+                free(split[j]);
+                j++;
+            }
             free(split);
-            return (NULL);
+            return NULL;
         }
         i++;
     }
-    split[i - 1] = NULL; // terminatore
-
+    split[i - 1] = NULL;
     return split;
 }

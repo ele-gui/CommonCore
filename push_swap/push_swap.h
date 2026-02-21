@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 17:01:19 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:06:11 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sort(t_push_swap *ps);
 int		is_sorted(t_push_swap *ps);
 t_chunk	chunk_division(t_push_swap *ps);
 void	normalize_stack(t_push_swap *ps);
-int		mini_sort(t_push_swap *ps);
+void		mini_sort(t_push_swap *ps);
 int		memory_alloc(int argc, t_push_swap *ps);
 void	argv_to_stack(int argc, char **argv, t_push_swap *ps);
 long	ft_atol(const char *nptr);

@@ -6,11 +6,29 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 16:49:07 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:29:55 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	to_find;
+
+	i = 0;
+	to_find = (char)c;
+	while (s[i] != '\0' )
+	{
+		if (*s == to_find)
+			return ((char *)s);
+		s++;
+	}
+	if (to_find == '\0')
+		return ((char *)s);
+	return (NULL);
+}
 
 static int	num_control(char *str)
 {
@@ -60,43 +78,40 @@ int	parse_input(int argc, char **argv)
 	return (0);
 }
 
-
-
 char **handle_split(int argc, char **argv)
 {
     char **split;
-    int i;
-	int	j;
+    int i, j;
 
-    // Caso "uno stringa da splittare"
+    // Caso "una stringa con numeri separati da spazi"
     if (argc == 2)
     {
         split = ft_split(argv[1], ' ');
-        return (split);
+        return split; // può essere NULL se malloc fallisce
     }
 
-    // Caso più argomenti separati
-    split = malloc(sizeof(char *) * argc); // argc - 1 + 1 per NULL
-    if (!split)
-        return (NULL);
-
-    i = 1;
-    while (i < argc)
+    // argc > 2: nessun argomento deve contenere spazi
+    for (i = 1; i < argc; i++)
     {
-        split[i - 1] = ft_strdup(argv[i]); // copia dinamica
+        if (ft_strchr(argv[i], ' '))
+            return NULL; // input invalido
+    }
+
+    // Alloco array di puntatori
+    split = malloc(sizeof(char *) * argc); // argc-1 + 1 per NULL
+    if (!split)
+        return NULL;
+
+    for (i = 1; i < argc; i++)
+    {
+        split[i - 1] = ft_strdup(argv[i]);
         if (!split[i - 1])
         {
-            // se malloc fallisce, liberiamo tutto quello che abbiamo già allocato
-            j = 0;
-			while (j < i - 1)
-			{
-				free(split[j]);
-				j++;
-			}
+            for (j = 0; j < i - 1; j++)
+                free(split[j]);
             free(split);
-            return (NULL);
+            return NULL;
         }
-        i++;
     }
     split[i - 1] = NULL; // terminatore
 

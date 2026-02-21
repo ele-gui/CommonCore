@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:36:51 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/20 11:02:01 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 17:01:19 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ typedef struct s_chunk
 }	t_chunk;
 
 /* FUNCTIONS */
-int		push_to_b(t_push_swap *ps, t_chunk chunk);
+void	push_to_b(t_push_swap *ps, t_chunk chunk);
+void	push_to_a(t_push_swap *ps);
+char	*ft_strdup(const char *s);
+void	free_split(char **split);
 int		min_cost_b(t_push_swap *ps, int index);
-int		sort(t_push_swap *ps);
+void	sort(t_push_swap *ps);
 int		is_sorted(t_push_swap *ps);
 t_chunk	chunk_division(t_push_swap *ps);
-int		push_to_a(t_push_swap *ps);
 void	normalize_stack(t_push_swap *ps);
 int		mini_sort(t_push_swap *ps);
 int		memory_alloc(int argc, t_push_swap *ps);
@@ -46,16 +48,16 @@ long	ft_atol(const char *nptr);
 int		min(t_push_swap *ps);
 int		parse_input(int argc, char **argv);
 char	**handle_split(int argc, char **argv);
-int		sa(t_push_swap *ps);
-int		sb(t_push_swap *ps);
-int		ss(t_push_swap *ps);
-int		pa(t_push_swap *ps);
-int		pb(t_push_swap *ps);
-int		ra(t_push_swap *ps);
-int		rb(t_push_swap *ps);
-int		rr(t_push_swap *ps);
-int		rra(t_push_swap *ps);
-int		rrb(t_push_swap *ps);
-int		rrr(t_push_swap *ps);
+void		sa(t_push_swap *ps);
+void		sb(t_push_swap *ps);
+void		ss(t_push_swap *ps);
+void		pa(t_push_swap *ps);
+void		pb(t_push_swap *ps);
+void		ra(t_push_swap *ps);
+void		rb(t_push_swap *ps);
+void		rr(t_push_swap *ps);
+void		rra(t_push_swap *ps);
+void		rrb(t_push_swap *ps);
+void		rrr(t_push_swap *ps);
 
 #endif

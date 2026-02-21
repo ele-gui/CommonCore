@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/20 11:04:20 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:42:52 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	argv_to_stack(int size, char **argv, t_push_swap *ps)
 // alloco la memoria per stack_a NON FUNZIONA
 int	memory_alloc(int size, t_push_swap *ps)
 {
-	ps->stack_a = NULL;
-	ps->stack_b = NULL;
 	ps->size_b = 0;
 	ps->size_a = size;
 	if (ps->size_a <= 0)
@@ -80,6 +78,10 @@ int	memory_alloc(int size, t_push_swap *ps)
 	ps->stack_a = malloc(sizeof(int) * ps->size_a);
 	ps->stack_b = malloc(sizeof(int) * ps->size_a);
 	if (!ps->stack_a || !ps->stack_b)
+	{
+		free(ps->stack_a);
+		free(ps->stack_b);
 		return (1);
+	}
 	return (0);
 }

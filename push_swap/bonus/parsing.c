@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:45:07 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/19 14:00:32 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:41:23 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,45 @@ int	parse_input(int argc, char **argv)
 	return (0);
 }
 
-char	**handle_split(int argc, char **argv)
+
+
+char **handle_split(int argc, char **argv)
 {
-	if (argc == 2)
-		return (ft_split(argv[1], ' '));
-	return (&argv[1]);
+    char **split;
+    int i;
+	int	j;
+
+    // Caso "uno stringa da splittare"
+    if (argc == 2)
+    {
+        split = ft_split(argv[1], ' ');
+        return (split);
+    }
+
+    // Caso più argomenti separati
+    split = malloc(sizeof(char *) * argc); // argc - 1 + 1 per NULL
+    if (!split)
+        return (NULL);
+
+    i = 1;
+    while (i < argc)
+    {
+        split[i - 1] = ft_strdup(argv[i]); // copia dinamica
+        if (!split[i - 1])
+        {
+            // se malloc fallisce, liberiamo tutto quello che abbiamo già allocato
+            j = 0;
+			while (j < i - 1)
+			{
+				free(split[j]);
+				j++;
+			}
+            free(split);
+            return (NULL);
+        }
+        i++;
+    }
+    split[i - 1] = NULL; // terminatore
+
+    return split;
 }

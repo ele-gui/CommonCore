@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:41:28 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 09:13:35 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:58:23 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 //prende il primo el di B e lo mette in cima ad A.
 // se B e' vuoto non fa niente
-int	pa(t_push_swap *ps)
+void	pa(t_push_swap *ps)
 {
 	int	i;
 
 	if (ps->size_b == 0)
-		return (0);
+		return ;
 	i = ps->size_a;
 	while (i > 0)
 	{
@@ -35,17 +35,15 @@ int	pa(t_push_swap *ps)
 	}
 	ps->size_a++;
 	ps->size_b--;
-	ft_printf("pa\n");
-	return (1);
 }
 
 //prende il primo el di A e lo mette in cima a B
-int	pb(t_push_swap *ps)
+void	pb(t_push_swap *ps)
 {
 	int	i;
 
 	if (ps->size_a == 0)
-		return (0);
+		return ;
 	i = ps->size_b;
 	while (i > 0)
 	{
@@ -61,6 +59,4 @@ int	pb(t_push_swap *ps)
 	}
 	ps->size_a--;
 	ps->size_b++;
-	ft_printf("pb\n");
-	return (1);
 }

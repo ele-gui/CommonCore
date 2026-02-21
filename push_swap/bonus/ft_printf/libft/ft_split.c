@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 19:08:45 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/08 16:24:09 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:21:47 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,33 +75,24 @@ static void	ft_fill_word(char *dst, char const *s, int len)
 	dst[i] = '\0';
 }
 
-char	**ft_split(char const *s, char c)
+char	**handle_split(int argc, char **argv)
 {
-	char	**splitted;
-	int		righe;
-	int		colonne;
+	char	**split;
 	int		i;
-	int		pos;
 
-	if (!s)
+	if (argc == 2)
+		return (ft_split(argv[1], ' '));
+	split = malloc(sizeof(char *) * argc);
+	if (!split)
 		return (NULL);
-	righe = ft_count_sub(s, c);
-	splitted = (char **)ft_calloc(righe + 1, sizeof(char *));
-	if (!splitted)
-		return (NULL);
-	i = 0;
-	pos = 0;
-	while (i < righe)
+	i = 1;
+	while (i < argc)
 	{
-		colonne = ft_next_word(s, c, &pos);
-		splitted[i] = ft_calloc(colonne + 1, sizeof(char));
-		if (!splitted[i])
-			return (ft_free_split(splitted, i), NULL);
-		ft_fill_word(splitted[i], s + pos, colonne);
-		pos += colonne;
+		split[i - 1] = ft_strdup(argv[i]);
 		i++;
 	}
-	return (splitted);
+	split[i - 1] = NULL;
+	return (split);
 }
 
 // int	main(void)

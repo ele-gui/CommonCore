@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:41:53 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 12:27:00 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:58:03 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 //hift down all elements of stack a by 1.
 //The last element becomes the first one.
-int	rra(t_push_swap *ps)
+void	rra(t_push_swap *ps)
 {
 	int	i;
 	int	temp;
 
 	if (ps->size_a == 1)
-		return (0);
+		return ;
 	temp = ps->stack_a[ps->size_a - 1];
 	i = ps->size_a - 1;
 	while (i > 0)
@@ -31,17 +31,15 @@ int	rra(t_push_swap *ps)
 		i--;
 	}
 	ps->stack_a[0] = temp;
-	ft_printf("rra\n");
-	return (1);
 }
 
-int	rrb(t_push_swap *ps)
+void	rrb(t_push_swap *ps)
 {
 	int	i;
 	int	temp;
 
 	if (ps->size_b == 1)
-		return (0);
+		return ;
 	temp = ps->stack_b[ps->size_b - 1];
 	i = ps->size_b - 1;
 	while (i > 0)
@@ -50,12 +48,10 @@ int	rrb(t_push_swap *ps)
 		i--;
 	}
 	ps->stack_b[0] = temp;
-	ft_printf("rrb\n");
-	return (1);
 }
 
-int	rrr(t_push_swap *ps)
+void	rrr(t_push_swap *ps)
 {
-	ft_printf("rrr\n");
-	return (rra(ps) + rrb(ps));
+	rra(ps);
+	rrb(ps);
 }

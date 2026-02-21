@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:50:24 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/18 16:51:19 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 16:59:32 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ static int	sort_general(t_push_swap *ps)
 }
 
 //unisco tutti i metodi
-int	sort(t_push_swap *ps)
+void	sort(t_push_swap *ps)
 {
 	if (is_sorted(ps))
-		return (0);
+		return ;
 	if (ps->size_a == 2)
-		return (sa(ps));
+		sa(ps);
 	else if (ps->size_a <= 20)
-		return (mini_sort(ps));
+		mini_sort(ps);
 	else
-		return (sort_general(ps));
+		sort_general(ps);
 }

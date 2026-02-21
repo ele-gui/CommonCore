@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 10:44:26 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 17:05:42 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 21:02:17 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,30 +51,27 @@ static void	sort_3(t_push_swap *ps)
 		rra(ps);
 }
 
-static void	sort_5(t_push_swap *ps)
+static void sort_5(t_push_swap *ps)
 {
-	int	minimo;
-	int	pos;
+	int minimo;
+	int pos;
 
-	minimo = min(ps);
 	while (ps->size_a > 3)
 	{
+		minimo = min(ps);
 		pos = find_pos_a(ps, minimo);
 		if (ps->stack_a[0] == minimo)
-		{
 			pb(ps);
-			minimo = min(ps);
-		}
-		else if (pos < ps->size_a / 2)
+		else if (pos <= ps->size_a / 2)
 			ra(ps);
 		else
 			rra(ps);
 	}
 	sort_3(ps);
-	if (ps->stack_b[0] < ps->stack_b[1] && ps->size_b == 2)
-		rb(ps);
-	pa(ps);
-	pa(ps);
+	if (ps->size_b == 2 && ps->stack_b[0] < ps->stack_b[1])
+		sb(ps);
+	while (ps->size_b > 0)
+		pa(ps);
 }
 
 static void	sort_20(t_push_swap *ps)

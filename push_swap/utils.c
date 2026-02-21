@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:39:22 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 21:58:50 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 22:01:10 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,22 +91,21 @@ void	argv_to_stack(int size, char **argv, t_push_swap *ps)
 }
 
 // alloco la memoria per stack_a NON FUNZIONA
-int memory_alloc(int size, t_push_swap *ps)
+int	memory_alloc(int size, t_push_swap *ps)
 {
-    ps->stack_a = NULL;
-    ps->stack_b = NULL;
-    ps->size_a = size;
-    ps->size_b = 0;
-
-    ps->stack_a = malloc(sizeof(int) * size);
-    if (!ps->stack_a)
-        return (1);
-    ps->stack_b = malloc(sizeof(int) * size);
-    if (!ps->stack_b)
-    {
-        free(ps->stack_a);
-        ps->stack_a = NULL;
-        return (1);
-    }
-    return (0);
+	ps->stack_a = NULL;
+	ps->stack_b = NULL;
+	ps->size_a = size;
+	ps->size_b = 0;
+	ps->stack_a = malloc(sizeof(int) * size);
+	if (!ps->stack_a)
+		return (1);
+	ps->stack_b = malloc(sizeof(int) * size);
+	if (!ps->stack_b)
+	{
+		free(ps->stack_a);
+		ps->stack_a = NULL;
+		return (1);
+	}
+	return (0);
 }

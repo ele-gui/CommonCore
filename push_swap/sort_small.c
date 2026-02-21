@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 10:44:26 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/21 21:02:17 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 22:02:21 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	find_pos_a(t_push_swap *ps, int value)
 	}
 	return (-1);
 }
-
 
 static void	sort_3(t_push_swap *ps)
 {
@@ -51,10 +50,10 @@ static void	sort_3(t_push_swap *ps)
 		rra(ps);
 }
 
-static void sort_5(t_push_swap *ps)
+static void	sort_5(t_push_swap *ps)
 {
-	int minimo;
-	int pos;
+	int	minimo;
+	int	pos;
 
 	while (ps->size_a > 3)
 	{

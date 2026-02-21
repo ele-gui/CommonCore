@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:41:53 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/13 09:13:15 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:27:00 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	rra(t_push_swap *ps)
 	if (ps->size_a == 1)
 		return (0);
 	temp = ps->stack_a[ps->size_a - 1];
-	i = ps->size_a;
+	i = ps->size_a - 1;
 	while (i > 0)
 	{
 		ps->stack_a[i] = ps->stack_a[i - 1];
@@ -43,7 +43,7 @@ int	rrb(t_push_swap *ps)
 	if (ps->size_b == 1)
 		return (0);
 	temp = ps->stack_b[ps->size_b - 1];
-	i = ps->size_b;
+	i = ps->size_b - 1;
 	while (i > 0)
 	{
 		ps->stack_b[i] = ps->stack_b[i - 1];

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 11:48:19 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/22 15:55:29 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:11:46 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct s_chunk
 }	t_chunk;
 
 /* FUNCTIONS */
+int		init_stacks(t_push_swap *ps, char **new_argv);
+void	check_result(t_push_swap *ps);
+int		read_move(t_push_swap *ps);
+int		compare_amd_move(t_push_swap *ps, char *op);
 void	free_split(char **split);
 void	sort(t_push_swap *ps);
 int		is_sorted(t_push_swap *ps);

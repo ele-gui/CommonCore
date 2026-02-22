@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:38:30 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/22 16:03:02 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/22 16:14:27 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*new_str;
 	size_t	i;
 	ssize_t	j;
-	
+
 	if (!s1 && !s2)
-	return (NULL);
+		return (NULL);
 	new_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!new_str)
 		return (NULL);
@@ -68,7 +68,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	j = 0;
 	while (s2 && s2[j])
-	new_str[i++] = s2[j++];
+		new_str[i++] = s2[j++];
 	new_str[i] = '\0';
 	return (new_str);
 }

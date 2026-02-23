@@ -33,21 +33,30 @@ class Vegetable(Plant):
 
 def ft_plant_types():
     print("=== Garden Plant Types ===")
+    print()
     p1 = Flower("Rose", 25, 30, "red")
     p2 = Flower("Tulip", 15, 20, "yellow")
 
     print(f"{p1.name} (Flower): {p1.height}cm, {p1.age} days, {p1.color} color")
     p1.bloom()
+    print()
     print(f"{p2.name} (Flower): {p2.height}cm, {p2.age} days, {p2.color} color")
     p2.bloom()
+    print()
 
     p3 = Tree("Oak", 500, 1825, 50)
     p4 = Tree("Maple", 475, 9125, 30)
 
-    print(f"{p1.name} (Tree): {p1.height}cm, {p1.age} days, {p3.trunk_diameter} cm")
+    print(f"{p3.name} (Tree): {p1.height}cm, {p1.age} days, {p3.trunk_diameter}cm diameter")
     p3.produce_shade()
-    print(f"{p2.name} (Tree): {p2.height}cm, {p2.age} days, {p4.trunk_diameter} cm")
+    print()
+    print(f"{p4.name} (Tree): {p2.height}cm, {p2.age} days, {p4.trunk_diameter}cm diameter")
     p4.produce_shade()
+    print()
+
+    p5 = Vegetable("Tomato", 80, 90, "summer", "C")
+    print(f"{p5.name} (Vegetable): {p5.height}cm, {p5.age} days, {p5.harvest_season} harvest")
+    print(f"{p5.name} is rich in vitamin {p5.nutritional_value}")
 
 if __name__ == "__main__":
     ft_plant_types()

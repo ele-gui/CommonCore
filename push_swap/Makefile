@@ -6,7 +6,7 @@
 #    By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 14:13:43 by elguiduc          #+#    #+#              #
-#    Updated: 2026/02/21 13:53:48 by elguiduc         ###   ########.fr        #
+#    Updated: 2026/02/23 15:02:28 by elguiduc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BONUS = checker
 
 CC = cc
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -27,7 +27,8 @@ push_a.c
 SRCS_BONUS = bonus/checker.c bonus/utils.c bonus/push_op.c bonus/swap_op.c \
 bonus/rotate_op.c bonus/reverse_op.c bonus/parsing.c bonus/sorting.c \
 bonus/norm.c bonus/sort_small.c bonus/push_b.c \
-bonus/push_a.c bonus/get_next_line.c bonus/get_next_line_utils.c
+bonus/push_a.c bonus/get_next_line.c bonus/get_next_line_utils.c \
+bonus/utils_checker.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 16:06:40 by elguiduc          #+#    #+#             */
-/*   Updated: 2026/02/22 16:08:33 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/02/23 15:13:22 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ void	check_result(t_push_swap *ps)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free(ps->stack_a);
-	free(ps->stack_b);
 }
 
 int	init_stacks(t_push_swap *ps, char **new_argv)

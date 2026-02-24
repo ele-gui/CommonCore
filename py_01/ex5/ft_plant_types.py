@@ -1,62 +1,62 @@
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name, height, age) -> None:
         self.name = name
         self.height = height
         self.age = age
         
 
-#classe figlia. esedita da plant e aggiunge caratteristiche proprie dei fiori
+#classe figlia. eredita da plant e aggiunge caratteristiche proprie dei fiori
 class Flower(Plant):
-    def __init__(self, name, height, age, color):
+    def __init__(self, name, height, age, color) -> None:
         super().__init__(name, height, age) #prende name, height, age da Plant
         self.color = color #aggiunga qulcosa di suo
         
-    def bloom(self):
+    def bloom(self) -> None:
         print(f"{self.name} is blooming beautifully!")
         
 
 class Tree(Plant):
-    def __init__(self, name, height, age,trunk_diameter):
+    def __init__(self, name, height, age, trunk_diameter) -> None:
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
     
-    def produce_shade(self):
-        print(f"{self.name} provides 78 square meters of shade")
+    def produce_shade(self) -> None:
+        crown_diameter = self.height / 100 * 2
+        radius = crown_diameter / 2
+        area = int(3.14 * radius ** 2)
+        print(f"{self.name} provides {area} square meters of shade")
 
 
 class Vegetable(Plant):
-    def __init__(self, name, height, age, harvest_season, nutritional_value):
+    def __init__(self, name, height, age, harvest_season, nutritional_value) -> None:
         super().__init__(name, height, age)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
 
 
-def ft_plant_types():
+def ft_plant_types() -> None:
     print("=== Garden Plant Types ===")
     print()
-    p1 = Flower("Rose", 25, 30, "red")
-    p2 = Flower("Tulip", 15, 20, "yellow")
+    plants = [
+        Flower("Rose", 25, 30, "red"),
+        Flower("Tulip", 15, 20, "yellow"),
+        Tree("Oak", 500, 1825, 50),
+        Tree("Maple", 475, 9125, 30),
+        Vegetable("Tomato", 80, 90, "summer", "C"),
+        Vegetable("Carrot", 20, 15, "spring", "A")
+    ]
+    for plant in plants:
+        if type(plant) == Flower:
+            print(f"{plant.name} (Flower): {plant.height}cm, {plant.age} days, {plant.color} color")
+            plant.bloom()
+        elif type(plant) == Tree:
+            print(f"{plant.name} (Tree): {plant.height}cm, {plant.age} days, {plant.trunk_diameter}cm diameter")
+            plant.produce_shade()
+        else:
+            print(f"{plant.name} (Vegetable): {plant.height}cm, {plant.age} days, {plant.harvest_season} harvest")
+            print(f"{plant.name} is rich in vitamin {plant.nutritional_value}")
+        print()
 
-    print(f"{p1.name} (Flower): {p1.height}cm, {p1.age} days, {p1.color} color")
-    p1.bloom()
-    print()
-    print(f"{p2.name} (Flower): {p2.height}cm, {p2.age} days, {p2.color} color")
-    p2.bloom()
-    print()
-
-    p3 = Tree("Oak", 500, 1825, 50)
-    p4 = Tree("Maple", 475, 9125, 30)
-
-    print(f"{p3.name} (Tree): {p1.height}cm, {p1.age} days, {p3.trunk_diameter}cm diameter")
-    p3.produce_shade()
-    print()
-    print(f"{p4.name} (Tree): {p2.height}cm, {p2.age} days, {p4.trunk_diameter}cm diameter")
-    p4.produce_shade()
-    print()
-
-    p5 = Vegetable("Tomato", 80, 90, "summer", "C")
-    print(f"{p5.name} (Vegetable): {p5.height}cm, {p5.age} days, {p5.harvest_season} harvest")
-    print(f"{p5.name} is rich in vitamin {p5.nutritional_value}")
 
 if __name__ == "__main__":
     ft_plant_types()

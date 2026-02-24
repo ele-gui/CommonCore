@@ -1,6 +1,6 @@
 #!/urs/bin/env python3
 
-def ft_garden_intro():
+def ft_garden_intro() -> None:
 	print("=== Welcome to My Garden ===")
 	plant_name = "Rose"
 	plant_height = 25

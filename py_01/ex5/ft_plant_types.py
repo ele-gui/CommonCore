@@ -5,7 +5,7 @@ class Plant:
         self.age = age
         
 
-#classe figlia. eredita da plant e aggiunge caratteristiche proprie dei fiori
+#class figlia. eredita da plant e aggiunge caratteristiche proprie dei fiori
 class Flower(Plant):
     def __init__(self, name, height, age, color) -> None:
         super().__init__(name, height, age) #prende name, height, age da Plant

@@ -1,65 +1,27 @@
-#has to handle multiple gardens
 class GardenManager:
     def __init__(self) -> None:
-        self.gardens = []
+        self.gardens =[]
 
-    #only accept > 0 heights
-    #@staticmethod indicates that 
-    #doesn't take self as an argument
-    def validate_height(height) -> None:
-        if height < 0:
-            print("Invalid height")
-        else:
-            print("Height validation test: True")
-    
-
-    #method to add gardens
-    def add_garden(self, garden) -> None:
-        #non posso usare append()
-        self.gardens = [*self.gardens, garden]
-
-
-    #@classmethod operates directly on the class
-    #defines alice and bob, adds plants to gardens, adds gardens
-    @classmethod
-    def create_garden_network(cls) -> 'GardenManager':
-        manager = cls() #cls = GardenManager, cls is inheritable
-        alice = Garden("Alice")
-        bob = Garden("Bob")
-
-        alice.add_plant(Plant("Oak Tree", 100))
-        alice.add_plant(FloweringPlant("Rose", 26, "red"))
-        alice.add_plant(PrizeFlower("Sunflower", 51, "yellow", 10))
-
-        bob.add_plant(Plant("Pine Tree", 80))
-        bob.add_plant(FloweringPlant("Tulip", 15, "pink"))
-
-        manager.add_garden(alice)
-        manager.add_garden(bob)
-        return manager
-
-
-
-    #calculate statistics
     class GardenStats:
+        #fatto
         def __init__(self, garden) -> None:
             self.garden = garden
 
-        #counts the plants in the garden
+        #fatto
         def count_plants(self) -> int:
             count = 0
             for plant in self.garden.plants:
                 count += 1
             return count
         
-        #sum of the growth of all plants
+        #fatto
         def total_growth(self) -> int:
             total = 0
             for plant in self.garden.plants:
                 total += 1
             return total
         
-        #counts the plants of each type
+        #fatto
         def count_by_type(self) -> int:
             counts = {"regular": 0, "flowering": 0, "prize flowers": 0}
             for plant in self.garden.plants:
@@ -71,18 +33,48 @@ class GardenManager:
                     counts["regular"] += 1
             return counts
 
+    #fatto
+    #DA RIGUARDARE
+    @staticmethod #decoratore che indica che il metodo è un metodo statico, non di istanza
+    def validate_height(height) -> None:
+        if (height < 0):
+            raise ValueError("Height cannot be negative")
+        else:
+            print("Height validation test: True")
+
+    #fatto
+    def add_garden(self, garden) -> None:
+        self.gardens.append(garden)
+
+    #fatto
+    @classmethod #decoratore che indica che il metodo è un metodo di classe, non di istanza
+    def create_garden_network(cls) -> 'GardenManager':
+        manager = cls() #cls = GardenManager, cls e' ereditabile
+        alice = Garden("Alice")
+        bob = Garden("Bob")
+
+        alice.add_plant(Plant("Oak Tree", 100, 5))
+        alice.add_plant(FloweringPlant("Rose", 26, 3, "red"))
+        alice.add_plant(PrizeFlower("Sunflower", 51, 2, "yellow", 10))
+
+        bob.add_plant(Plant("Pine Tree", 80, 4))
+        bob.add_plant(FloweringPlant("Tulip", 15, 2, "pink"))
+
+        manager.add_garden(alice)
+        manager.add_garden(bob)
+        return manager
 
 class Garden:
+    #FATTO
     def __init__(self, owner) -> None:
         self.owner = owner
-        self. plants = []
-
-    #non posso usare append() self.gardens = [*self.gardens, garden]
-    def add_plant(self, plant) ->None:
-        self.plants = [*self.plants, plant]
+        self.plants = []
+    #FATTO
+    def add_plant(self, plant) -> None:
+        self.plants.append(plant)
         self.stats = GardenManager.GardenStats(self)
         print(f"Added {plant.name} to {self.owner}'s garden")
-
+    #FATTO  
     def grow_plants(self) -> None:
         print(f"{self.owner} is helping all plants grow...")
         for plant in self.plants:
@@ -90,8 +82,7 @@ class Garden:
             plant.grow()
             growth = plant.height - old_height
             print(f"{plant.name} grew {growth}cm")
-        print()
-
+    #fatto
     def report(self) -> None:
         print(f"=== {self.owner}'s Garden Report ===")
         print("Plants in garden:")
@@ -100,11 +91,9 @@ class Garden:
             if type(plant) == FloweringPlant:
                 info += f", {plant.color} flowers (blooming)"
             if type(plant) == PrizeFlower:
-                info += f", {plant.color} flowers (blooming), Prize points {plant.prize}"
+                info += f", {plant.color} flowers (blooming), Prize points: {plant.prize})"
             print(info)
-        print()
-
-    #DA RIVEDERE
+    #fatto
     def calculate_score(self) -> int:
         score = 0
         for plant in self.plants:
@@ -113,49 +102,57 @@ class Garden:
                 score += plant.prize
         return score
 
-
-
-
+#FATTO
 class Plant:
-    def __init__(self, name, height) -> None:
+    def __init__(self, name, height, age) -> None:
         self.name = name
         self.height = height
+        self.age = age
 
     def grow(self) -> None:
         self.height += 1
 
     def get_info(self) -> None:
-        print(f"{self.name}: {self.height}cm")
+        print(f"{self.name}: {self.height}cm, {self.age} days")
 
+#FATTO
 
 class FloweringPlant(Plant):
-    def __init__(self, name, height, color) -> None:
-        super().__init__(name, height)
+    def __init__(self, name, height, age, color) -> None:
+        super().__init__(name, height, age)
         self.color = color
 
+#FATTO
 
 class PrizeFlower(FloweringPlant):
-    def __init__(self, name, height, color, prize) -> None:
-        super().__init__(name, height, color)
+    def __init__(self, name, height, age, color, prize) -> None:
+        super().__init__(name, height, age, color)
         self.prize = prize
+
 
 
 def ft_garden_analytics() -> None:
     print("=== Garden Management System Demo ===\n")
     manager = GardenManager.create_garden_network()
+
     alice = manager.gardens[0]
     bob = manager.gardens[1]
-
+    # alice.add_plant(Plant("Oak Tree", 100, 5))
+    # alice.add_plant(FloweringPlant("Rose", 26, 3, "red"))
+    # alice.add_plant(PrizeFlower("Sunflower", 51, 2, "yellow", 10))
     print()
     alice.grow_plants()
-    # bob.grow_plants()
+    bob.grow_plants()
+    print()
     alice.report()
+    print()
 
     stats = GardenManager.GardenStats(alice)
     print(f"Plants added: {stats.count_plants()}, Total growth: {stats.total_growth()}cm")
 
     counts = stats.count_by_type()
     print(f"Plant types: {counts['regular']} regular, {counts['flowering']} flowering, {counts['prize flowers']} prize flowers\n")
+
 
     GardenManager.validate_height(alice.plants[0].height)
     print(f"Garden scores - {alice.owner}: {alice.calculate_score()}, {bob.owner}: {bob.calculate_score()}")

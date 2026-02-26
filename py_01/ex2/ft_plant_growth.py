@@ -15,7 +15,6 @@ class Plant:
         return (f"{self.name}: {self.height}cm, {self.age} days old")
 
 
-
 def ft_plant_growth():
     plants = [
         Plant("Rose", 25, 30),
@@ -34,20 +33,6 @@ def ft_plant_growth():
         print(f"Growth this week: +{growth}cm")
         print()
 
-"""def ft_plant_growth():
-	print("=== Day 1 ===")
-	p1 = Plant("Rose", 25, 30)
-	print(p1.get_info())
-	height_before = p1.height
-
-	print("=== Day 7 ===")
-	for day in range(0, 6):
-		p1.age_one_day()
-	print(p1.get_info())
-	height_after = p1.height
-
-	growth = height_after - height_before
-	print(f"Growth this week: +{growth}cm")"""
 
 if __name__ == "__main__":
-	ft_plant_growth()
+    ft_plant_growth()

@@ -7,6 +7,7 @@ class Plant:
     def get_info(self) -> str:
         return (f"{self.name}: {self.height}cm, {self.age} days old")
 
+
 def ft_garden_data() -> None:
     print("=== Garden Plant Registry ===")
     p1 = Plant("Rose", 25, 30)
@@ -16,6 +17,7 @@ def ft_garden_data() -> None:
     plants = [p1, p2, p3]
     for i in range(0, 3):
         print(plants[i].get_info())
+
 
 if __name__ == "__main__":
     ft_garden_data()

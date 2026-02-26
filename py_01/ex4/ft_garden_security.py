@@ -3,7 +3,7 @@ class SecurePlant:
         self.name = name
         self.__height = 0
         self.__age = 0
-    
+
     def set_height(self, height) -> None:
         if height < 0:
             print(f"Invalid operation attempted: height {height}cm [REJECTED]")
@@ -14,7 +14,7 @@ class SecurePlant:
 
     def get_height(self) -> int:
         return self.__height
-    
+
     def set_age(self, age) -> None:
         if age < 0:
             print(f"Invalid operation attempted: age {age} days [REJECTED]")
@@ -25,9 +25,12 @@ class SecurePlant:
 
     def get_age(self) -> int:
         return self.__age
-    
+
     def encapsulation(self):
-        print (f"Current plant: {self.name} ({self.__height}cm, {self.__age} days)")
+        print(
+            f"Current plant: {self.name} "
+            f"({self.__height}cm, + {self.__age} days)"
+        )
 
 
 def ft_garden_security():

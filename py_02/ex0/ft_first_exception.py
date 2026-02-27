@@ -13,7 +13,7 @@ def check_temperature(temp_str) -> int:
     return temp_value
 
 
-def test_temperature():
+def test_temperature() -> None:
     temperatures = [
         "25",
         "abc",

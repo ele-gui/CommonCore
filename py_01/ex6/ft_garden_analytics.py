@@ -87,7 +87,7 @@ class Garden:
                 info += f", {plant.color} flowers (blooming)"
             if type(plant) is PrizeFlower:
                 info += f", {plant.color} flowers (blooming), "
-                info += f"Prize points {plant.prize}"
+                info += f"Prize points: {plant.prize}"
             print(info)
         print()
 
@@ -132,7 +132,6 @@ def ft_garden_analytics() -> None:
 
     print()
     alice.grow_plants()
-    # bob.grow_plants()
     alice.report()
 
     stats = GardenManager.GardenStats(alice)

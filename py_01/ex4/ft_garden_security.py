@@ -26,14 +26,14 @@ class SecurePlant:
     def get_age(self) -> int:
         return self.__age
 
-    def encapsulation(self):
+    def encapsulation(self) -> None:
         print(
             f"Current plant: {self.name} "
             f"({self.__height}cm, + {self.__age} days)"
         )
 
 
-def ft_garden_security():
+def ft_garden_security() -> None:
     print("=== Garden Security System ===")
     p1 = SecurePlant("Rose")
     print(f"Plant created: {p1.name}")

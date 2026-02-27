@@ -1,5 +1,3 @@
-#!/urs/bin/env python3
-
 def ft_garden_intro() -> None:
     print("=== Welcome to My Garden ===")
     plant_name = "Rose"

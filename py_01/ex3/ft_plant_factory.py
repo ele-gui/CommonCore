@@ -8,13 +8,13 @@ class Plant:
         return (f"Created: {self.name} ({self.height}cm, {self.age} days)")
 
 
-def ft_plant_factory():
+def ft_plant_factory() -> None:
     print("=== Plant Factory Output ===")
 
     plants = [
         Plant("Rose", 25, 30),
         Plant("Oak", 200, 365),
-        Plant("Cactus", 5, 120),
+        Plant("Cactus", 5, 90),
         Plant("Sunflower", 80, 45),
         Plant("Fern", 15, 120)
     ]

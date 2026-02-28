@@ -1,66 +1,48 @@
-def value_error():
-    try:
-        value = int("abc")  # This will raise a ValueError
-    except ValueError as e:
-        raise ValueError("Caught ValueError: invalid literal for int()\n")
+def value_error() -> int:
+    return int("abc")
 
 
 def division_error():
-    try: 
-        res = 10 / 0
-    except ZeroDivisionError as e:
-        raise ZeroDivisionError("Caught ZeroDivisionError: division by zero\n")
+    return 10 / 0
 
 
-def file_error():
-    try:
-        open("missing.txt")
-    except FileNotFoundError as e:
-        raise FileNotFoundError("Caught FileNotFoundError: No such file 'missing.txt'\n")
+def file_error() -> None:
+    file = open("missing.txt")
+    file.close()
 
 
 def key_error():
-    try:
-        my_dict = {
+    garden = {
             "Flower": "Rose",
             "Tree": "Oak"
-        }        
-        plant = "missing\_plant"
-        print(my_dict[plant])
-
-    except KeyError as e:
-        raise Exception("Caught KeyError: 'missing\_plant'\n")
-        ##per KeyError e' normale stampare con le virgolette.
-        #per evitarlo usare raise Exception oppure print() invece di raise
+        }
+    return garden["missing_plant"]
 
 
 def garden_operations():
+    print("Testing ValueError...")
     try:
-        print("Testing ValueError...")
         value_error()
-    except ValueError as e:
-        print(e)
+    except ValueError:
+        print("Caught ValueError: invalid literal for int()\n")
 
+    print("Testing ZeroDivisionError...")
     try: 
-        print("Testing ZeroDivisionError...")
         division_error()
-    except ZeroDivisionError as e:
-        print(e)
+    except ZeroDivisionError:
+        print("Caught ZeroDivisionError: division by zero\n")
     
+    print("Testing FileNotFoundError...")
     try:
-        print("Testing FileNotFoundError...")
         file_error()
-    except FileNotFoundError as e:
-        print(e)
+    except FileNotFoundError:
+        print("Caught FileNotFoundError: No such file 'missing.txt'\n")
     
+    print("Testing KeyError...")
     try:
-        print("Testing KeyError...")
         key_error()
     except KeyError as e:
-        print(e)
-
-    
-    
+        print(f"Caught KeyError: {e}\n")
 
 
 
@@ -68,26 +50,26 @@ def garden_operations():
 def test_error_types():
     
     print("=== Garden Error Types Demo ===\n")
-    try:
-        garden_operations()
-    
-    except ValueError as e:
-        print(e)
-    except ZeroDivisionError as e:
-        print(e)
 
-    except FileNotFoundError as e:
-        print(e)
-
-    except Exception as e:
-        print(e)
+    garden_operations()
     
     print("Testing multiple errors together...")
     for func in [value_error, division_error, file_error, key_error]:
         try:
             func()
-        except (ValueError, ZeroDivisionError, FileNotFoundError, Exception):
+        except (ValueError, ZeroDivisionError, FileNotFoundError, KeyError):
             print("Caught an error, but program continues!")
+
+    """try: STAMPO UNA VOLTA SOLA CAUGHT AN ERROR...
+        value_error()
+        division_error()
+        file_error()
+        key_error()
+    except (ValueError, ZeroDivisionError, FileNotFoundError, KeyError):
+        print("Caught an error, but program continues!")"""
+
+    print("\nAll error types tested successfully!")
+
 
 #da sistemare la stampa
 

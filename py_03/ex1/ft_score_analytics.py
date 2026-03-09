@@ -6,13 +6,15 @@ def parse_scores(scores):
         return [int(score) for score in scores]
     except ValueError:
         print("Invalid score detected. Please ensure all scores are numeric.")
-        # sys.exit(1)
 
 
 if __name__ == "__main__":
     print("=== Player Score Analytics ===")
     if len(sys.argv) < 2:
-        print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ...")
+        print(
+            "No scores provided. "
+            "Usage: python3 ft_score_analytics.py <score1> <score2> ..."
+        )
 
     if (len(sys.argv) > 1):
         scores = parse_scores(sys.argv[1:])

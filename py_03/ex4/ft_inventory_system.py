@@ -16,11 +16,13 @@ def parse_input(str) -> dict:
             else:
                 quantity += c
 
-        inventory.update({name: int(quantity)})
-    return (inventory)
+        # inventory.update({name: int(quantity)}) #non posso isare int()
+        inventory.update({name: int(quantity)})  # senza int non funziona
+
+    return inventory
 
 
-def find_max(d):
+def find_max(d) -> tuple:
     max_key = ""
     max_value = -1
     for key, value in d.items():
@@ -30,7 +32,7 @@ def find_max(d):
     return max_key, max_value
 
 
-def find_min(d):
+def find_min(d) -> tuple:
     min_key = ""
     min_value = -1
     for key, value in d.items():
@@ -51,17 +53,9 @@ if __name__ == "__main__":
     print(f"Unique item types: {len(inventory)}")
 
     print("\n=== Current Inventory ===")
-    # for key, value in inventory.items():
-    #     percent = (value * 100) / total
-        # print(f"{key}: {value} units ({percent:.1f}%)")
-    temp_inventory = dict()
-    temp_inventory.update(inventory)
-    while len(temp_inventory) > 0:
-        key, value = find_max(temp_inventory)
+    for key, value in inventory.items():
         percent = (value * 100) / total
         print(f"{key}: {value} units ({percent:.1f}%)")
-        del temp_inventory[key]
-
 
     print("\n=== Inventory Statistics ===")
     most_name, most_value = find_max(inventory)
@@ -109,4 +103,7 @@ if __name__ == "__main__":
     print(f"Dictionary keys: {key_list}")
     print(f"Dictionary values: {value_list}")
 
-    print("Sample lookup - 'sword' in inventory:", inventory.get("sword") is not None)
+    print(
+        "Sample lookup - 'sword' in inventory:",
+        inventory.get("sword") is not None
+    )

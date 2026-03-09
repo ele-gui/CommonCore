@@ -1,4 +1,4 @@
-import sys, math
+import math
 
 
 def create_position(x, y, z):
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     dist2 = calculate_dist(origin, parsed)
     print(f"Position between {origin} and {parsed}: {dist2}\n")
 
-    invalid_str =  "abc,def,ghi"
+    invalid_str = "abc,def,ghi"
     print(f'Parsing invalid coordinates: "{invalid_str}"')
     parse_coordinates(invalid_str)
 

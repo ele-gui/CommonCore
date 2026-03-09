@@ -24,17 +24,64 @@ def primes_stream() -> Generator[int, None, None]:
         num += 1
 
 
+class Player:
+    def __init__(self, name, level):
+        self.name = name
+        self.level = level
 
-def game_data_stream() -> Generator[str, None, None]:
-    for i in range(1, 1001):
-        yield f"Event {i}: Player action at timestamp {i * 0.5:.2f}s"
+
+def game_data_stream(players: list[Player]) -> Generator[str, None, None]:
+    actions = [
+        "killed a monster",
+        "found treasure",
+        "leveled up",
+        "fell on the ground",
+        "got drunk",
+        "went swimming"
+    ]
+    interesting_events = []
+    i = 0
+    for i in range(20):
+        player = players[(i) % len(players)]  #cicla i players
+        action = actions[(i) % len(actions)]
+        
+        yield f"Event {i + 1}: Player {player.name} (level {player.level}) {action}"
+        if (action == actions[0]):
+            interesting_events[0] += 1
+        elif (action == actions[1]):
+            interesting_events[1] += 1
+        elif (action == actions[2]):
+            interesting_events[2] += 1
+        return interesting_events
+
+
 
 
 if __name__ == "__main__":
     print("=== Game Data Stream Processor ===")
     print("Processing 1000 game events...")
-    # for event in game_data_stream():
-    #     print(event)
+    players = [
+        Player("alice", 5),
+        Player("bob", 12),
+        Player("charlie", 8),
+        Player("dina", 20),
+        Player("ellie", 13)
+    ]
+
+    total = 0
+    for event in game_data_stream(players):
+        print(event)
+        total += 1
+
+    print("\n=== Stream Analytics ===")
+    print(f"Total events processed: {total}")
+    print(f"High-level players (10+): 342") #DA FAREEEE
+    print(f"Treasure events: {}")
+
+
+
+
+
 
     print("\n=== Generator Demonstration ===")
     fib = fibonacci_stream()

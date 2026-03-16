@@ -1,4 +1,5 @@
 from typing import Generator
+import time
 
 
 def fibonacci_stream() -> Generator[int, None, None]:
@@ -39,22 +40,13 @@ def game_data_stream(players: list[Player]) -> Generator[str, None, None]:
         "got drunk",
         "went swimming"
     ]
-    interesting_events = []
     i = 0
-    for i in range(20):
-        player = players[(i) % len(players)]  #cicla i players
+    for i in range(1000):
+        player = players[(i) % len(players)]  # cicla i players
         action = actions[(i) % len(actions)]
-        
-        yield f"Event {i + 1}: Player {player.name} (level {player.level}) {action}"
-        if (action == actions[0]):
-            interesting_events[0] += 1
-        elif (action == actions[1]):
-            interesting_events[1] += 1
-        elif (action == actions[2]):
-            interesting_events[2] += 1
-        return interesting_events
 
-
+        yield f"Event {i + 1}: Player {player.name} " \
+            f"(level {player.level}) {action}"
 
 
 if __name__ == "__main__":
@@ -68,20 +60,38 @@ if __name__ == "__main__":
         Player("ellie", 13)
     ]
 
+    start = time.time()  # to calculate processing time
     total = 0
-    for event in game_data_stream(players):
-        print(event)
+    interesting_events = [0, 0, 0]
+    gen = game_data_stream(players)
+    first_1000 = [next(gen) for _ in range(1000)]
+    gen_str = ""
+    for n in first_1000:
+        gen_str = f"{n}\n"
+        print(gen_str, end="")
         total += 1
+        if ("killed a monster" in n):
+            interesting_events[0] += 1
+        elif ("found treasure" in n):
+            interesting_events[1] += 1
+        elif ("leveled up" in n):
+            interesting_events[2] += 1
+
+    high_level_players = 0
+    for player in players:
+        if player.level >= 10:
+            high_level_players += 1
 
     print("\n=== Stream Analytics ===")
     print(f"Total events processed: {total}")
-    print(f"High-level players (10+): 342") #DA FAREEEE
-    print(f"Treasure events: {}")
+    print(f"High-level players (10+): {high_level_players}")  # OK
+    print(f"Treasure events: {interesting_events[1]}")  # OK
+    print(f"Level-up events: {interesting_events[2]}")  # OK
 
-
-
-
-
+    end = time.time()
+    processing_time = end - start
+    print("\nMemory usage: Constant (streaming)")
+    print(f"Processing time: {processing_time:.3f} seconds")
 
     print("\n=== Generator Demonstration ===")
     fib = fibonacci_stream()

@@ -18,17 +18,19 @@ if __name__ == "__main__":
 
     if (len(sys.argv) > 1):
         scores = parse_scores(sys.argv[1:])
-        print(f"Scores processed: {scores}")
 
-        print(f"Total players: {len(sys.argv) - 1}")
+        if scores:
+            print(f"Scores processed: {scores}")
 
-        print(f"Total score: {sum(scores)}")
+            print(f"Total players: {len(sys.argv) - 1}")
 
-        print(f"Average score: {sum(scores) / (len(sys.argv) - 1)}")
+            print(f"Total score: {sum(scores)}")
 
-        print(f"High score: {max(scores)}")
+            print(f"Average score: {sum(scores) / (len(sys.argv) - 1)}")
 
-        print(f"Low score: {min(scores)}")
+            print(f"High score: {max(scores)}")
 
-        score_range = max(scores) - min(scores)
-        print(f"Score range: {score_range}")
+            print(f"Low score: {min(scores)}")
+
+            score_range = max(scores) - min(scores)
+            print(f"Score range: {score_range}")

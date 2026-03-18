@@ -6,12 +6,40 @@
 /*   By: elguiduc <elguiduc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:47:36 by elguiduc          #+#    #+#             */
-/*   Updated: 2025/12/19 13:12:33 by elguiduc         ###   ########.fr       */
+/*   Updated: 2026/03/13 15:32:42 by elguiduc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+
+int	ft_print_char(char c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}
+
+int	ft_print_percent(void)
+{
+	ft_putchar_fd('%', 1);
+	return (1);
+}
+
+int	ft_print_str(char *str)
+{
+	int	len;
+
+	len = 0;
+	if (!str)
+		str = "(null)";
+	while (*str)
+	{
+		ft_print_char(*str++);
+		len++;
+	}
+	return (len);
+}
+
 //il main si trova in test.c
 int	ft_print_call(va_list args, const char format)
 {
@@ -61,4 +89,13 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (count);
+}
+
+#include <stdio.h>
+
+int	main(void)
+{
+	ft_printf("%d\n", ft_printf("%s\n", "ciao"));
+	printf("%d\n", printf("%s\n", "ciao"));
+
 }

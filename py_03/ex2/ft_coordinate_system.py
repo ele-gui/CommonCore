@@ -1,5 +1,6 @@
 import math
 
+#DA CAMBIARE: LE COORD VANNO PRESE DA INPUT
 
 def create_position(x, y, z):
     return tuple((x, y, z))

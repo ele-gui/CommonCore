@@ -5,7 +5,14 @@ def parse_scores(scores):
     try:
         return [int(score) for score in scores]
     except ValueError:
-        print("Invalid score detected. Please ensure all scores are numeric.")
+        for score in scores:
+            print(f"Invalid parameter: '{score}'")
+    # except len(scores) < 2: #DA SISTEMARE?
+    finally:
+        print(
+            "No scores provided. "
+            "Usage: python3 ft_score_analytics.py <score1> <score2> ..."
+        )
 
 
 if __name__ == "__main__":

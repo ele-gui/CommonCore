@@ -1,29 +1,29 @@
 import math
 
-#DA CAMBIARE: LE COORD VANNO PRESE DA INPUT
 
-def create_position(x, y, z):
+def create_position(x, y, z) -> tuple:
     return tuple((x, y, z))
 
 
-def calculate_dist(pos1, pos2):
+def calculate_dist(pos1, pos2) -> float:
     x1, y1, z1 = pos1
     x2, y2, z2 = pos2
     dist = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
     return float(dist)
 
 
-def parse_coordinates(coord):
+def parse_coordinates(coord) -> tuple | None:
     try:
         parsed = coord.split(',')
         return tuple(int(p) for p in parsed)
     except ValueError as e:
         print(f"Error parsing coordinates: {e}")
         print(f"Error details - Type: ValueError, Args: {e.args}")
+        return None
 
 
 if __name__ == "__main__":
-    print("=== Game Coordinate System ===")
+    print("=== Game Coordinate System ===\n")
 
     origin = create_position(0, 0, 0)
     position1 = create_position(10, 20, 5)

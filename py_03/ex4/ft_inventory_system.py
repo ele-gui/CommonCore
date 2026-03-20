@@ -16,8 +16,7 @@ def parse_input(str) -> dict:
             else:
                 quantity += c
 
-        # inventory.update({name: int(quantity)}) #non posso isare int()
-        inventory.update({name: int(quantity)})  # senza int non funziona
+        inventory.update({name: int(quantity)})
 
     return inventory
 
@@ -44,66 +43,75 @@ def find_min(d) -> tuple:
 
 if __name__ == "__main__":
     print("=== Inventory System Analysis ===")
-    inventory = parse_input(sys.argv[1:])
 
-    total = 0
-    for value in inventory.values():
-        total += value
-    print(f"Total items in inventory: {total}")
-    print(f"Unique item types: {len(inventory)}")
+    if len(sys.argv) > 1:
+        inventory = parse_input(sys.argv[1:])
 
-    print("\n=== Current Inventory ===")
-    for key, value in inventory.items():
-        percent = (value * 100) / total
-        print(f"{key}: {value} units ({percent:.1f}%)")
+        total = 0
+        for value in inventory.values():
+            total += value
+        print(f"Total items in inventory: {total}")
+        print(f"Unique item types: {len(inventory)}")
 
-    print("\n=== Inventory Statistics ===")
-    most_name, most_value = find_max(inventory)
-    least_name, least_value = find_min(inventory)
+        print("\n=== Current Inventory ===")
+        for key, value in inventory.items():
+            percent = (value * 100) / total
+            print(f"{key}: {value} units ({percent:.1f}%)")
 
-    print(f"Most abundant: {most_name} ({most_value} units)")
-    print(f"Least abundant: {least_name} ({least_value} units)")
+        print("\n=== Inventory Statistics ===")
+        most_name, most_value = find_max(inventory)
+        least_name, least_value = find_min(inventory)
 
-    print("\n=== Item Categories ===")
-    moderate = dict()
-    scarce = dict()
+        print(f"Most abundant: {most_name} ({most_value} units)")
+        print(f"Least abundant: {least_name} ({least_value} units)")
 
-    for key, value in inventory.items():
-        if value >= 5:
-            moderate.update({key: value})
-        else:
-            scarce.update({key: value})
+        print("\n=== Item Categories ===")
+        moderate = dict()
+        scarce = dict()
 
-    print(f"Moderate: {moderate}")
-    print(f"Scarce: {scarce}")
+        for key, value in inventory.items():
+            if value >= 5:
+                moderate.update({key: value})
+            else:
+                scarce.update({key: value})
 
-    print("\n=== Management Suggestions ===")
-    restock = ""
-    first = True
-    for key, value in inventory.items():
-        if value <= 1:
+        print(f"Moderate: {moderate}")
+        print(f"Scarce: {scarce}")
+
+        print("\n=== Management Suggestions ===")
+        restock = ""
+        first = True
+        for key, value in inventory.items():
+            if value <= 1:
+                if not first:
+                    restock += ", "
+                restock += key
+                first = False
+        print(f"Restock needed: {restock}")
+
+        print("\n=== Dictionary Properties Demo ===")
+        key_list = "["
+        value_list = "["
+        first = True
+        for key, value in inventory.items():
             if not first:
-                restock += ", "
-            restock += key
+                key_list += ", "
+                value_list += ", "
+            key_list += f"'{key}'"
+            value_list += str(value)
             first = False
-    print(f"Restock needed: {restock}")
 
-    print("\n=== Dictionary Properties Demo ===")
-    key_list = ""
-    value_list = ""
-    first = True
-    for key, value in inventory.items():
-        if not first:
-            key_list += ", "
-            value_list += ", "
-        key_list += key
-        value_list += str(value)
-        first = False
+        key_list += "]"
+        value_list += "]"
 
-    print(f"Dictionary keys: {key_list}")
-    print(f"Dictionary values: {value_list}")
+        print(f"Dictionary keys: {key_list}")
+        print(f"Dictionary values: {value_list}")
 
-    print(
-        "Sample lookup - 'sword' in inventory:",
-        inventory.get("sword") is not None
-    )
+        print(
+            "Sample lookup - 'sword' in inventory:",
+            inventory.get("sword") is not None
+        )
+
+    else:
+        total = 0
+        print(f"Total items in inventory: {total}")

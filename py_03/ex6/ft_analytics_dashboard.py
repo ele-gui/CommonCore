@@ -1,17 +1,24 @@
-def list_comprehension_examples(dict_list):
+def list_comprehension_examples(dict_list) -> None:
     print("=== List Comprehension Examples ===")
 
-    high_scores_player = [player["name"] for player in dict_list if player["score"] > 2000]
+    high_scores_player = [
+        player["name"]
+        for player in dict_list
+        if player["score"] > 2000
+    ]
     print(f"High scorers (>2000): {high_scores_player}")
 
     double_score = [player["score"] * 2 for player in dict_list]
     print(f"Scores doubled: {double_score}")
 
-    status_player = [player["name"] for player in dict_list if player["status"] == "active"]
+    status_player = [
+        player["name"]
+        for player in dict_list
+        if player["status"] == "active"]
     print(f"Active players: {status_player}")
 
 
-def dict_comprehension_examples(dict_list):
+def dict_comprehension_examples(dict_list) -> None:
     print("\n=== Dict Comprehension Examples ===")
     players_dict = {player["name"]: player["score"] for player in dict_list}
     print(f"Player scores: {players_dict}")
@@ -28,16 +35,23 @@ def dict_comprehension_examples(dict_list):
     }
     print(f"Score categories: {score_categories}")
 
-    achievement_count = {player["name"]: len(player["achievements"]) for player in dict_list}
+    achievement_count = {
+        player["name"]:
+        len(player["achievements"])
+        for player in dict_list
+        }
     print(f"Achievement counts: {achievement_count}")
 
 
-def set_comprehension_examples(dict_list):
+def set_comprehension_examples(dict_list) -> tuple[set, set]:
     print("\n=== Set Comprehension Examples ===")
     unique_players = {player["name"] for player in dict_list}
     print(f"Unique players: {unique_players}")
 
-    unique_achievements = {achievement for player in dict_list for achievement in player["achievements"]}
+    unique_achievements = {
+        achievement for player in dict_list
+        for achievement in player["achievements"]
+        }
     print(f"Unique achievements: {unique_achievements}")
 
     active_region = {player["region"] for player in dict_list}
@@ -46,17 +60,24 @@ def set_comprehension_examples(dict_list):
     return unique_players, unique_achievements
 
 
-def combined_analysis(dict_list, unique_players, unique_achievements):
+def combined_analysis(dict_list, unique_players, unique_achievements) -> None:
     print("\n=== Combined Analysis ===")
     print(f"Total players: {len(unique_players)}")
 
     total_unique_achievements = len(unique_achievements)
     print(f"Total unique achievements: {total_unique_achievements}")
 
-    average_score = sum(player["score"] for player in dict_list) / len(dict_list)
+    average_score = (
+        sum(player["score"] for player in dict_list)
+        / len(dict_list)
+    )
     print(f"Average score: {average_score:.2f}")
     _, top_player = max((player["score"], player) for player in dict_list)
-    print(f"Top performer: {top_player['name']} ({top_player['score']} points, {len(top_player['achievements'])} achievements)")
+    print(
+        f"Top performer: {top_player['name']} "
+        f"({top_player['score']} points, "
+        f"{len(top_player['achievements'])} achievements)"
+    )
 
 
 if __name__ == "__main__":

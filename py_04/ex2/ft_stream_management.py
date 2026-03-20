@@ -5,13 +5,16 @@ if __name__ == "__main__":
 
     archivist_id = input("Input Stream active. Enter archivist ID: ")
     status_report = input("Input Stream active. Enter status report: ")
-    
 
     print()
-    print(f"[STANDARD] Archive status from {archivist_id}: {status_report}")
-    print("[ALERT] System diagnostic: Communication channels verified", file=sys.stderr)
+    print(
+        f"[STANDARD] Archive status from {archivist_id}: "
+        f"{status_report}", file=sys.stdout
+    )
+    print(
+        "[ALERT] System diagnostic: Communication channels verified",
+        file=sys.stderr
+    )
     print("[STANDARD] Data transmission complete", file=sys.stdout)
 
-
-
-    # sys.stdin, sys.stdout, sys.stderr
+    print("\nThree-channel communication test successful.")

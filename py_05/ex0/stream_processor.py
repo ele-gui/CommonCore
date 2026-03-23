@@ -70,26 +70,29 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
+    LEVELS: List[str] = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
             return False
-        #da vedere se vanno bene tutte le stringhe oppure ho bisogno di qualcora in particolare
-        #tipo [INFO]/[ALERT]
-        #se il primo char != [ => return False
 
-        i = 0
-        if '[' in(data) and ']' in data:
-            return True
-        else:
-            return False
+        for level in self.LEVELS:
+            if data[:len(level)] == level:
+                return True
+        return False
 
 
     def process(self, data: Any) -> str:
         if not self.validate(data):
             raise ValueError("LogProcessor expects a str")
-        #qui voglio [...]
-        log = data[1:']']
-        return f"{log} level detected: "
+        detected_level: str = "UNKNOWN"
+        for level in self.LEVELS:
+            if data[:len(level)] == level:
+                detected_level = level
+                break
+        message: str = data[len(detected_level) + 2:]
+        tag: str = "[ALERT]" if detected_level in ("ERROR", "CRITICAL") else "[INFO]"
+        return f"{tag} {detected_level} level detected: {message}"
 
 
     def format_output(self, result: str) -> str:

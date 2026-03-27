@@ -8,11 +8,9 @@ class DataProcessor(ABC):
     def process(self, data: Any) -> str:
         pass
 
-
     @abstractmethod
     def validate(self, data: Any) -> bool:
         pass
-
 
     def format_output(self, result: str) -> str:
         return f"Output: {result}"
@@ -20,26 +18,23 @@ class DataProcessor(ABC):
 
 class NumericProcessor(DataProcessor):
 
-    def validate(self, data: Any) -> bool: #da cambiare con type
-        if type(data) != list:
-        # if not isinstance(data, list): #controlla che data sia una lista
+    def validate(self, data: Any) -> bool:
+        if not isinstance(data, list): #controlla che data sia una lista
             return False
         for item in data:
-            if not isinstance(item, (int, float)): #controlla che tutti gli elementi siano float
+            if not isinstance(item, (int, float)): #controlla che tutti gli elementi siano float oppure int
                 return False
         return True
-
 
     def process(self, data:Any) -> str:
         if not self.validate(data):
             raise ValueError("NumericProcessor expects a list of numbers")
-        total: Union[int, float] = 0
-        for item in data:
-            total += item
+        total: Union[int, float] = 0 #puo essere int oppure float
         count: int = len(data)
-        avg: float = total / count if count > 0 else 0.0
-        return f"Processed {count} numeric values, sum = {total}, average = {avg}"
-    
+        som = sum(data)
+        avg: float = som / count if count > 0 else 0.0
+
+        return f"Processed {count} numeric values, sum = {som}, average = {avg}"
 
     def format_output(self, result: str) -> str:
         return f"Output: {result}"
@@ -56,7 +51,7 @@ class TextProcessor(DataProcessor):
     def process(self, data: Any) -> str:
         if not self.validate(data):
             raise ValueError("TextProcessor expects a str")
-        total: int = 0 #type hints
+        total: int = 0
         words: int = 1
         for char in data:
             total += 1

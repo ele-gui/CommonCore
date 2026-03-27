@@ -21,7 +21,8 @@ class DataProcessor(ABC):
 class NumericProcessor(DataProcessor):
 
     def validate(self, data: Any) -> bool: #da cambiare con type
-        if not isinstance(data, list): #controlla che data sia una lista
+        if type(data) != list:
+        # if not isinstance(data, list): #controlla che data sia una lista
             return False
         for item in data:
             if not isinstance(item, (int, float)): #controlla che tutti gli elementi siano float
@@ -30,9 +31,9 @@ class NumericProcessor(DataProcessor):
 
 
     def process(self, data:Any) -> str:
-        if not self.validate(data): #se il dato non e' valido errore
+        if not self.validate(data):
             raise ValueError("NumericProcessor expects a list of numbers")
-        total: Union[int, float] = 0 #type hints
+        total: Union[int, float] = 0
         for item in data:
             total += item
         count: int = len(data)
@@ -46,7 +47,7 @@ class NumericProcessor(DataProcessor):
 
 class TextProcessor(DataProcessor):
     
-    def validate(self, data: Any) -> bool: #per me vanno bene tutte le stringhe
+    def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
             return False
         return True
@@ -70,7 +71,7 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
-    LEVELS: List[str] = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+    LEVELS: List[str] = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] #sono tutti?
 
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
@@ -105,52 +106,57 @@ if __name__ == "__main__":
     numeric_proc: NumericProcessor = NumericProcessor()
     numeric_list = [1, 2, 3, 4, 5]
     print("\nInitializing Numeric Processor...")
-    print(f"Processing data: {numeric_list}") #da cambiare la stampa
-    print("Validation: Numeric data verified")
-    print(numeric_proc.format_output(numeric_proc.process(numeric_list)))
- 
-    print()
- 
+    print(f"Processing data: {numeric_list}")
+    try:
+        result = numeric_proc.process(numeric_list)
+        print("Validation: Numeric data verified")
+        print(numeric_proc.format_output(result))
+    except ValueError as e:
+        print(f"Validation: Numeric entry invalid - {e}")
+
     text_proc: TextProcessor = TextProcessor()
     string = "Hello Nexus World"
-    print("Initializing Text Processor...")
+    print("\nInitializing Text Processor...")
     print(f'Processing data: {string}')
-    print("Validation: Text data verified")
-    print(text_proc.format_output(text_proc.process(string)))
- 
-    print()
- 
+    try:
+        result = text_proc.process(string)
+        print("Validation: Text data verified")
+        print(text_proc.format_output(result))
+    except ValueError as e:
+        print(f"Validation: Text entry invalid - {e}")
+
     log_proc: LogProcessor = LogProcessor()
     string = "ERROR: Connection timeout"
-    print("Initializing Log Processor...")
+    print("\nInitializing Log Processor...")
     print(f'Processing data: {string}')
-    print("Validation: Log entry verified")
-    print(log_proc.format_output(log_proc.process(string)))
- 
-    print()
-    # print("=== Polymorphic Processing Demo ===")
-    # print("Processing multiple data types through same interface...")
- 
+    try:
+        result = log_proc.process(string)
+        print("Validation: Log entry verified")
+        print(log_proc.format_output(result))
+    except ValueError as e:
+        print(f"Validation: Log entry invalid - {e}")
+
+    print("\n=== Polymorphic Processing Demo ===")
+    print("Processing multiple data types through same interface...")
+
     processors: List[DataProcessor] = [
         NumericProcessor(),
-        # TextProcessor(),
-        # LogProcessor(),
+        TextProcessor(),
+        LogProcessor(),
     ]
-    # items: List[Any] = [
-    #     [1, 2, 3],
-    #     "Hello World",
-    #     "INFO: System ready",
-    # ]
- 
-    # index: int = 1
-    # for processor, item in zip(processors, items):
-    #     try:
-    #         result: str = processor.process(item)
-    #         print(f"Result {index}: {result}")
-    #     except ValueError as exc:
-    #         print(f"Result {index}: Error - {exc}")
-    #     index += 1
- 
-    print()
-    print("Foundation systems online. Nexus ready for advanced streams.")
- 
+    items: List[Any] = [
+        [1, 2, 3],
+        "Hello World",
+        "INFO: System ready",
+    ]
+
+    index: int = 1
+    for processor, item in zip(processors, items):
+        try:
+            result: str = processor.process(item)
+            print(f"Result {index}: {result}")
+        except ValueError as e:
+            print(f"Result {index}: Error - {e}")
+        index += 1
+
+    print("\nFoundation systems online. Nexus ready for advanced streams.")

@@ -1,4 +1,4 @@
-from typing import Any, List, Dict, Union, Optional
+from typing import Any, List, Union
 from abc import ABC, abstractmethod
 
 
@@ -19,34 +19,32 @@ class DataProcessor(ABC):
 class NumericProcessor(DataProcessor):
 
     def validate(self, data: Any) -> bool:
-        if not isinstance(data, list): #controlla che data sia una lista
+        if not isinstance(data, list):  # controlla che data sia una lista
             return False
         for item in data:
-            if not isinstance(item, (int, float)): #controlla che tutti gli elementi siano float oppure int
+            if not isinstance(item, (int, float)):
                 return False
         return True
 
-    def process(self, data:Any) -> str:
+    def process(self, data: Any) -> str:
         if not self.validate(data):
             raise ValueError("NumericProcessor expects a list of numbers")
-        total: Union[int, float] = 0 #puo essere int oppure float
+        total: Union[int, float] = sum(data)  # puo essere int oppure float
         count: int = len(data)
-        som = sum(data)
-        avg: float = som / count if count > 0 else 0.0
+        avg: float = total / count if count > 0 else 0.0
 
-        return f"Processed {count} numeric values, sum = {som}, average = {avg}"
+        return f"Processed {count} numeric values, sum={total}, avg={avg}"
 
     def format_output(self, result: str) -> str:
         return f"Output: {result}"
 
 
 class TextProcessor(DataProcessor):
-    
+
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
             return False
         return True
-    
 
     def process(self, data: Any) -> str:
         if not self.validate(data):
@@ -58,38 +56,38 @@ class TextProcessor(DataProcessor):
             if char == ' ':
                 words += 1
         return f"Processed text: {total} characters, {words} words"
-    
 
     def format_output(self, result: str) -> str:
         return f"Output: {result}"
-    
+
 
 class LogProcessor(DataProcessor):
 
-    LEVELS: List[str] = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] #sono tutti?
+    LEVELS: List[str] = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
             return False
 
         for level in self.LEVELS:
-            if data[:len(level)] == level:
+            if data.startswith(level):
                 return True
         return False
-
 
     def process(self, data: Any) -> str:
         if not self.validate(data):
             raise ValueError("LogProcessor expects a str")
         detected_level: str = "UNKNOWN"
         for level in self.LEVELS:
-            if data[:len(level)] == level:
+            if data.startswith(level):
                 detected_level = level
                 break
         message: str = data[len(detected_level) + 2:]
-        tag: str = "[ALERT]" if detected_level in ("ERROR", "CRITICAL") else "[INFO]"
+        if detected_level in ("ERROR", "CRITICAL"):
+            tag: str = "[ALERT]"
+        else:
+            tag: str = "[INFO]"
         return f"{tag} {detected_level} level detected: {message}"
-
 
     def format_output(self, result: str) -> str:
         return f"Output: {result}"
@@ -97,7 +95,7 @@ class LogProcessor(DataProcessor):
 
 if __name__ == "__main__":
     print("=== CODE NEXUS - DATA PROCESSOR FOUNDATION ===")
- 
+
     numeric_proc: NumericProcessor = NumericProcessor()
     numeric_list = [1, 2, 3, 4, 5]
     print("\nInitializing Numeric Processor...")
@@ -141,7 +139,7 @@ if __name__ == "__main__":
     ]
     items: List[Any] = [
         [1, 2, 3],
-        "Hello World",
+        "Hello World!",
         "INFO: System ready",
     ]
 

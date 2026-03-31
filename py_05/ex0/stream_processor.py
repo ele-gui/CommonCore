@@ -19,7 +19,7 @@ class DataProcessor(ABC):
 class NumericProcessor(DataProcessor):
 
     def validate(self, data: Any) -> bool:
-        if not isinstance(data, list):  # controlla che data sia una lista
+        if not isinstance(data, list):
             return False
         for item in data:
             if not isinstance(item, (int, float)):
@@ -29,7 +29,7 @@ class NumericProcessor(DataProcessor):
     def process(self, data: Any) -> str:
         if not self.validate(data):
             raise ValueError("NumericProcessor expects a list of numbers")
-        total: Union[int, float] = sum(data)  # puo essere int oppure float
+        total: Union[int, float] = sum(data)
         count: int = len(data)
         avg: float = total / count if count > 0 else 0.0
 
@@ -63,7 +63,7 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
-    LEVELS: List[str] = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+    LEVELS: List[str] = ["INFO", "WARNING", "ERROR", "CRITICAL"] #SONO TROPPI
 
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
@@ -93,7 +93,7 @@ class LogProcessor(DataProcessor):
         return f"Output: {result}"
 
 
-if __name__ == "__main__":
+def main() -> None:
     print("=== CODE NEXUS - DATA PROCESSOR FOUNDATION ===")
 
     numeric_proc: NumericProcessor = NumericProcessor()
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     text_proc: TextProcessor = TextProcessor()
     string = "Hello Nexus World"
     print("\nInitializing Text Processor...")
-    print(f'Processing data: {string}')
+    print(f'Processing data: "{string}"')
     try:
         result = text_proc.process(string)
         print("Validation: Text data verified")
@@ -121,7 +121,7 @@ if __name__ == "__main__":
     log_proc: LogProcessor = LogProcessor()
     string = "ERROR: Connection timeout"
     print("\nInitializing Log Processor...")
-    print(f'Processing data: {string}')
+    print(f'Processing data: "{string}"')
     try:
         result = log_proc.process(string)
         print("Validation: Log entry verified")
@@ -140,11 +140,11 @@ if __name__ == "__main__":
     items: List[Any] = [
         [1, 2, 3],
         "Hello World!",
-        "INFO: System ready",
+        "INFO: System ready",  # se scambio due righe da errore, GIUSTO
     ]
 
     index: int = 1
-    for processor, item in zip(processors, items):
+    for processor, item in zip(processors, items): #posso scriverlo in un altro modo?
         try:
             result: str = processor.process(item)
             print(f"Result {index}: {result}")
@@ -153,3 +153,7 @@ if __name__ == "__main__":
         index += 1
 
     print("\nFoundation systems online. Nexus ready for advanced streams.")
+
+
+if __name__ == "__main__":
+    main()

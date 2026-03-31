@@ -7,8 +7,8 @@ class DataStream(ABC):
         self.stream_id = stream_id
         self.processed_count: int = 0  # tiene traccia dei dati elaborati
 
-    @abstractmethod
     # Process a batch of data
+    @abstractmethod
     def process_batch(self, data_batch: List[Any]) -> str:
         pass
 

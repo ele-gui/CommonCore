@@ -33,7 +33,7 @@ class NumericProcessor(DataProcessor):
         count: int = len(data)
         avg: float = total / count if count > 0 else 0.0
 
-        return f"Processed {count} numeric values, sum={total}, avg={avg}"
+        return f"Processed {count} numeric values, sum={total}, avg={avg:.1f}"
 
     def format_output(self, result: str) -> str:
         return f"Output: {result}"
@@ -63,7 +63,7 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
-    LEVELS: List[str] = ["INFO", "WARNING", "ERROR", "CRITICAL"]  # SONO TROPPI
+    LEVELS: List[str] = ["INFO", "WARNING", "ERROR", "CRITICAL"]
 
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
@@ -101,8 +101,9 @@ def main() -> None:
     print("\nInitializing Numeric Processor...")
     print(f"Processing data: {numeric_list}")
     try:
-        result = numeric_proc.process(numeric_list)
-        print("Validation: Numeric data verified")
+        if numeric_proc.validate(numeric_list):
+            print("Validation: Numeric data verified")
+        result: str = numeric_proc.process(numeric_list)
         print(numeric_proc.format_output(result))
     except ValueError as e:
         print(f"Validation: Numeric entry invalid - {e}")
@@ -112,8 +113,9 @@ def main() -> None:
     print("\nInitializing Text Processor...")
     print(f'Processing data: "{string}"')
     try:
+        if text_proc.validate(string):
+            print("Validation: Text data verified")
         result = text_proc.process(string)
-        print("Validation: Text data verified")
         print(text_proc.format_output(result))
     except ValueError as e:
         print(f"Validation: Text entry invalid - {e}")
@@ -123,8 +125,9 @@ def main() -> None:
     print("\nInitializing Log Processor...")
     print(f'Processing data: "{string}"')
     try:
+        if log_proc.validate(string):
+            print("Validation: Log entry verified")
         result = log_proc.process(string)
-        print("Validation: Log entry verified")
         print(log_proc.format_output(result))
     except ValueError as e:
         print(f"Validation: Log entry invalid - {e}")

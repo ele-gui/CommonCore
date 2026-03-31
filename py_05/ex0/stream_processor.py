@@ -63,7 +63,7 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
-    LEVELS: List[str] = ["INFO", "WARNING", "ERROR", "CRITICAL"] #SONO TROPPI
+    LEVELS: List[str] = ["INFO", "WARNING", "ERROR", "CRITICAL"]  # SONO TROPPI
 
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
@@ -144,7 +144,7 @@ def main() -> None:
     ]
 
     index: int = 1
-    for processor, item in zip(processors, items): #posso scriverlo in un altro modo?
+    for processor, item in zip(processors, items):
         try:
             result: str = processor.process(item)
             print(f"Result {index}: {result}")

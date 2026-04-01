@@ -24,17 +24,17 @@ class InputStage:
 # arricchisce/modifica i dati
 class TransformStage:
     def process(self, data: Any) -> Any:
-        value = data.get("value", 0)
-        if not isinstance(value, (int, float)):
-            raise ValueError("Invalid data format")
-        if value > 35:
-            status = "Critical"
-        elif value > 30:
-            status = "Warning"
-        else:
-            status = "Normal"
-        data["status"] = status
+        value: Any = data.get("value")
+        if isinstance(value, (int, float)):
+            if value > 35:
+                status: str = "Critical"
+            elif value > 30:
+                status = "Warning"
+            else:
+                status = "Normal"
+            data["status"] = status
         data["timestamp"] = time.time()
+        data["validated"] = True
         return data
 
 
@@ -43,10 +43,25 @@ class OutputStage:
     def process(self, data: Any) -> Any:
         if not isinstance(data, dict):
             raise ValueError("OutputStage expected dict")
-        sensor = data.get("sensor", "unknown")
-        value = data.get("value", 0)
-        status = data.get("status", "Unknown")
-        return f"Processed {sensor} reading: {value}°C ({status} range)"
+        # formato JSON
+        if "sensor" in data:
+            sensor_names: Dict[str, str] = {"temp": "temperature"}
+            sensor: str = sensor_names.get(data["sensor"], data["sensor"])
+            return (
+                f"Processed {sensor} reading: "
+                f"{data['value']}°C ({data['status']} range)"
+            )
+        # formato CSV
+        if "fields" in data:
+            actions: int = data["count"] - 2
+            return f"User activity logged: {actions} actions processed"
+        # formato Stream
+        if "avg" in data:
+            return (
+                f"Stream summary: {data['count']} readings, "
+                f"avg: {data['avg']:.1f}°C"
+            )
+        return f"Processed: {data}"
 
 
 # base astratta per tutte le pipeline, gestisce una lista di stage e coordina
@@ -80,7 +95,7 @@ class JSONAdapter(ProcessingPipeline):
                     if len(parts) != 2:
                         continue
                     key: str = parts[0].strip().strip('"')
-                    value: str = parts[1].strip().strip('"')
+                    value: Any = parts[1].strip().strip('"')
                     try:
                         value = float(value) if "." in value else int(value)
                     except ValueError:
@@ -118,12 +133,22 @@ class CSVAdapter(ProcessingPipeline):
         try:
             print(f'Input: "{data}"')
             parts: List[str] = str(data).split(",")
-            actions: int = len(parts) - 2
-            print("Transform: Parsed and structured data")
-            result: str = f"User activity logged: {actions} actions processed"
-            print(f"Output: {result}")
-            return result
+            data = {
+                "fields": parts,
+                "count":  len(parts)
+            }
 
+            for stage in self.stages:
+                data = stage.process(data)
+                if isinstance(stage, TransformStage):
+                    print("Transform: Parsed and structured data")
+                if isinstance(stage, OutputStage):
+                    print(f"Output: {data}")
+
+            return data
+
+        except ValueError as e:
+            raise ValueError(e) from e
         except Exception as e:
             print(f"Error in CSVAdapter: {e}")
             return None
@@ -137,13 +162,23 @@ class StreamAdapter(ProcessingPipeline):
                 raise ValueError(f"Expected list, got {type(data)}")
             values: List[float] = [float(v) for v in data]
             avg: float = sum(values) / len(values)
-            print("Transform: Aggregated and filtered")
-            result: str = (
-                f"Stream summary: {len(values)} readings, avg: {avg:.1f}°C"
-            )
-            print(f"Output: {result}")
-            return result
+            data = {
+                "values": values,
+                "avg":    avg,
+                "count":  len(values)
+            }
 
+            for stage in self.stages:
+                data = stage.process(data)
+                if isinstance(stage, TransformStage):
+                    print("Transform: Aggregated and filtered")
+                if isinstance(stage, OutputStage):
+                    print(f"Output: {data}")
+
+            return data
+
+        except ValueError as e:
+            raise ValueError(e) from e
         except Exception as e:
             print(f"Error in StreamAdapter: {e}")
             return None
@@ -160,7 +195,6 @@ class NexusManager:
         self.pipelines.append(pipeline)
 
     def run_all(self, data_list: List[Any]) -> None:
-        # labels = ["JSON", "CSV", "Stream"]
         messages: List[str] = [
             "Processing JSON data through pipeline...",
             "Processing CSV data through same pipeline...",
@@ -192,7 +226,14 @@ def main() -> None:
     pipeline_json.add_stage(OutputStage())
 
     pipeline_csv = CSVAdapter("Pipeline_B")
+    pipeline_csv.add_stage(InputStage())
+    pipeline_csv.add_stage(TransformStage())
+    pipeline_csv.add_stage(OutputStage())
+
     pipeline_stream = StreamAdapter("Pipeline_C")
+    pipeline_stream.add_stage(InputStage())
+    pipeline_stream.add_stage(TransformStage())
+    pipeline_stream.add_stage(OutputStage())
 
     manager = NexusManager()
     manager.add_pipeline(pipeline_json)

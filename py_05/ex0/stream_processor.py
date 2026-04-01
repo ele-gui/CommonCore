@@ -83,10 +83,11 @@ class LogProcessor(DataProcessor):
                 detected_level = level
                 break
         message: str = data[len(detected_level) + 2:]
+        tag: str
         if detected_level in ("ERROR", "CRITICAL"):
-            tag: str = "[ALERT]"
+            tag = "[ALERT]"
         else:
-            tag: str = "[INFO]"
+            tag = "[INFO]"
         return f"{tag} {detected_level} level detected: {message}"
 
     def format_output(self, result: str) -> str:

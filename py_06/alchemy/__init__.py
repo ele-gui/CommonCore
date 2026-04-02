@@ -8,8 +8,12 @@
 # per controllare quali nomi vengono esposti quando si usa
 # from package import *
 
-from .elements import create_air
+from alchemy.elements import create_air
+from alchemy.potions import healing_potion, strength_potion
+""" This exposes create_air, strength_potion, heal through
+the alchemy package interface — but not create_earth """
 
+heal = healing_potion  # alias
 
 """ .
 |-- alchemy

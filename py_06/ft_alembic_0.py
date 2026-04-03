@@ -7,5 +7,5 @@ def main():
     print(f"Testing create_fire: {elements.create_fire()}")
 
 
-if __name__ == "__main":
+if __name__ == "__main__":
     main()

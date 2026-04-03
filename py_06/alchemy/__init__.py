@@ -14,7 +14,7 @@ from alchemy.elements import create_air
 # partially import the alchemy module
 
 # parte 2
-from alchemy.potions import healing_potion, strength_potion  # parte 2
+from alchemy.potions import healing_potion, strength_potion
 """ This exposes create_air, strength_potion, heal through
 the alchemy package interface — but not create_earth """
 heal = healing_potion  # alias

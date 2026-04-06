@@ -1,7 +1,7 @@
 import alchemy
 
 
-def main():
+def main() -> None:
     print("=== Alembic 4 ===")
     try:
         print("Accessing the alchemy module using 'import alchemy'")

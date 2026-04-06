@@ -1,5 +1,4 @@
 from alchemy.elements import create_air  # absolute
-# from ..elements import create_air  # relative
 from ..potions import strength_potion, create_fire  # relative
 
 
@@ -13,6 +12,5 @@ def lead_to_gold() -> str:
     )
 
 
-
-# from alchemy.elements import create_air   # absolute — always resolves from project root
-# from ..elements import create_air         # relative — resolves relative to current package
+# from alchemy.elements import create_air   # absolute — from project root
+# from ..elements import create_air         # relative to current package

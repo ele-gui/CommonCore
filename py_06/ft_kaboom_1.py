@@ -8,5 +8,6 @@ def main() -> None:
     result = dark_spell_record("Shadow Curse", "bats and arsenic")
     print(result)
 
+
 if __name__ == "__main__":
     main()

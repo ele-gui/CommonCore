@@ -11,16 +11,15 @@ def light_spell_allowed_ingredients() -> list[str]:
     return allowed_ingredients
 
 
-def light_spell_record(spell_name: str, ingredients: str):
-    
-    result = str(f"{spell_name} ({validate_ingredients(ingredients)})")
+def light_spell_record(spell_name: str, ingredients: str) -> str:
 
+    result = str(f"{spell_name} ({validate_ingredients(ingredients)})")
 
     if "VALID" in result:
         return str(
             f"Spell recorded: {result}"
         )
-    
+
     else:
         return str(
             f"Spell rejected: {result}"

@@ -3,7 +3,7 @@ from ex1.Capability import HealCapability, TransformCapability
 
 
 class Sproutling(Creature, HealCapability):
-    
+
     def __init__(self):
         Creature.__init__(self, "Sproutling", "Grass")
 
@@ -12,7 +12,7 @@ class Sproutling(Creature, HealCapability):
 
     def heal(self, target=None):
         if target:
-            return f"{self.creature_name} heals {target}"
+            return f"{self.creature_name} heals {target} for a small amount"
         return f"{self.creature_name} heals itself for a small amount"
 
 
@@ -26,7 +26,9 @@ class Bloomelle(Creature, HealCapability):
     def heal(self, target=None):
         if target:
             return f"{self.creature_name} heals {target}"
-        return f"{self.creature_name} heals itself and others for a large amount"
+        return (
+            f"{self.creature_name} heals itself and others for a large amount"
+        )
 
 
 class Shiftling(Creature, TransformCapability):

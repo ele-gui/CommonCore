@@ -12,7 +12,7 @@ class Creature(ABC):
         pass
 
     def describe(self):
-        return f"{self.creature_name} is a {self.creature_type} Creature"
+        return f"{self.creature_name} is a {self.creature_type} type Creature"
 
 
 class Flameling(Creature):
@@ -21,7 +21,7 @@ class Flameling(Creature):
         super().__init__("Flameling", "Fire")
 
     def attack(self):
-        return f"Flameling uses Ember!"
+        return "Flameling uses Ember!"
 
 
 class Pyrodon(Creature):

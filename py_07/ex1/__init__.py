@@ -1,2 +1,4 @@
-from ex1.CreatureFactory import HealingCreatureFactory, TransformCreatureFactory
+from ex1.CreatureFactory import (
+    HealingCreatureFactory, TransformCreatureFactory
+)
 __all__ = ["HealingCreatureFactory", "TransformCreatureFactory"]

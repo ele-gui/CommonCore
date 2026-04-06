@@ -28,7 +28,7 @@ def test_healing(factory: HealingCreatureFactory):
     evolved_creature = factory.create_evolved()
     print(evolved_creature.describe())
     print(evolved_creature.attack())
-    print(evolved_creature.heal()) # da sistemare
+    print(evolved_creature.heal())
     print()
 
 

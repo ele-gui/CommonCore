@@ -37,5 +37,6 @@ def main() -> None:
 
     creature_fight(flame_factory, aqua_factory)
 
+
 if __name__ == "__main__":
     main()

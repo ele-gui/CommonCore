@@ -1,11 +1,11 @@
 from alchemy.elements import create_air
 from alchemy.potions import healing_potion, strength_potion
-from alchemy.transmutation.recipes import lead_to_gold  # noqa: E402
-from alchemy.grimoire.light_spellbook import (  # noqa: E402
+from alchemy.transmutation.recipes import lead_to_gold
+from alchemy.grimoire.light_spellbook import (
     light_spell_allowed_ingredients,
     light_spell_record,
 )
-from alchemy.grimoire.light_validator import validate_ingredients  # noqa: E402
+from alchemy.grimoire.light_validator import validate_ingredients
 
 heal = healing_potion
 
@@ -64,3 +64,6 @@ __all__ = [
 # — se un nome è in __all__, flake8 capisce che non è "unused",
 # è una re-export.
 # 2. Controllare cosa viene importato con from module import *
+
+# F401 "imported but unused"
+# E402 "module level import not at top of file"

@@ -1,6 +1,7 @@
 # from alchemy.grimoire.dark_spellbook import dark_spell_allowed_ingredients
 # absolute
-from .dark_validator import dark_spell_allowed_ingredients  # relative
+from .dark_validator import dark_spell_allowed_ingredients  # noqa: F401
+# relative
 
 
 def dark_validate_ingredients(ingredients: str) -> str:

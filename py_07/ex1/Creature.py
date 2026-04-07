@@ -7,10 +7,10 @@ class Sproutling(Creature, HealCapability):
     def __init__(self):
         Creature.__init__(self, "Sproutling", "Grass")
 
-    def attack(self):
+    def attack(self) -> str:
         return f"{self.creature_name} uses Vine Whip!"
 
-    def heal(self, target=None):
+    def heal(self, target=None) -> str:
         if target:
             return f"{self.creature_name} heals {target} for a small amount"
         return f"{self.creature_name} heals itself for a small amount"
@@ -20,10 +20,10 @@ class Bloomelle(Creature, HealCapability):
     def __init__(self):
         Creature.__init__(self, "Bloomelle", "Grass/Fairy")
 
-    def attack(self):
+    def attack(self) -> str:
         return f"{self.creature_name} uses Petal Dance!"
 
-    def heal(self, target=None):
+    def heal(self, target=None) -> str:
         if target:
             return f"{self.creature_name} heals {target}"
         return (

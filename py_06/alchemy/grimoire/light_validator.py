@@ -2,7 +2,7 @@
 
 def validate_ingredients(ingredients: str) -> str:
 
-    allowed_ingredients = [
+    allowed_ingredients = [  # non devo specificare gli elementi qui
         'earth',
         'air',
         'fire',

@@ -1,4 +1,4 @@
-from alchemy import elements
+from alchemy.elements import create_air
 
 
 def main() -> None:
@@ -6,8 +6,11 @@ def main() -> None:
     print(
         "Accessing alchemy/elements.py using 'from ... import ...' structure"
     )
-    print(f"Testing create_air: {elements.create_air()}")
+    print(f"Testing create_air: {create_air()}")
 
 
 if __name__ == "__main__":
     main()
+
+
+# OKKKKKK???

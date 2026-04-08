@@ -2,16 +2,12 @@
 
 def validate_ingredients(ingredients: str) -> str:
 
-    allowed_ingredients = [  # non devo specificare gli elementi qui
-        'earth',
-        'air',
-        'fire',
-        'water'
-    ]
+    from .light_spellbook import light_spell_allowed_ingredients
 
-    allowed_ingredients_lower = ingredients.lower()
+    allowed = light_spell_allowed_ingredients()
+    ingredients_lower = ingredients.lower()
 
-    for item in allowed_ingredients:
-        if item in allowed_ingredients_lower:
+    for item in allowed:
+        if item in ingredients_lower:
             return str(f"{ingredients} - VALID")
     return str(f"{ingredients} - INVALID")

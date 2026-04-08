@@ -1,21 +1,11 @@
-# from alchemy.grimoire.dark_spellbook import dark_spell_allowed_ingredients
-# absolute
-from .dark_validator import dark_spell_allowed_ingredients  # noqa: F401
-# relative
-
+from .dark_spellbook import dark_spell_allowed_ingredients
 
 def dark_validate_ingredients(ingredients: str) -> str:
-
-    allowed_ingredients = [
-        'bats',
-        'frogs',
-        'arsenic',
-        'eyeball'
-    ]
-
-    allowed_ingredients_lower = ingredients.lower()
+    allowed_ingredients = dark_spell_allowed_ingredients()
+    ingredients_lower = ingredients.lower()
 
     for item in allowed_ingredients:
-        if item in allowed_ingredients_lower:
-            return str(f"{ingredients} - VALID")
-    return str(f"{ingredients} - INVALID")
+        if item in ingredients_lower:
+            return f"{ingredients} - VALID"
+
+    return f"{ingredients} - INVALID"

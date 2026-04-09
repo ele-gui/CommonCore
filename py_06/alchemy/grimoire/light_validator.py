@@ -1,7 +1,7 @@
-#  qui non importo nulla, altrimenti ho circular import
-
 def validate_ingredients(ingredients: str) -> str:
-
+    # con questo evito circular dependency
+    # cosi' l'import avviene solo quando
+    # la funzione viene chiamata
     from .light_spellbook import light_spell_allowed_ingredients
 
     allowed = light_spell_allowed_ingredients()

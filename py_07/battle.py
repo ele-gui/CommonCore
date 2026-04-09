@@ -5,7 +5,6 @@ from ex0.CreatureFactory import CreatureFactory
 def test_creature(factory: CreatureFactory) -> None:
     print("Testing factory")
 
-    # factory = FlameFactory()
     base_creature = factory.create_base()
     print(base_creature.describe())
     print(base_creature.attack())
@@ -29,13 +28,20 @@ def creature_fight(factory_a: CreatureFactory, factory_b: CreatureFactory):
 
 def main() -> None:
 
-    flame_factory = FlameFactory()
-    aqua_factory = AquaFactory()
+    try:
+        # test_creature()
+        flame_factory = FlameFactory()
+        aqua_factory = AquaFactory()
+        test_creature(flame_factory)
+        test_creature(aqua_factory)
+    except TypeError:
+        print("test_creature() needs 1 argument\n")
 
-    test_creature(flame_factory)
-    test_creature(aqua_factory)
+    try:
+        creature_fight(flame_factory, aqua_factory)
+    except TypeError:
+        print("creature_fight() needs 2 argument\n")
 
-    creature_fight(flame_factory, aqua_factory)
 
 
 if __name__ == "__main__":

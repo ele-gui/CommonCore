@@ -29,7 +29,6 @@ def creature_fight(factory_a: CreatureFactory, factory_b: CreatureFactory):
 def main() -> None:
 
     try:
-        # test_creature()
         flame_factory = FlameFactory()
         aqua_factory = AquaFactory()
         test_creature(flame_factory)
@@ -41,7 +40,6 @@ def main() -> None:
         creature_fight(flame_factory, aqua_factory)
     except TypeError:
         print("creature_fight() needs 2 argument\n")
-
 
 
 if __name__ == "__main__":

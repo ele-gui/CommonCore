@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from ex1.Creature import Creature, HealCapability, TransformCapability
+from ex1.Creature import Creature, Shiftling, Sproutling, Bloomelle, Morphagon
 
 
 class InvalidStrategyError(Exception):
@@ -8,8 +8,9 @@ class InvalidStrategyError(Exception):
 
 class BattleStrategy(ABC):
 
+    # indicating that a Creature is suitable for the strategy
     @abstractmethod
-    def is_valid(self) -> bool:
+    def is_valid(self, creature: Creature) -> bool:
         pass
 
     @abstractmethod
@@ -19,6 +20,7 @@ class BattleStrategy(ABC):
 
 class NormalStrategy(BattleStrategy):
 
+    # suitable for any Creature
     def is_valid(self, creature: Creature) -> bool:
         return True
 
@@ -28,8 +30,9 @@ class NormalStrategy(BattleStrategy):
 
 class AggressiveStrategy(BattleStrategy):
 
+    # suitable for Creature with transform capabilities
     def is_valid(self, creature: Creature) -> bool:
-        return isinstance(creature, TransformCapability)
+        return isinstance(creature, (Shiftling, Morphagon))
 
     def act(self, creature: Creature) -> list[str]:
         if not self.is_valid(creature):
@@ -38,13 +41,19 @@ class AggressiveStrategy(BattleStrategy):
                 f"for this aggressive strategy"
             )
 
-        return [creature.transform(), creature.attack(), creature.revert()]
+        if isinstance(creature, (Shiftling, Morphagon)):
+            return [creature.transform(), creature.attack(), creature.revert()]
+        raise InvalidStrategyError(
+                f"Invalid Creature '{creature.creature_name}' "
+                f"for this aggressive strategy"
+            )
 
 
 class DefensiveStrategy(BattleStrategy):
 
+    # suitable for Creature with healing capabilities
     def is_valid(self, creature: Creature) -> bool:
-        return isinstance(creature, HealCapability)
+        return isinstance(creature, (Sproutling, Bloomelle))
 
     def act(self, creature: Creature) -> list[str]:
         if not self.is_valid(creature):
@@ -53,4 +62,10 @@ class DefensiveStrategy(BattleStrategy):
                 f"{creature.creature_name}: "
                 f"it requires HealCapability."
             )
-        return [creature.attack(), creature.heal()]
+        if isinstance(creature, (Sproutling, Bloomelle)):
+            return [creature.attack(), creature.heal()]
+        raise InvalidStrategyError(
+                f"DefensiveStrategy is not valid for "
+                f"{creature.creature_name}: "
+                f"it requires HealCapability."
+            )

@@ -1,11 +1,12 @@
-from ex0.Creature import Creature
+from ex0.Creature import Creature, Colors
 from ex1.Capability import HealCapability, TransformCapability
+
 
 
 class Sproutling(Creature, HealCapability):
 
     def __init__(self) -> None:
-        Creature.__init__(self, "Sproutling", "Grass")
+        Creature.__init__(self, "Sproutling", f"{Colors.green}Grass{Colors.reset}")
 
     def attack(self) -> str:
         return f"{self.creature_name} uses Vine Whip!"
@@ -18,7 +19,7 @@ class Sproutling(Creature, HealCapability):
 
 class Bloomelle(Creature, HealCapability):
     def __init__(self) -> None:
-        Creature.__init__(self, "Bloomelle", "Grass/Fairy")
+        Creature.__init__(self, "Bloomelle", f"{Colors.green}Grass{Colors.reset}/{Colors.magenta}Fairy{Colors.reset}")
 
     def attack(self) -> str:
         return f"{self.creature_name} uses Petal Dance!"
@@ -33,7 +34,7 @@ class Bloomelle(Creature, HealCapability):
 
 class Shiftling(Creature, TransformCapability):
     def __init__(self) -> None:
-        Creature.__init__(self, "Shiftling", "Normal")
+        Creature.__init__(self, "Shiftling", f"{Colors.grey}Normal{Colors.reset}")
         TransformCapability.__init__(self)
 
     def attack(self) -> str:
@@ -52,7 +53,7 @@ class Shiftling(Creature, TransformCapability):
 
 class Morphagon(Creature, TransformCapability):
     def __init__(self) -> None:
-        Creature.__init__(self, "Morphagon", "Normal/Dragon")
+        Creature.__init__(self, "Morphagon", f"{Colors.grey}Normal{Colors.reset}/{Colors.drago}Dragon{Colors.reset}")
         TransformCapability.__init__(self)
 
     def attack(self) -> str:

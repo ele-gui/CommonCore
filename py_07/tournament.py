@@ -1,4 +1,5 @@
 from ex0.CreatureFactory import CreatureFactory
+from ex0.Creature import Colors
 from ex0 import FlameFactory, AquaFactory
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex2 import (
@@ -14,7 +15,7 @@ def battle(opponents: List[Tuple[CreatureFactory, BattleStrategy]]) -> None:
         (factory.create_base(), strategy) for factory, strategy in opponents
     ]
 
-    print("*** Tournament ***")
+    print(f"{Colors.tournament}*** Tournament ***{Colors.reset}")
     print(f"{len(opponents)} opponents involved")
 
     for i in range(len(creatures)):
@@ -22,12 +23,12 @@ def battle(opponents: List[Tuple[CreatureFactory, BattleStrategy]]) -> None:
             creature_a, strategy_a = creatures[i]
             creature_b, strategy_b = creatures[j]
 
-            print("\n* Battle *")
+            print(f"{Colors.battle}\n* Battle *{Colors.reset}")
             print(creature_a.describe())
-            print(" vs.")
+            print(f"{Colors.dark_grey} vs.{Colors.reset}")
             print(creature_b.describe())
 
-            print(" now fight!")
+            print(f"{Colors.dark_grey} now fight!{Colors.reset}")
             try:
                 for action in strategy_a.act(creature_a):
                     print(action)
@@ -49,7 +50,7 @@ def main() -> None:
     defensive = DefensiveStrategy()
 
     # Tournament 0
-    print("Tournament 0 (basic)")
+    print(f"{Colors.tournament_emphasis}Tournament 0 (basic){Colors.reset}")
     print("[ (Flameling+Normal), (Healing+Defensive) ]")
     battle([
         (flame_factory, normal),
@@ -57,7 +58,7 @@ def main() -> None:
     ])
 
     # Tournament 1
-    print("\nTournament 1 (error)")
+    print(f"{Colors.tournament_emphasis}\nTournament 1 (error){Colors.reset}")
     print("[ (Flameling+Aggressive), (Healing+Defensive) ]")
     battle([
         (flame_factory, aggressive),
@@ -65,7 +66,7 @@ def main() -> None:
     ])
 
     # Tournament 2
-    print("\nTournament 2 (multiple)")
+    print(f"{Colors.tournament_emphasis}\nTournament 2 (multiple){Colors.reset}")
     print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
     battle([
         (aqua_factory, normal),

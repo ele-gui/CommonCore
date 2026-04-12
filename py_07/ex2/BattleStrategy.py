@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
-from ex1.Creature import Creature, Shiftling, Sproutling, Bloomelle, Morphagon
+from ex1.Creature import Creature
+from ex1.Capability import TransformCapability, HealCapability
+from typing import cast
 
 
 class InvalidStrategyError(Exception):
@@ -32,7 +34,7 @@ class AggressiveStrategy(BattleStrategy):
 
     # suitable for Creature with transform capabilities
     def is_valid(self, creature: Creature) -> bool:
-        return isinstance(creature, (Shiftling, Morphagon))
+        return isinstance(creature, TransformCapability)
 
     def act(self, creature: Creature) -> list[str]:
         if not self.is_valid(creature):
@@ -40,20 +42,17 @@ class AggressiveStrategy(BattleStrategy):
                 f"Invalid Creature '{creature.creature_name}' "
                 f"for this aggressive strategy"
             )
-
-        if isinstance(creature, (Shiftling, Morphagon)):
-            return [creature.transform(), creature.attack(), creature.revert()]
-        raise InvalidStrategyError(
-                f"Invalid Creature '{creature.creature_name}' "
-                f"for this aggressive strategy"
-            )
+        # comunicare all'IDE il tipo di una variabile quando tu sai qualcosa 
+        # che il type checker non riesce a dedurre da solo.
+        t = cast(TransformCapability, creature)
+        return [t.transform(), creature.attack(), t.revert()]
 
 
 class DefensiveStrategy(BattleStrategy):
 
     # suitable for Creature with healing capabilities
     def is_valid(self, creature: Creature) -> bool:
-        return isinstance(creature, (Sproutling, Bloomelle))
+        return isinstance(creature, HealCapability)
 
     def act(self, creature: Creature) -> list[str]:
         if not self.is_valid(creature):
@@ -62,10 +61,6 @@ class DefensiveStrategy(BattleStrategy):
                 f"{creature.creature_name}: "
                 f"it requires HealCapability."
             )
-        if isinstance(creature, (Sproutling, Bloomelle)):
-            return [creature.attack(), creature.heal()]
-        raise InvalidStrategyError(
-                f"DefensiveStrategy is not valid for "
-                f"{creature.creature_name}: "
-                f"it requires HealCapability."
-            )
+
+        h = cast(HealCapability, creature)
+        return [creature.attack(), h.heal()]

@@ -22,24 +22,19 @@ def creature_fight(factory_a: CreatureFactory, factory_b: CreatureFactory):
     print(creature_a.describe())
     print("vs.")
     print(creature_b.describe())
+    print("fight!") 
     print(creature_a.attack())
     print(creature_b.attack())
 
 
 def main() -> None:
 
-    try:
-        flame_factory = FlameFactory()
-        aqua_factory = AquaFactory()
-        test_creature(flame_factory)
-        test_creature(aqua_factory)
-    except TypeError:
-        print("test_creature() needs 1 argument\n")
+    flame_factory = FlameFactory()
+    aqua_factory = AquaFactory()
+    test_creature(flame_factory)
+    test_creature(aqua_factory)
 
-    try:
-        creature_fight(flame_factory, aqua_factory)
-    except TypeError:
-        print("creature_fight() needs 2 argument\n")
+    creature_fight(flame_factory, aqua_factory)
 
 
 if __name__ == "__main__":

@@ -1,10 +1,6 @@
-import sys, os, site
-
-
-# import os, sys, site
-
-# print(os.path.exists(sys.prefix))         # il venv esiste?
-# print(os.listdir(site.getsitepackages()[0]))  # pacchetti installati
+import sys
+import os
+import site
 
 
 # CAPIRE DA DOVE STO LANCIANDO IL PROGRAMMA
@@ -37,8 +33,6 @@ else:
     print("  matrix_env\\Scripts\\activate # On Windows")
 
     print("\nThen run this program again")
-
-
 
 # # Metodo 2: confronta sys.prefix con sys.base_prefix
 # if sys.prefix != sys.base_prefix:

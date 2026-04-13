@@ -42,7 +42,7 @@ class AggressiveStrategy(BattleStrategy):
                 f"Invalid Creature '{creature.creature_name}' "
                 f"for this aggressive strategy"
             )
-        # comunicare all'IDE il tipo di una variabile quando tu sai qualcosa 
+        # comunicare all'IDE il tipo di una variabile quando tu sai qualcosa
         # che il type checker non riesce a dedurre da solo.
         t = cast(TransformCapability, creature)
         return [t.transform(), creature.attack(), t.revert()]

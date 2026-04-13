@@ -20,9 +20,9 @@ def creature_fight(factory_a: CreatureFactory, factory_b: CreatureFactory):
     creature_a = factory_a.create_base()
     creature_b = factory_b.create_base()
     print(creature_a.describe())
-    print("vs.")
+    print(" vs.")
     print(creature_b.describe())
-    print("fight!") 
+    print(" fight!")
     print(creature_a.attack())
     print(creature_b.attack())
 

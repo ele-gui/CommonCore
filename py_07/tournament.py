@@ -1,5 +1,5 @@
 from ex0.CreatureFactory import CreatureFactory
-from ex0.Creature import Colors
+from ex0.Colors import Colors
 from ex0 import FlameFactory, AquaFactory
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex2 import (
@@ -66,7 +66,9 @@ def main() -> None:
     ])
 
     # Tournament 2
-    print(f"{Colors.tournament_emphasis}\nTournament 2 (multiple){Colors.reset}")
+    print(
+        f"{Colors.tournament_emphasis}\nTournament 2 (multiple){Colors.reset}"
+    )
     print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
     battle([
         (aqua_factory, normal),

@@ -2,15 +2,33 @@
 # and publishing that replaces multiple legacy tools like pip, virtualenv, 
 # and requirements.txt
 
-[project]
-name = "my-package"
-version = ""
-dynamic = ["version"]
+[tool.poetry]  # sezione di configurazione principale del progetto
+name = "matrix"  # nome del pacchetto. Viene usato se pubblichi il progetto su PyPI
+version = "0.1.0"
+description = "Matrix data analysis"
+authors = ["elguiduc"]
 
+# dipendenze necessarie per far girare il programma
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.21.0"
+pandas = "^2.1.0"
+matplotlib = "^3.7.0"
+requests = "^2.31.2"
 
-dependencies = [
-    "pandas==2.1.0",
-    "numpy==1.21.0",
-    "requests==2.31.0",
-    "matplotlib==3.7.2"
-]
+# Dipendenze installate solo in sviluppo, non in produzione.
+# Non vengono incluse se qualcun altro installa il tuo pacchetto come libreria
+[tool.poetry.dev-dependencies]
+flake8 = "^6.0.0"
+mypy = "^1.4.0"
+
+# Dice a Python come costruire il pacchetto se lo vuoi distribuire.
+[build-system]
+requires = ["poetry-core"]  # Lo strumento necessario per il build (il motore interno di Poetry).
+build-backend = "poetry.core.masonry.api"  # L'API standard PEP 517 che pip usa per costruire il pacchetto.
+
+# Definisce dei comandi da terminale che vengono creati all'installazione.
+[tool.poetry.scripts]
+loading = "loading:main"  # Crea un comando loading che esegue la funzione main() nel file loading.py. 
+# Dopo poetry install puoi quindi scrivere semplicemente poetry run loading
+# invece di poetry run python loading.py.

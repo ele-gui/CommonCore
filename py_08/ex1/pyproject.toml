@@ -1,0 +1,17 @@
+# Poetry is a comprehensive tool for dependency management, packaging, 
+# and publishing that replaces multiple legacy tools like pip, virtualenv, 
+# and requirements.txt
+
+[project]
+name = "my-package"
+version = ""
+dynamic = ["version"]
+
+
+# pip install -r requirements.txt
+# per installare tutti i pacchetti sotto
+
+pandas=2.1.0
+numpy==1.21.0
+
+matplotlib==3.7.2

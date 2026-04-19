@@ -7,18 +7,19 @@ name = "matrix"  # nome del pacchetto. Viene usato se pubblichi il progetto su P
 version = "0.1.0"
 description = "Matrix data analysis"
 authors = ["elguiduc"]
+package-mode = false
 
 # dipendenze necessarie per far girare il programma
 [tool.poetry.dependencies]
 python = "^3.10"
-numpy = "^1.21.0"
-pandas = "^2.1.0"
+numpy = "^2.0.0"
+pandas = "^2.2.2"
 matplotlib = "^3.7.0"
-requests = "^2.31.2"
+requests = "^2.31.0"
 
 # Dipendenze installate solo in sviluppo, non in produzione.
 # Non vengono incluse se qualcun altro installa il tuo pacchetto come libreria
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"
 mypy = "^1.4.0"
 
